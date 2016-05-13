@@ -26,6 +26,7 @@ class UnitsController < ApplicationController
   def create
     @unit = Unit.new(unit_params)
       name = @unit.name
+      # @unit.users << current_user
       if @unit.save
         flash[:notice] = "#{@unit.name} was saved."
         redirect_to unit_path(@unit)
@@ -33,7 +34,7 @@ class UnitsController < ApplicationController
         flash[:notice] = "#{name} failed to update."
         redirect_to new_unit_path
       end
-    
+
   end
 
   # PATCH/PUT /units/1
