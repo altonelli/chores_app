@@ -8,36 +8,41 @@
 Unit.destroy_all
 User.destroy_all
 Chore.destroy_all
-1.times do
-  Unit.create({address: FFaker::Address.street_address, name: FFaker::Company.name})
-end
-unit = Unit.first
-kitchen = Chore.create({
-name: "Kitchen",
-details: "Clean it."
-})
-bathroom = Chore.create({
-name: "Bathroom",
-details: "Clean it."
-})
-living_room = Chore.create({
-  name: "Living Room",
+unit_arr = []
+
+2.times do
+  unit = Unit.create({address: FFaker::Address.street_address,
+                     name: FFaker::Company.name,
+                     landlord_name: FFaker::Name.first_name,
+                     landlord_phone: FFaker::PhoneNumber.short_phone_number,
+                     landlord_email: FFaker::Internet.email})
+
+  kitchen = Chore.create({
+  title: "Kitchen",
   details: "Clean it."
   })
-ice_cream = Chore.create({
-name: "Ice Cream",
-details: "Buy it."
-})
-chore_arr = [kitchen,bathroom,living_room,ice_cream]
-4.times do |i|
-  user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, state:"approved"})
-  user.chores << chore_arr[i]
-  UserChore.where(user_id: user.id).first.update({complete: true})
-  unit.users << user
+  bathroom = Chore.create({
+  title: "Bathroom",
+  details: "Clean it."
+  })
+  living_room = Chore.create({
+    title: "Living Room",
+    details: "Clean it."
+    })
+  ice_cream = Chore.create({
+  title: "Ice Cream",
+  details: "Buy it."
+  })
+
+  chore_arr = [kitchen,bathroom,living_room,ice_cream]
+
+  4.times do |i|
+    user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number})
+    user.chores << chore_arr[i]
+    UserChore.where(user_id: user.id).first.update({completed: false, due_date: (Time.now.to_i + 604800)})
+    unit.users << user
+  end
 end
-user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, state:"block"})
-trash = Chore.create({name: "Trash", details: "Take it out."})
-user.chores << trash
-UserChore.where(user_id: user.id).first.update({complete: false})
-unit.users << user
+
+
 puts("#{Unit.count} Units created | #{User.count} Users created | #{Chore.count} Chores created")
