@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
-  resources :user_chores
-  resources :chores
-  resources :users
-  resources :units
+
+  resources :units do
+    resources :users, shallow: true
+    resources :chores, shallow: true
+    resources :user_chores, only: [:edit,:update]
+  end
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
