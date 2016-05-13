@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  root to: "application#index"
   resources :units do
     resources :users, shallow: true
     resources :chores, shallow: true

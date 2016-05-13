@@ -12,34 +12,37 @@
   </ul>
 </div>
 
-    <%=link_to "Chores", unit_chores_path(@unit) %>
+    <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-sm"}%>
 
-<div>
-<p>
-  <strong>Name:</strong>
-  <%= @unit.name %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @unit.address %>
-</p>
+    <nav class="navbar navbar-inverse navbar-bottom" style="padding:0 0 120px 0">
+      <div class="container">
+        <p>
+          <strong>Name:</strong>
+          <%= @unit.name %>
+        </p>
 
-<p>
-  <strong>Landlord name:</strong>
-  <%= @unit.landlord_name %>
-</p>
+        <p>
+          <strong>Address:</strong>
+          <%= @unit.address %>
+        </p>
 
-<p>
-  <strong>Landlord phone:</strong>
-  <%= @unit.landlord_phone %>
-</p>
+        <p>
+          <strong>Landlord name:</strong>
+          <%= @unit.landlord_name %>
+        </p>
 
-<p>
-  <strong>Landlord email:</strong>
-  <%= @unit.landlord_email %>
-</p>
-</div>
+        <p>
+          <strong>Landlord phone:</strong>
+          <%= @unit.landlord_phone %>
+        </p>
+
+        <p>
+          <strong>Landlord email:</strong>
+          <%= @unit.landlord_email %>
+        </p>
+      </div>
+    </nav
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>
