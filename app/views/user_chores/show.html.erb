@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @user_chore.due_date %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @user_chore.completed %>
+</p>
+
+<%= link_to 'Edit', edit_user_chore_path(@user_chore) %> |
+<%= link_to 'Back', user_chores_path %>
