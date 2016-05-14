@@ -21,6 +21,7 @@ class ChoresController < ApplicationController
 
   # GET /chores/1/edit
   def edit
+    @unit = @chore.users.first.unit
   end
 
   # POST /chores
@@ -37,13 +38,17 @@ class ChoresController < ApplicationController
   # PATCH/PUT /chores/1
   # PATCH/PUT /chores/1.json
   def update
-
+    @unit = @chore.users.first.unit
+    @chore.update(chore_params)
+    redirect_to unit_chores_path(@unit)
   end
 
   # DELETE /chores/1
   # DELETE /chores/1.json
   def destroy
+    @unit = @chore.users.first.unit
     @chore.destroy
+    redirect_to unit_chores_path(@unit)
   end
 
   private
