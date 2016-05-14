@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root to: "application#index"
 
   get "/signup",        to: "users#new"
   get "/login",         to: "sessions#new"
