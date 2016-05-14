@@ -3,7 +3,7 @@
 <div>
   <h3>Roommates</h3>
   <ul>
-    <%@unit.users.each do |roommate| %>
+    <%@unit.users.where(state: "approved").each do |roommate| %>
     <p>
       <%=link_to(roommate.name,user_path(roommate))%>
     </p>
@@ -13,6 +13,19 @@
 </div>
 
     <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-sm"}%>
+
+    <div>
+      <h3>Pending Roommates</h3>
+      <ul>
+        <%@unit.users.where(state: "pending").each do |roommate| %>
+        <p>
+          <%= roommate.name %> <%=link_to("Approve",user_path(roommate), html_options={method: "patch",class: "btn btn-warning"})%> <%#=link_to("Decline",{:controller => "user", :action => "update", :state => "approved"}, html_options={method: "patch", class: "btn btn-destroy"})%>
+        </p>
+        <% end %>
+
+      </ul>
+    </div>
+
 
 
     <nav class="navbar navbar-inverse navbar-bottom" style="padding:0 0 120px 0">
