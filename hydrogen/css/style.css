@@ -7486,6 +7486,9 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Montserrat", arial, sans-serif;
   color: #444;
 }
+a.fh5co-menu-btn.js-fh5co-menu-btn {
+  color: antiquewhite;
+}
 .fh5co-menu-btn i {
   font-size: 20px;
   margin-top: 3px;
