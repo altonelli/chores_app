@@ -26,6 +26,8 @@ class UnitsController < ApplicationController
   # POST /units.json
   def create
     @unit = Unit.new(unit_params)
+    user = User.create({name: "Mom", email: "mom@test.com", password: "a"})
+    @unit.users << user
       name = @unit.name
       # @unit.users << current_user
       if @unit.save
@@ -35,7 +37,6 @@ class UnitsController < ApplicationController
         flash[:notice] = "#{name} failed to update."
         redirect_to new_unit_path
       end
-
   end
 
   # PATCH/PUT /units/1

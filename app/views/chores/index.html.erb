@@ -16,7 +16,7 @@
       <tr>
         <td><%= chore.title %></td>
         <td><%= chore.details %></td>
-        <td><%= link_to 'Show', chore %></td>
+        <td>Is Completed? <%= UserChore.where(chore_id: chore.id).first.completed %></td>
         <td><%= link_to 'Edit', edit_chore_path(chore) %></td>
         <td><%= link_to 'Destroy', chore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Chore', new_chore_path %>
+<%= link_to 'New Chore', new_unit_chore_path(@unit) %>

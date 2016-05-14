@@ -1,15 +1,17 @@
 class ChoresController < ApplicationController
+  before_action :set_unit, only: [:index, :create, :new]
   before_action :set_chore, only: [:show, :edit, :update, :destroy]
 
   # GET /chores
   # GET /chores.json
   def index
-    @chores = Chore.all
+    @chores = @unit.chores
   end
 
   # GET /chores/1
   # GET /chores/1.json
   def show
+
   end
 
   # GET /chores/new
@@ -19,50 +21,42 @@ class ChoresController < ApplicationController
 
   # GET /chores/1/edit
   def edit
+    @unit = @chore.users.first.unit
   end
 
   # POST /chores
   # POST /chores.json
   def create
     @chore = Chore.new(chore_params)
-
-    respond_to do |format|
-      if @chore.save
-        format.html { redirect_to @chore, notice: 'Chore was successfully created.' }
-        format.json { render :show, status: :created, location: @chore }
-      else
-        format.html { render :new }
-        format.json { render json: @chore.errors, status: :unprocessable_entity }
-      end
-    end
+    @chore.save
+    private_user = @unit.users.find_by(name: "Mom")
+    private_user.chores << @chore
+    UserChore.where(chore_id: @chore.id).first.update({completed: false})
+    redirect_to unit_chores_path(@unit)
   end
 
   # PATCH/PUT /chores/1
   # PATCH/PUT /chores/1.json
   def update
-    respond_to do |format|
-      if @chore.update(chore_params)
-        format.html { redirect_to @chore, notice: 'Chore was successfully updated.' }
-        format.json { render :show, status: :ok, location: @chore }
-      else
-        format.html { render :edit }
-        format.json { render json: @chore.errors, status: :unprocessable_entity }
-      end
-    end
+    @unit = @chore.users.first.unit
+    @chore.update(chore_params)
+    redirect_to unit_chores_path(@unit)
   end
 
   # DELETE /chores/1
   # DELETE /chores/1.json
   def destroy
+    @unit = @chore.users.first.unit
     @chore.destroy
-    respond_to do |format|
-      format.html { redirect_to chores_url, notice: 'Chore was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to unit_chores_path(@unit)
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_unit
+      @unit = Unit.find(params[:unit_id])
+    end
+
     def set_chore
       @chore = Chore.find(params[:id])
     end
