@@ -19,7 +19,7 @@
       <ul>
         <%@unit.users.where(state: "pending").each do |roommate| %>
         <p>
-          <%= roommate.name %> <%=link_to("Approve",user_path(roommate), html_options={method: "patch",class: "btn btn-warning"})%> <%#=link_to("Decline",{:controller => "user", :action => "update", :state => "approved"}, html_options={method: "patch", class: "btn btn-destroy"})%>
+          <%= roommate.name %> <%=link_to("Approve",user_path(roommate, state: "approved"), html_options={method: "patch",class: "btn btn-warning"})%> <%#=link_to("Decline",{:controller => "user", :action => "update", :state => "approved"}, html_options={method: "patch", class: "btn btn-destroy"})%>
         </p>
         <% end %>
 

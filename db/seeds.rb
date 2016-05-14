@@ -37,14 +37,14 @@ unit_arr = []
   chore_arr = [kitchen,bathroom,living_room,ice_cream]
 
   4.times do |i|
-    user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, state: "approved"})
+    user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, password: "a", state: "approved"})
     user.chores << chore_arr[i]
     UserChore.where(user_id: user.id).first.update({completed: false, due_date: (Time.now.to_i + 604800)})
     unit.users << user
   end
-  blocked_user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, state: "blocked"})
+  blocked_user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, password: "a", state: "blocked"})
   unit.users << blocked_user
-  pending_user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, state: "pending"})
+  pending_user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, password: "a", state: "pending"})
   unit.users << pending_user
 end
 
