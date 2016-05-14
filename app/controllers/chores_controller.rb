@@ -1,4 +1,5 @@
 class ChoresController < ApplicationController
+  before_action :set_unit, only: [:index, :create, :new]
   before_action :set_chore, only: [:show, :edit, :update, :destroy]
 
   # GET /chores
@@ -25,44 +26,31 @@ class ChoresController < ApplicationController
   # POST /chores.json
   def create
     @chore = Chore.new(chore_params)
-
-    respond_to do |format|
-      if @chore.save
-        format.html { redirect_to @chore, notice: 'Chore was successfully created.' }
-        format.json { render :show, status: :created, location: @chore }
-      else
-        format.html { render :new }
-        format.json { render json: @chore.errors, status: :unprocessable_entity }
-      end
-    end
+    @chore.save
+    private_user = @unit.users.find_by(name: "Mom")
+    private_user.chores << @chore
+    UserChore.where(chore_id: @chore.id).first.update({completed: false})
+    redirect_to unit_chores_path(@unit)
   end
 
   # PATCH/PUT /chores/1
   # PATCH/PUT /chores/1.json
   def update
-    respond_to do |format|
-      if @chore.update(chore_params)
-        format.html { redirect_to @chore, notice: 'Chore was successfully updated.' }
-        format.json { render :show, status: :ok, location: @chore }
-      else
-        format.html { render :edit }
-        format.json { render json: @chore.errors, status: :unprocessable_entity }
-      end
-    end
+
   end
 
   # DELETE /chores/1
   # DELETE /chores/1.json
   def destroy
     @chore.destroy
-    respond_to do |format|
-      format.html { redirect_to chores_url, notice: 'Chore was successfully destroyed.' }
-      format.json { head :no_content }
-    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_unit
+      @unit = Unit.find(params[:unit_id])
+    end
+
     def set_chore
       @chore = Chore.find(params[:id])
     end
