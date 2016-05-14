@@ -5,12 +5,13 @@ class ChoresController < ApplicationController
   # GET /chores
   # GET /chores.json
   def index
-    @chores = Chore.all
+    @chores = @unit.chores
   end
 
   # GET /chores/1
   # GET /chores/1.json
   def show
+
   end
 
   # GET /chores/new
