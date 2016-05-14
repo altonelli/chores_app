@@ -10,6 +10,7 @@ class UnitsController < ApplicationController
   # GET /units/1
   # GET /units/1.json
   def show
+    render :show
   end
 
   # GET /units/new
