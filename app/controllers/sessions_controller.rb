@@ -8,10 +8,10 @@ class SessionsController < ApplicationController
   def create
     user_params = params.require(:user).permit(:email, :password)
     @user = User.confirm(user_params)
-    if @user
+    if @user.save
       login(@user)
       flash[:success] = "You are logged-in!"
-      redirect_to root_path
+      redirect_to units_path
     else
       redirect_to login_path
     end
