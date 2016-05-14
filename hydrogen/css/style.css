@@ -7333,6 +7333,7 @@ button.close {
   }
 }
 /* Template Style =========== */
+
 body {
   font-family: "Roboto", arial, sans-serif;
   font-weight: 500;
@@ -7356,7 +7357,8 @@ p {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #000;
+  color: white;
+  font-family: cursive;
   font-family: "Montserrat", arial, sans-serif;
 }
 
