@@ -1,5 +1,5 @@
 html {
-      /*background: url("/images/SFapartment.jpeg") no-repeat center center fixed;*/
+      background: url("/images/SFapartment.jpeg") no-repeat center center fixed;
       background-color: #3C4262;
       -webkit-background-size: cover;
       -moz-background-size: cover;
@@ -7,24 +7,26 @@ html {
       background-size: cover;
       }
 
-h2 {
-    font-weight: bold;
-    font-family: cursive;
-    text-align: center;
-    padding: 5px;
-   }
 h3 {
     font-weight: bold;
     font-family: monospace;
     text-align: center;
     padding: 50px;
    }
+.mainIcons {
+           text-align: center;
+           font-weight: bold;
+           font-family: cursive;
+           text-align: center;
+           padding: 5px;
+           font-size: 30px;
+          }
 a {
   margin-left: 1200px;
   color: snow;
 }
 body {
-      background-color: #3C4262;
+      background-color: transparent;
       color: antiquewhite;
      }
 #footerInfo {
