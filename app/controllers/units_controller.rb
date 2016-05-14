@@ -25,39 +25,42 @@ class UnitsController < ApplicationController
   # POST /units.json
   def create
     @unit = Unit.new(unit_params)
-
-    respond_to do |format|
+      name = @unit.name
+      # @unit.users << current_user
       if @unit.save
-        format.html { redirect_to @unit, notice: 'Unit was successfully created.' }
-        format.json { render :show, status: :created, location: @unit }
+        flash[:notice] = "#{@unit.name} was saved."
+        redirect_to unit_path(@unit)
       else
-        format.html { render :new }
-        format.json { render json: @unit.errors, status: :unprocessable_entity }
+        flash[:notice] = "#{name} failed to update."
+        redirect_to new_unit_path
       end
-    end
+
   end
 
   # PATCH/PUT /units/1
   # PATCH/PUT /units/1.json
   def update
-    respond_to do |format|
+
       if @unit.update(unit_params)
-        format.html { redirect_to @unit, notice: 'Unit was successfully updated.' }
-        format.json { render :show, status: :ok, location: @unit }
+        flash[:notice] = "#{@unit.name} was successfully updated"
+        redirect_to unit_path(@unit)
       else
-        format.html { render :edit }
-        format.json { render json: @unit.errors, status: :unprocessable_entity }
+        flash[:error] = "#{@unit.name} failed to update"
+        redirect_to edit_unit_path(@unit)
       end
-    end
+
   end
 
   # DELETE /units/1
   # DELETE /units/1.json
   def destroy
-    @unit.destroy
-    respond_to do |format|
-      format.html { redirect_to units_url, notice: 'Unit was successfully destroyed.' }
-      format.json { head :no_content }
+    name = @unit.name
+    if @unit.destroy
+      flash[:notice] = "#{name} was destroyed"
+      redirect_to units_path
+    else
+      flash[:notice] = "#{name} persists"
+      redirect_to unit_path(@unit)
     end
   end
 
