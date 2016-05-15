@@ -1,9 +1,8 @@
 html {
-  /*-webkit-backdrop-filter: blur(10px); /* Chrome, Safari, Opera */*/
   background-color: #3C4262;
 }
 h1 {
-  font-family: cursive;
+  font-family: monospace;
 }
 h3 {
   font-weight: bold;
@@ -40,13 +39,11 @@ p {
   text-shadow: 2px 2px 4px white;
 }
 body {
-  background-color: floralwhite;
+  background-color: slategray;
   color: black;
 }
 .splashDiv {
   background: url("/images/sfApartment.jpeg") no-repeat center center fixed;
-  -webkit-backdrop-filter: blur(10px);
-  filter: blur(10px);
   background-size: 100%;
   height: 1000px;
   display: flex;
