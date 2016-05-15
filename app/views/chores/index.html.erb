@@ -1,28 +1,39 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Chores</h1>
+<div class="card">
+  <img class="card-img-top" data-src="..." alt="Card image cap">
+  <div class="card-block">
+    <h4 class="card-title">Card title</h4>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Details</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
     <% @chores.each do |chore| %>
-      <tr>
-        <td><%= chore.title %></td>
-        <td><%= chore.details %></td>
-        <td>Is Completed? <%= UserChore.where(chore_id: chore.id).first.completed %></td>
-        <td><%= link_to 'Edit', edit_chore_path(chore) %></td>
-        <td><%= link_to 'Destroy', chore, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <div class="card">
+      <div class="card-header">
+        <%= chore.title %>
+        <div class="btn-group">
+          <button type="button" class="btn ropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu">
+            <%= link_to 'Edit', edit_chore_path(chore), html_options={class: "dropdown-item"} %>
+            <%= link_to 'Destroy', chore, html_options={class: "dropdown-item", method: :delete, data: { confirm: 'Are you sure?' }} %>
+          </div>
+        </div>
+      </div>
+      <div class="card-block">
+        <p class="card-text">
+          <%= chore.details %>
+          <%= UserChore.where(chore_id: chore.id).first.completed %>
+        </p>
+
+      </div>
+
+    </div>
     <% end %>
-  </tbody>
-</table>
 
 <br>
 

@@ -36,3 +36,7 @@ body {
   color: antiquewhite;
   font-weight: normal;
 }
+.list-group-item {
+  background-color: rgba(100,100,100,.7);
+  color: black;
+}
