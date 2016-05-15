@@ -15,22 +15,22 @@ h3 {
     color:antiquewhite;
    }
 .mainIcons {
-           text-align: center;
-           font-weight: bold;
-           font-family: cursive;
-           text-align: center;
-           padding: 5px;
-           font-size: 20px;
-          }
+  text-align: center;
+  font-weight: bold;
+  font-family: cursive;
+  text-align: center;
+  padding: 5px;
+  font-size: 20px;
+ }
 a {
   margin-left: 1200px;
   color: antiquewhite;
 }
 body {
-      background: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6));
-      background-color: transparent;
-      color: antiquewhite;
-      }
+  background: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6));
+  background-color: transparent;
+  color: antiquewhite;
+}
 #footerInfo {
   text-align: center;
 }

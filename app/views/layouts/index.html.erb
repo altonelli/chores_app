@@ -14,21 +14,13 @@
 <div class ="mainIcons">
   <!-- form -->
     <form class="navbar-form navbar-right">
-              <!-- <div class="form-group">
-                <input type="text" placeholder="Email" class="form-control">
-              </div>
-              <div class="form-group">
-                <input type="password" placeholder="Password" class="form-control">
-              </div> -->
-              <button type="submit" class="btn btn-success btn-sm">Log-In</button>
-              <%= link_to "Log-In", login_path %>
-              <button type="submit" class="btn btn-info btn-sm">Sign-Up</button>
-              <%= link_to "Sign-Up", signup_path %>
+      <%= link_to "Log-In", login_path, class: "btn btn-success btn-sm"%>
+      <%= link_to "Sign-Up", signup_path, class: "btn btn-info btn-sm"%>
     </form>
     <!-- end form -->
   <a href="#" class="menuIcon">Menu <i class="icon-cross"></i> </a>
   <span class="appName">
-    <%= link_to "CHÕRUS", units_path %>
+    <%= link_to "CHÕRUS", units_path, class: "btn btn-danger btn-sm" %>
   </span>
 </div>
 <hr>
