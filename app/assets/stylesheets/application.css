@@ -12,7 +12,7 @@ h3 {
     font-family: monospace;
     text-align: center;
     padding: 50px;
-    color:tomato;
+    color:antiquewhite;
    }
 .mainIcons {
            text-align: center;
@@ -24,13 +24,13 @@ h3 {
           }
 a {
   margin-left: 1200px;
-  color: tomato;
+  color: antiquewhite;
 }
 body {
+      background: linear-gradient(rgba(0, 0, 0, 0.6),rgba(0, 0, 0, 0.6));
       background-color: transparent;
-      color: tomato;
-   }
-     }
+      color: antiquewhite;
+      }
 #footerInfo {
   text-align: center;
 }
