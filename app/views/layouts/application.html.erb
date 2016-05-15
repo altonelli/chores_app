@@ -15,9 +15,8 @@
     <%= favicon_link_tag "images/luma.ico" %>
   </head>
   <body>
-    <div class ="mainIcons">
-      <nav class="navbar-form navbar-default">
-        <div class="container">
+     <div class="splashDiv">
+      <div class="sideBarDiv">
           <% if current_user %>
             <%= link_to "CHÕRUS", units_path %>
             <%= link_to "Log-Out", logout_path %>
@@ -25,12 +24,19 @@
             <%= link_to "Sign-Up", signup_path, class: "btn btn-info btn-sm"%>
             <%= link_to "Log-In", login_path, class: "btn btn-success btn-sm"%>
           <% end %>
-        </div>
-        <span class="appName">
-          <%= link_to "CHÕRUS", units_path, class: "btn btn-danger btn-md" %>
-        </span>
-      </nav>
+      </div>
+     </div>
+     <div class="cardsDiv">
+
     </div>
+      <div class ="mainIcons">
+        <nav class="navbar-form navbar-default">
+
+          <span class="appName">
+            <%= link_to "CHÕRUS", units_path, class: "btn btn-danger btn-md" %>
+          </span>
+        </nav>
+      </div>
     <%= yield %>
   </body>
 
