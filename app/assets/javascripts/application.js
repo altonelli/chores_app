@@ -14,3 +14,6 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+console.log ("JS is loaded & running!!");
+Turbolinks.enableProgressBar();
