@@ -12,16 +12,26 @@
     <%= favicon_link_tag "luma.ico" %>
   </head>
   <body>
-  <nav class="navbar-form navbar-right">
-    <div class="container">
-      <% if current_user %>
-        <%= link_to "Home", units_path %> | <%= link_to "Log-Out", logout_path %>
-      <% else %>
-        <%= link_to "Sign-Up", signup_path %> | <%= link_to "Log-In", login_path %>
-      <% end %>
+    <div class ="mainIcons">
+      <nav class="navbar-form navbar-right">
+        <div class="container">
+          <% if current_user %>
+            <%= link_to "CHÕRUS", units_path %> | <%= link_to "Log-Out", logout_path %>
+          <% else %>
+            <%= link_to "Sign-Up", signup_path, class: "btn btn-info btn-sm"%>
+            <%= link_to "Log-In", login_path, class: "btn btn-success btn-sm"%>
+          <% end %>
+        </div>
+        <span class="appName">
+          <%= link_to "CHÕRUS", units_path, class: "btn btn-danger btn-md" %>
+        </span>
+      </nav>
     </div>
-  </nav>
-  <%= yield %>
-
+    <%= yield %>
   </body>
+
+  <footer id="footerInfo">
+    <p><small>&copy; CH&OtildeRUS. All Rights Reserved. <br>Designed by: Team Awesome Sauce</small></p>
+  </footer>
+
 </html>
