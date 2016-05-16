@@ -29,7 +29,7 @@ class UnitsController < ApplicationController
     user = User.create({name: "Mom", email: "mom@test.com", password: "a"})
     @unit.users << user
       name = @unit.name
-      # @unit.users << current_user
+      @unit.users << current_user
       if @unit.save
         flash[:notice] = "#{@unit.name} was saved."
         redirect_to unit_path(@unit)

@@ -31,7 +31,9 @@
 
 <div class="col-md-4">
     <% if @current_user %>
+    <div class="container">
     <h2>Your Chores</h2>
+  </div>
     <div class="col-md-4">
         <div class="panel-body">
             <ul>
@@ -55,8 +57,9 @@
             </center>
 
         <% else %>
-
+          <div class="container">
             <h2><%=@user.name %>'s Chores</h2>
+          </div>
             <div class="panel-body">
                 <ul>
                     <%@user.chores.each do |chore| %>
