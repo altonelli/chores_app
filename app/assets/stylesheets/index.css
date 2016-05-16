@@ -1,0 +1,17 @@
+.indexView {
+  background-color: #efeff4;
+  background-image: url("/images/sfApartment.jpeg");
+  background-size:cover;
+  max-width: 2400px;
+  height: 900px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+body{
+  background-color: floralwhite;
+}
+.w3-hover-opacity {
+  width: 50%;
+}
