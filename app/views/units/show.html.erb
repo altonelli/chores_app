@@ -1,48 +1,41 @@
 <p id="notice"><%= notice %></p>
 
-<div>
-  <h3>Roommates</h3>
-  <ul>
-    <%@unit.users.each do |roommate| %>
-    <p>
-      <%=link_to(roommate.name,user_path(roommate))%>
-    </p>
-    <% end %>
+<div class="row">
 
-  </ul>
-</div>
+  <div class="col-xs-6">
+    <h3>Roommates</h3>
+    <ul class="list-group list-group-flush">
+      <%@unit.users.each do |roommate| %>
+        <li class="list-group-item">
+          <%=link_to(roommate.name,user_path(roommate))%>
+        </li>
+      <% end %>
 
+    </ul>
+  </div>
+
+  <div class="col-xs-6">
     <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-sm"}%>
+  </div>
 
 
-    <nav class="navbar navbar-inverse navbar-bottom" style="padding:0 0 120px 0">
-      <div class="container">
-        <p>
-          <strong>Name:</strong>
-          <%= @unit.name %>
-        </p>
-
-        <p>
-          <strong>Address:</strong>
-          <%= @unit.address %>
-        </p>
-
-        <p>
-          <strong>Landlord name:</strong>
-          <%= @unit.landlord_name %>
-        </p>
-
-        <p>
-          <strong>Landlord phone:</strong>
-          <%= @unit.landlord_phone %>
-        </p>
-
-        <p>
-          <strong>Landlord email:</strong>
-          <%= @unit.landlord_email %>
-        </p>
-      </div>
-    </nav
+</div>
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %>
+
+
+    <nav class="navbar navbar-inverse navbar-bottom" style="padding:0 0 120px 0">
+      <div class="container text-center">
+        <p>
+          <%= @unit.name %> | <%= @unit.address %>
+        </p>
+
+        <p>
+          <strong>Landlord Contact:</strong>
+          <%= @unit.landlord_name %> |
+          <%= @unit.landlord_phone %> |
+          <%= @unit.landlord_email %>
+        </p>
+      </div>
+    </nav>

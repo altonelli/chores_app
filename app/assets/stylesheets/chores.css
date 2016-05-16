@@ -1,0 +1,8 @@
+.btn.dropdown-toggle {
+  padding: 0px;
+  background-color: transparent;
+}
+
+ul.dropdown-menu {
+  padding: 0px;
+}

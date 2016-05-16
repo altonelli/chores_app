@@ -37,9 +37,10 @@ unit_arr = []
   chore_arr = [kitchen,bathroom,living_room,ice_cream]
 
   4.times do |i|
-    user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number})
+    user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, password: "a", phone: FFaker::PhoneNumber.short_phone_number})
     user.chores << chore_arr[i]
-    UserChore.where(user_id: user.id).first.update({completed: false, due_date: (Time.now.to_i + 604800)})
+    i % 2 === 0 ?  bool = true : bool = false
+      UserChore.where(user_id: user.id).first.update({completed: bool, due_date: Time.at(Time.now.to_i + 604800)})
     unit.users << user
   end
 end

@@ -1,5 +1,5 @@
 class UserChoresController < ApplicationController
-  before_action :set_user_chore, only: [:show, :edit, :update, :destroy]
+  # before_action :set_user_chore, only: [:show, :edit, :update, :destroy]
 
   # GET /user_chores
   # GET /user_chores.json
@@ -40,15 +40,14 @@ class UserChoresController < ApplicationController
   # PATCH/PUT /user_chores/1
   # PATCH/PUT /user_chores/1.json
   def update
-    respond_to do |format|
-      if @user_chore.update(user_chore_params)
-        format.html { redirect_to @user_chore, notice: 'User chore was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_chore }
-      else
-        format.html { render :edit }
-        format.json { render json: @user_chore.errors, status: :unprocessable_entity }
-      end
+    @chore = Chore.find(params[:chore_id])
+    if !params[:completed].nil?
+      UserChore.where(chore_id: @chore.id).update_all(completed: params[:completed])
+    else
+      UserChore.where(chore_id: @chore.id).update_all(user_chore_params)
     end
+    flash[:notice] = "successfully updated."
+    redirect_to unit_chores_path(@chore.users.first.unit)
   end
 
   # DELETE /user_chores/1
@@ -69,6 +68,6 @@ class UserChoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_chore_params
-      params.require(:user_chore).permit(:due_date, :completed)
+      params.require(:user_chore).permit(:due_date)
     end
 end
