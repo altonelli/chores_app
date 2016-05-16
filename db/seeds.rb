@@ -47,7 +47,7 @@ unit_arr = []
   end
   blocked_user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, password: "a"})
   unit.users << blocked_user
-  UnitUser.where("unit_id = :unit_id and user_id = :user_id", {unit_id: unit.id.to_s, user_id: blocked_user.id.to_s}).first.update(state: "blocked")
+  UnitUser.where("unit_id = :unit_id and user_id = :user_id", {unit_id: unit.id.to_s, user_id: blocked_user.id.to_s}).first.update(state: "pending")
   pending_user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, password: "a"})
   unit.users << pending_user
   UnitUser.where("unit_id = :unit_id and user_id = :user_id", {unit_id: unit.id.to_s, user_id: pending_user.id.to_s}).first.update(state: "pending")
