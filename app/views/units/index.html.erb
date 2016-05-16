@@ -1,44 +1,11 @@
 <div id="notice"><%= notice %></div>
 
 <h1>Listing Units</h1>
-<% @units.each do |unit| %>
-<span class ="mainIcons">
-  <%= link_to 'Create Unit', new_unit_path, class: "btn btn-danger btn-md"%>
-</span>
+<%= link_to 'Create Unit', new_unit_path, class: "btn btn-danger btn-md"%>
+<ul class="list-group">
 
-<!-- Bootcards -->
-<div class="panel panel-default">
-  <div class="panel-heading clearfix">
-    <h3 class="panel-title pull-left">Cards by CHÕRUS</h3>
-      <a class="btn btn-primary pull-right" href="#">
-        <i class="fa fa-pencil"></i>
-        <%= link_to 'EDIT', edit_unit_path(unit) %>
-      </a>
-      <a class="btn btn-primary pull-right" href="#">
-        <i class="fa fa-pencil"></i>
-        <%= link_to 'DELETE UNIT', unit, method: :delete, data: { confirm: 'Are you sure?' } %>
-      </a>
-    </div>
-    <div class="list-group">
-      <div class="list-group-item">
-        <p class="list-group-item-text">Unit Name:</p>
-        <h4 class="list-group-item-heading"><%= unit.name %></h4>
-      </div>
-      <div class="list-group-item">
-        <p class="list-group-item-text">Unit Address:</p>
-        <h4 class="list-group-item-heading"><%= unit.address %></h4>
-      </div>
-      <div class="list-group-item">
-        <p class="list-group-item-text">Landlord Phone#:</p>
-        <h4 class="list-group-item-heading"><%= unit.landlord_phone %></h4>
-      </div>
-      <div class="list-group-item">
-        <p class="list-group-item-text">Landlord Email:</p>
-        <h4 class="list-group-item-heading"><%= unit.landlord_email %></h4>
-      </div>
-  <div class="panel-footer">
-    <p><small>&copy; CH&OtildeRUS. All Rights Reserved. <br>Designed by: Team Awesome Sauce</small></p>
-  </div>
-  </div>
-<!-- end Bootcards -->
+<% @units.each do |unit| %>
+  <li class="list-group-item"> <%= link_to unit.name, unit_path(unit) %> <%= link_to_if current_user, "Join", user_path(current_user, state: "pending", unit: unit), method: :patch %> </li>
 <% end %>
+
+</ul>
