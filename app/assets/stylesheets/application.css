@@ -66,6 +66,7 @@ body {
 
 }
 .cardsDiv {
+  -webkit-perspective: 800;
   float: left;
   text-align: center;
   flex-shrink: 1;
@@ -76,8 +77,47 @@ body {
   box-shadow: 10px 10px 5px black;
   margin:auto;
   margin-left: 15px;
-
 }
+
+
+/*Card Flip*/
+.cardsDiv .panel-heading.flipped {
+  -webkit-transform: rotatex(-180deg);
+}
+.cardsDiv .panel-heading {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: 0.5s;
+}
+.cardsDiv .panel-heading .face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-backface-visibility: hidden ;
+  z-index: 2;
+    font-family: Georgia;
+    font-size: 3em;
+    text-align: center;
+    line-height: 200px;
+}
+.cardsDiv .panel-heading .front {
+  position: absolute;
+  z-index: 1;
+    background: black;
+    color: white;
+    cursor: pointer;
+}
+.cardsDiv .panel-heading .back {
+  -webkit-transform: rotatex(-180deg);
+    background: blue;
+    background: white;
+    color: black;
+    cursor: pointer;
+}
+/*end*/
+
+
 .panel-toggle {
     position: absolute;
     top: 50%;
