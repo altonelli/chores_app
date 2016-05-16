@@ -9,7 +9,7 @@ h3 {
   font-family: monospace;
   text-align: center;
   padding: 50px;
-  color:antiquewhite;
+  color:snow;
 }
 .mainIcons {
   background-color: transparent;
@@ -29,7 +29,7 @@ h3 {
    background-color: transparent;
  }
 a {
-  color: antiquewhite;
+  color: snow;
 }
 p {
   color: black;
@@ -62,7 +62,7 @@ body {
 }
 .cardsDiv {
   flex-shrink: 1;
-  max-width: 400px;
+  max-width: 450px;
   margin: 10px;
   display: flex;
   text-align: center;
@@ -70,19 +70,18 @@ body {
   margin:auto;
   margin-left: 15px;
 }
-.panel-default {
-  background-color: slategray;
-}
 .panel-title {
-  background-color: #3C4262;
-  color: antiquewhite;
+  background-color: black;
+  color: snow;
+  font-weight: bold;
 }
 .panel-body {
-  background-color: aqua;
+  background-color: snow;
+  color: #3C4262;
 }
 .panel-footer {
-  background-color: black;
-  color: antiquewhite;
+  background-color: snow;
+  color: #3C4262;
 }
 .img-responsive {
   width: 100%;
@@ -91,7 +90,7 @@ body {
 }
 #footerInfo {
   text-align: center;
-  color: antiquewhite;
+  color: snow;
   font-weight: normal;
   clear: both;
   position: relative;
@@ -102,4 +101,15 @@ body {
 .img-responsive {
   width: 30px;
   height: 30px;
+}
+
+.tilt.right {
+    transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -webkit-transform: rotate(3deg);
+}
+.tilt.left {
+    transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -webkit-transform: rotate(-3deg);
 }
