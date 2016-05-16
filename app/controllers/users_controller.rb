@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     user_id = params[:id]
-    @user = User.find_by_id[user_id]
+    @user = User.find_by_id(params[:user_id])
     render :edit
   end
 
