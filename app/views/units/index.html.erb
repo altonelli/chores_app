@@ -1,11 +1,15 @@
 <div id="notice"><%= notice %></div>
 
+<%= current_user %>
+
 <h1>Listing Units</h1>
 <%= link_to 'Create Unit', new_unit_path, class: "btn btn-danger btn-md"%>
 <ul class="list-group">
 
 <% @units.each do |unit| %>
-  <li class="list-group-item"> <%= link_to unit.name, unit_path(unit) %> <%= link_to_if current_user, "Join", user_path(current_user, state: "pending", unit: unit), method: :patch %> </li>
+  <li class="list-group-item"> <%= link_to unit.name, unit_path(unit) %>
+    <%= link_to_if current_user, "Join", state_path(unit, current_user, state: "pending"), html_options={method: :patch, class: "pull-right"} %>
+    <%= link_to_if current_user, "Remove", state_path(unit, current_user, state: "blocked"), html_options={method: :patch, class: "pull-right"} %> </li>
 <% end %>
 
 </ul>
