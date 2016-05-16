@@ -15,5 +15,20 @@
   <%= @user.phone %>
 </p>
 
+<div class="">
+  <ul>
+    <%@user.chores.each do |chore| %>
+    <h4>
+      <%=chore.title%>
+    </h4>
+    <p>
+      <%=chore.details%>
+    </p>
+    <td><%=UserChore.where(chore_id: chore.id).first.completed ? "completed" : "yet to be done" %></td>
+    <% end %>
+
+  </ul>
+</div>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

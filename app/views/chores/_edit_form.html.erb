@@ -1,11 +1,11 @@
-<%= form_for @chore, url: (params[:action] == "new" ? unit_chores_path(@unit, @chore) : @chore) do |f| %>
+<%= form_for chore, url: (params[:action] == "new" ? unit_chores_path(@unit, chore) : chore) do |f| %>
 
-  <% if @chore.errors.any? %>
+  <% if chore.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
+      <h2><%= pluralize(chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
 
       <ul>
-      <% @chore.errors.full_messages.each do |message| %>
+      <% chore.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
