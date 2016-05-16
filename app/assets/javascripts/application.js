@@ -52,7 +52,7 @@ function tilt_direction(item) {
     item.data("move_handler", move_handler);
 }
 
-$( ".panel" )
+$( ".panel-title" )
     .addClass( "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" )
     .find( ".panel-title" )
     .addClass( "ui-widget-header ui-corner-all" )
