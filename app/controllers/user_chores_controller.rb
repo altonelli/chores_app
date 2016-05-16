@@ -41,7 +41,10 @@ class UserChoresController < ApplicationController
   # PATCH/PUT /user_chores/1.json
   def update
     @chore = Chore.find(params[:chore_id])
-    UserChore.where(chore_id: @chore.id).update_all(completed: params[:completed])
+    if !params[:completed].nil?
+      UserChore.where(chore_id: @chore.id).update_all(completed: params[:completed])
+    end
+    UserChore.where(chore_id: @chore.id).update_all(user_chore_params)
     flash[:notice] = "successfully updated."
     redirect_to unit_chores_path(@chore.users.first.unit)
   end
@@ -64,6 +67,6 @@ class UserChoresController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_chore_params
-      params.require(:user_chore).permit(:due_date, :completed)
+      params.require(:user_chore).permit(:due_date)
     end
 end

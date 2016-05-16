@@ -40,7 +40,7 @@ unit_arr = []
     user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, password: "a", phone: FFaker::PhoneNumber.short_phone_number})
     user.chores << chore_arr[i]
     i % 2 === 0 ?  bool = true : bool = false
-      UserChore.where(user_id: user.id).first.update({completed: bool, due_date: (Time.now.to_i + 604800)})
+      UserChore.where(user_id: user.id).first.update({completed: bool, due_date: Time.at(Time.now.to_i + 604800)})
     unit.users << user
   end
 end

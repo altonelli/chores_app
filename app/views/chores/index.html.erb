@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Chores</h1>
+<h1>Due Date: <%= UserChore.where(chore_id: @chores.first.id).first.due_date %></h1> <button type="button" name="button" data-toggle="modal" data-target="#modal_date">Edit Date</button>
+<hr>
 
 <div class="row">
   <div class="col-xs-6">
@@ -103,7 +104,7 @@
 <%= link_to 'New Chore', new_unit_chore_path(@unit), html_option={class:"btn btn-success new-chore"} %>
 
 
-<div id="myModal" class="modal fade" role="dialog">
+<div id="modal_date" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -113,7 +114,7 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        <%#= render partial: '_form' %>
+        <%= render partial: 'edit_date' %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
