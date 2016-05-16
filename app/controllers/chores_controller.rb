@@ -6,6 +6,8 @@ class ChoresController < ApplicationController
   # GET /chores.json
   def index
     @chores = @unit.chores
+    @chore = @chores.first
+    @user_chore = UserChore.where(chore_id: @chore.id).first
   end
 
   # GET /chores/1
