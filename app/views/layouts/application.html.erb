@@ -36,33 +36,253 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div class ="mainIcons">
+      <nav class="navbar-form navbar-default">
+
+        <span class="appName">
+          <%= link_to "CHÕRUS", units_path, class: "btn btn-danger btn-md" %>
+        </span>
+        <div class="sideBarDiv">
+            <% if current_user %>
+              <%= link_to "Log-Out", logout_path %>
+            <% else %>
+              <%= link_to "Sign-Up", signup_path, class: "btn btn-info btn-sm"%><br>
+              <%= link_to "Log-In", login_path, class: "btn btn-success btn-sm"%>
+            <% end %>
+        </div>
+      </nav>
+    </div>
+
+
      <div class="splashDiv">
-      <div class="sideBarDiv">
-          <% if current_user %>
-            <%= link_to "Log-Out", logout_path %>
-          <% else %>
-            <%= link_to "Sign-Up", signup_path, class: "btn btn-info btn-sm"%>
-            <%= link_to "Log-In", login_path, class: "btn btn-success btn-sm"%>
-          <% end %>
+
+    </div><hr>
+    <div class="cardsView">
+
+      <span class="cardsDiv">
+          <div class="panel panel-default bootcards-media" class="cards">
+      <div class="panel-heading">
+       <h3 class="panel-title">
+         <img src="/images/luma.ico" class="img-responsive"/>
+         Cards by CHÕRUS
+       </h3>
+      </div>
+      <div class="panel-body">
+       [UNIT IMAGE and NAME GO HERE]
+      </div>
+      <div class="panel-footer">
+       UNIT ADDRESS
+       <div class="btn-group btn-group-justified">
+         <div class="btn-group">
+           <button class="btn btn-default">
+             <i class="fa fa-user"></i>
+             Lanlord Name
+           </button>
+         </div>
+         <div class="btn-group">
+           <button class="btn btn-default">
+             <i class="fa fa-phone"></i>
+             Phone #
+           </button>
+         </div>
+         <div class="btn-group">
+            <button class="btn btn-default">
+             <i class="fa fa-envelope"></i>
+             Email
+            </button>
+          </div>
+         </div>
+       </div>
+      </div>
+      </span>
+
+  <span class="cardsDiv">
+      <div class="panel panel-default bootcards-media" class="cards">
+  <div class="panel-heading">
+   <h3 class="panel-title">
+     <img src="/images/luma.ico" class="img-responsive"/>
+     Cards by CHÕRUS
+   </h3>
+  </div>
+  <div class="panel-body">
+   [UNIT IMAGE and NAME GO HERE]
+  </div>
+  <div class="panel-footer">
+   UNIT ADDRESS
+   <div class="btn-group btn-group-justified">
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-user"></i>
+         Lanlord Name
+       </button>
+     </div>
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-phone"></i>
+         Phone #
+       </button>
+     </div>
+     <div class="btn-group">
+        <button class="btn btn-default">
+         <i class="fa fa-envelope"></i>
+         Email
+        </button>
       </div>
      </div>
-     <div class="cardsDiv">
+   </div>
+  </div>
+  </span>
 
-    </div>
-      <div class ="mainIcons">
-        <nav class="navbar-form navbar-default">
-
-          <span class="appName">
-            <%= link_to "CHÕRUS", units_path, class: "btn btn-danger btn-md" %>
-          </span>
-        </nav>
+  <span class="cardsDiv">
+      <div class="panel panel-default bootcards-media" class="cards">
+  <div class="panel-heading">
+   <h3 class="panel-title">
+     <img src="/images/luma.ico" class="img-responsive"/>
+     Cards by CHÕRUS
+   </h3>
+  </div>
+  <div class="panel-body">
+   [UNIT IMAGE and NAME GO HERE]
+  </div>
+  <div class="panel-footer">
+   UNIT ADDRESS
+   <div class="btn-group btn-group-justified">
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-user"></i>
+         Lanlord Name
+       </button>
+     </div>
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-phone"></i>
+         Phone #
+       </button>
+     </div>
+     <div class="btn-group">
+        <button class="btn btn-default">
+         <i class="fa fa-envelope"></i>
+         Email
+        </button>
       </div>
-    <%= yield %>
-  </body>
+     </div>
+   </div>
+  </div>
+  </span>
 
-    <footer id="footerInfo">
-      <p><small>&copy; CH&OtildeRUS. All Rights Reserved. <br>Designed by: Team Awesome Sauce</small></p>
-    </footer>
+  <span class="cardsDiv">
+      <div class="panel panel-default bootcards-media" class="cards">
+  <div class="panel-heading">
+   <h3 class="panel-title">
+     <img src="/images/luma.ico" class="img-responsive"/>
+     Cards by CHÕRUS
+   </h3>
+  </div>
+  <div class="panel-body">
+   [UNIT IMAGE and NAME GO HERE]
+  </div>
+  <div class="panel-footer">
+   UNIT ADDRESS
+   <div class="btn-group btn-group-justified">
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-user"></i>
+         Lanlord Name
+       </button>
+     </div>
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-phone"></i>
+         Phone #
+       </button>
+     </div>
+     <div class="btn-group">
+        <button class="btn btn-default">
+         <i class="fa fa-envelope"></i>
+         Email
+        </button>
+      </div>
+     </div>
+   </div>
+  </div>
+  </span>
 
+  <span class="cardsDiv">
+      <div class="panel panel-default bootcards-media" class="cards">
+  <div class="panel-heading">
+   <h3 class="panel-title">
+     <img src="/images/luma.ico" class="img-responsive"/>
+     Cards by CHÕRUS
+   </h3>
+  </div>
+  <div class="panel-body">
+   [UNIT IMAGE and NAME GO HERE]
+  </div>
+  <div class="panel-footer">
+   UNIT ADDRESS
+   <div class="btn-group btn-group-justified">
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-user"></i>
+         Lanlord Name
+       </button>
+     </div>
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-phone"></i>
+         Phone #
+       </button>
+     </div>
+     <div class="btn-group">
+        <button class="btn btn-default">
+         <i class="fa fa-envelope"></i>
+         Email
+        </button>
+      </div>
+     </div>
+   </div>
+  </div>
+  </span>
 
+  <span class="cardsDiv">
+      <div class="panel panel-default bootcards-media" class="cards">
+  <div class="panel-heading">
+   <h3 class="panel-title">
+     <img src="/images/luma.ico" class="img-responsive"/>
+     Cards by CHÕRUS
+   </h3>
+  </div>
+  <div class="panel-body">
+   [UNIT IMAGE and NAME GO HERE]
+  </div>
+  <div class="panel-footer">
+   UNIT ADDRESS
+   <div class="btn-group btn-group-justified">
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-user"></i>
+         Lanlord Name
+       </button>
+     </div>
+     <div class="btn-group">
+       <button class="btn btn-default">
+         <i class="fa fa-phone"></i>
+         Phone #
+       </button>
+     </div>
+     <div class="btn-group">
+        <button class="btn btn-default">
+         <i class="fa fa-envelope"></i>
+         Email
+        </button>
+      </div>
+     </div>
+   </div>
+  </div>
+  </span>
+
+</div>
+
+<%= yield %>
+</body>
 </html>
