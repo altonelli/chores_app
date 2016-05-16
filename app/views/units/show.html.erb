@@ -1,18 +1,92 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-
   <div class="col-xs-6">
     <h3>Roommates</h3>
-    <ul class="list-group list-group-flush">
-      <%@unit.users.each do |roommate| %>
-        <li class="list-group-item">
-          <%=link_to(roommate.name,user_path(roommate))%>
-        </li>
-      <% end %>
-
-    </ul>
   </div>
+
+  <div class="panel-body  card_show">
+    <div class="columns">
+      <%@unit.users.each do |roommate| %>
+      <span class="cardsDiv">
+        <div class="panel panel-default bootcards-media" class="cards">
+          <div class="panel-heading">
+            <h3 class="panel-title">
+              <!-- Cards by CHÕRUS -->
+            </h3>
+          </div>
+      <div class="panel-body">
+
+        <div class="columns">
+          <%=link_to(roommate.name,user_path(roommate))%>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+  CHORES
+  <div class="btn-group btn-group-sm">
+    <div class="btn-group">
+      <button class="btn btn-default">
+
+        Dishes
+      </button>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-default">
+
+        Grabage
+      </button>
+    </div>
+    <div class="btn-group">
+       <button class="btn btn-default">
+
+        Vacuum
+       </button>
+     </div>
+    </div>
+  </div>
+  </div>
+
+      <% end %>
+  </div>
+
+
+
+  </div>
+
+  <!-- <div class="panel-footer">
+  CHORES
+  <div class="btn-group btn-group-justified">
+    <div class="btn-group">
+      <button class="btn btn-default">
+
+        Dishes
+      </button>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-default">
+
+        Grabage
+      </button>
+    </div>
+    <div class="btn-group">
+       <button class="btn btn-default">
+
+        Vacuum
+       </button>
+     </div>
+    </div>
+  </div>
+  </div> -->
+  </span>
+
+
+
+
+
+
 
   <div class="col-xs-6">
     <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-sm"}%>
@@ -25,7 +99,7 @@
 <%= link_to 'Back', units_path %>
 
 
-    <nav class="navbar navbar-inverse navbar-bottom" style="padding:0 0 120px 0">
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
       <div class="container text-center">
         <p>
           <%= @unit.name %> | <%= @unit.address %>

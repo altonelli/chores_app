@@ -4,7 +4,12 @@
   *= require chores
 */
 
-
+.test.a {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+}
 
 
 .mainIcons {
@@ -147,7 +152,7 @@ body {
 
 .panel-body {
   background-color: #4e5d6c;
-  color: white;
+  color: #4e5d6c;
 }
 
 .btn-primary {
