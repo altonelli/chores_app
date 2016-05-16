@@ -5,16 +5,8 @@
 */
 
 
-h1 {
-  font-family: monospace;
-}
-h3 {
-  font-weight: bold;
-  font-family: monospace;
-  text-align: center;
-  padding: 50px;
-  color:snow;
-}
+
+
 .mainIcons {
   background-color: transparent;
   text-align: center;
@@ -26,29 +18,7 @@ h3 {
   text-align: center;
   text-shadow: 4px 4px 12px black;
  }
- .btn {
-   border-radius: 12px;
- }
- .navbar-default {
-   margin-top: 1px;
-   margin-right: 2px;
-   background-color: transparent;
- }
-a {
-  color: snow;
-}
-p {
-  color: black;
-  font-family: monospace;
-  font-weight: 900px;
-  text-align: center;
-  text-shadow: 2px 2px 4px white;
-}
-body {
-  background-color: #3C4262;
-  color: black;
-  margin: 20px;
-}
+
 .splashDiv {
   background: url("/images/sfApartment.jpeg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -64,12 +34,7 @@ body {
   display: flex;
   margin: 20px;
 }
-.sideBarDiv {
-  max-width: 100px;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-}
+
 .cardsView {
   text-align: center;
   display: flex;
@@ -141,28 +106,12 @@ body {
     margin: 0 1em 1em 0;
     height: 500px;
 }
-.panel {
-    margin: 0 1em 1em 0;
-    padding: 0.3em;
-}
 .panel-heading {
-    padding: 0.2em 0.3em;
-    margin-bottom: 0.5em;
     position: relative;
 }
 .panel-title {
-  background-color: #3C4262;
   color: antiquewhite;
   font-weight: bold;
-  padding: 0.4em;
-}
-.panel-body {
-  background-color: snow;
-  color: #3C4262;
-}
-.panel-footer {
-  background-color: snow;
-  color: #3C4262;
 }
 .tilt.right {
     transform: rotate(3deg);
@@ -196,7 +145,7 @@ body {
 .list-group-item {
   background-color: rgba(100,100,100,.7);
   color: black;
-}*/
+}
 
 
 body {
