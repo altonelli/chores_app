@@ -38,6 +38,7 @@
             <% if current_user %>
               <li><%= link_to "CHÕRUS", root_path %></li>
               <li><%= link_to "Log-Out", logout_path %></li>
+              <li><%= link_to "Profile", user_path(current_user) %></li>
             <% else %>
               <li><%= link_to "Sign-Up", signup_path, class: "btn btn-info"%></li>
               <li><%= link_to "Log-In", login_path, class: "btn btn-info"%></li>
@@ -45,9 +46,14 @@
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MENU <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <% if current_user %>
+                <li><%= link_to "Profile", user_path(current_user) %></li>
+                <li><%# link_to "Unit", unit_path(current_user.unit) %></li>
+                <li><%# link_to "Chores", unit_chores_path(current_user.unit) %></li>
+                <% else %>
+                <li><%= link_to "Log In", login_path %></li>
+                <li><%= link_to "Sign Up", signup_path %></li>
+                <% end %>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Separated link</a></li>
               </ul>
