@@ -1,6 +1,14 @@
-html {
+/*
+  *= require_self
+  *= require bootswatch
+  *= require chores
+*/
+
+
+
+/*html {*/
   /*-webkit-backdrop-filter: blur(10px); /* Chrome, Safari, Opera */*/
-  background-color: #3C4262;
+  /*background-color: #3C4262;
 }
 h1 {
   font-family: cursive;
@@ -45,7 +53,7 @@ body {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  background-color: transparent;
+  background-color: white;
   -webkit-backdrop-filter: blur(10px);
   filter: blur(10px);
   color: antiquewhite;
@@ -67,4 +75,31 @@ body {
 .list-group-item {
   background-color: rgba(100,100,100,.7);
   color: black;
+}*/
+
+
+body {
+  background-color: #efeff4;
+  padding-top: 0px;
+}
+
+.panel-body {
+  background-color: #4e5d6c;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #98878f;
+}
+
+.panel-primary {
+  margin: 5px;
+}
+
+.btn-info {
+  /*background-color: #494e6b;*/
+}
+
+.glyphicon {
+  color: #efeff4;
 }
