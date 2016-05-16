@@ -21,8 +21,8 @@
  }
 
 .cardsView {
-  margin-left: 120px;
-  margin-top: 30px;
+  margin-left: 60px;
+  margin-top: 20px;
   text-align: center;
   display: flex;
   flex-wrap: nowrap | wrap | wrap-reverse;
@@ -31,7 +31,7 @@
 }
 .cardsDiv {
   -webkit-perspective: 800;
-  float: left;
+  float: middle;
   text-align: center;
   flex-shrink: 1;
   max-width: 550px;
