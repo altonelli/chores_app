@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Due Date: <%= UserChore.where(chore_id: @chores.first.id).first.due_date %></h1> <button type="button" name="button" data-toggle="modal" data-target="#modal_date">Edit Date</button>
+<h1>Due Date: <%= UserChore.where(chore_id: @chores.first.id).first.due_date.strftime("%B %d, %Y") %></h1> <button type="button" name="button" data-toggle="modal" data-target="#modal_date">Edit Date</button>
 <hr>
 
 <div class="row">

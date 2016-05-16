@@ -43,8 +43,9 @@ class UserChoresController < ApplicationController
     @chore = Chore.find(params[:chore_id])
     if !params[:completed].nil?
       UserChore.where(chore_id: @chore.id).update_all(completed: params[:completed])
+    else
+      UserChore.where(chore_id: @chore.id).update_all(user_chore_params)
     end
-    UserChore.where(chore_id: @chore.id).update_all(user_chore_params)
     flash[:notice] = "successfully updated."
     redirect_to unit_chores_path(@chore.users.first.unit)
   end
