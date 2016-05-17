@@ -7,17 +7,14 @@
 
 */
 
-
-
-
-.mainIcons {
+.btn {
   background-color: transparent;
   text-align: center;
   font-weight: bolder;
   font-family: monospace;
   text-align: center;
   padding:1px;
-  font-size: 25px;
+  font-size: 40px;
   text-align: center;
   text-shadow: 4px 4px 12px black;
  }
