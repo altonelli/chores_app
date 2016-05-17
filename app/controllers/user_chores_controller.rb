@@ -60,6 +60,10 @@ class UserChoresController < ApplicationController
     end
   end
 
+  def reassign
+    @chore = Chore.find(params[:chore_id])
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_chore
@@ -69,5 +73,9 @@ class UserChoresController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_chore_params
       params.require(:user_chore).permit(:due_date)
+    end
+
+    def reassign_params
+      params.require(:user_chore).permit(:user_id)
     end
 end
