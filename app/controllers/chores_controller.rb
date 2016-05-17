@@ -31,8 +31,9 @@ class ChoresController < ApplicationController
   def create
     @chore = Chore.new(chore_params)
     @chore.save
-    private_user = @unit.users.find_by(name: "Mom")
-    private_user.chores << @chore
+    # private_user = @unit.users.find_by(name: "Mom")
+    assignee = User.find(params[:user])
+    assignee.chores << @chore
     UserChore.where(chore_id: @chore.id).first.update({completed: false})
     redirect_to unit_chores_path(@unit)
   end

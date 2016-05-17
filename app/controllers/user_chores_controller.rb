@@ -47,7 +47,7 @@ class UserChoresController < ApplicationController
       UserChore.where(chore_id: @chore.id).update_all(user_chore_params)
     end
     flash[:notice] = "successfully updated."
-    redirect_to unit_chores_path(@chore.users.first.unit)
+    redirect_to unit_chores_path(@chore.users.first.units.first)
   end
 
   # DELETE /user_chores/1

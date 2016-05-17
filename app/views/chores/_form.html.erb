@@ -20,6 +20,14 @@
     <%= f.label :details %><br>
     <%= f.text_field :details %>
   </div>
+  <div class="">
+    <label for="user">Roommate: </label>
+    <select type="" name="user" value="">
+      <% @unit.users.each do |user| %>
+      <option value="<%=user.id%>"><%= user.name %></option>
+      <% end %>
+    </select>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

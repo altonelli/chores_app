@@ -26,8 +26,6 @@ class UnitsController < ApplicationController
   # POST /units.json
   def create
     @unit = Unit.new(unit_params)
-    user = User.create({name: "Mom", email: "mom@test.com", password: "a"})
-    @unit.users << user
       name = @unit.name
       @unit.users << current_user
       if @unit.save
