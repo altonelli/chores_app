@@ -1,6 +1,6 @@
-<%= form_for @chore, url: (params[:action] == "new" ? unit_chores_path(@unit, @chore) : @chore) do |f| %>
+<%= form_for @user_chore, url: (params[:action] == "new" ? unit_chores_path(@unit, @user_chore) : @chore) do |f| %>
 
-  <% if @chore.errors.any? %>
+  <% if @user_chore.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
 
@@ -13,21 +13,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.collection_check_boxes :user_id, @unit.users.each, :id, :name do |b| %>
+    <div class="collection_check_box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+    <% end %>
+  </div>
+  <%= fields_for @chore do |ch| %>
+  <div class="field">
+    <%=ch.label :title %><br>
+    <%=ch.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :details %><br>
-    <%= f.text_field :details %>
+    <%=ch.label :details %></br>
+    <%=ch.text_field  :details %>
   </div>
-  <div class="">
-    <label for="user">Roommate: </label>
-    <select type="" name="user" value="">
-      <% @unit.users.each do |user| %>
-      <option value="<%=user.id%>"><%= user.name %></option>
-      <% end %>
-    </select>
-  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>
