@@ -29,7 +29,7 @@
         <p>
           <%= roommate.name %>
           <%= link_to "Approve", state_path(@unit, roommate, state: "approved"), html_options={method: :patch, class: "pull-right"} %>
-          <%= link_to "Decline", state_path(@unit, roommate), html_options={method: :delete, class: "pull-right"} %>
+          <%= link_to "Decline", state_path(@unit, roommate, state: "blocked"), html_options={method: :patch, class: "pull-right"} %>
         </p>
 
         <% end %>

@@ -1,6 +1,6 @@
 <div id="notice"><%= notice %></div>
 
-<%= current_user %>
+<%= current_user.name %>
 
 <h1>Listing Units</h1>
 <%= link_to 'Create Unit', new_unit_path, class: "btn btn-danger btn-md"%>
@@ -12,7 +12,7 @@
       <%= link_to "Join", state_path(unit, current_user, state: "pending"), html_options={method: :post, class: "pull-right"} %>
     <% end %>
     <% if state(unit,current_user) === "pending" %>
-      <%= link_to "Remove", state_path(unit, current_user), html_options={method: :delete, class: "pull-right"} %>
+      <%= link_to "Remove", state_path(unit, current_user, state: "removed"), html_options={method: :delete, class: "pull-right"} %>
     <% end %>
   </li>
 
