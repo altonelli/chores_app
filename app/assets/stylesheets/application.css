@@ -4,6 +4,7 @@
   *= require chores
   *= require users
   *= require index
+  *= require jquery-ui
 */
 
 .btn {
