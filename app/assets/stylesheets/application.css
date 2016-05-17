@@ -4,11 +4,9 @@
   *= require chores
   *= require users
   *= require index
-
 */
 
 .btn {
-  /*background-color: transparent;*/
   margin-left: 5px;
   text-align: center;
   font-weight: bolder;
@@ -45,7 +43,6 @@
   margin:auto;
   margin-left: 45px;
 }
-
 
 /*Card Flip*/
 .cardsDiv.panel-title.flipped {
@@ -159,15 +156,12 @@
   text-shadow: 8px 8px 4px gray;
 }
 
-
 .btn-primary {
   background-color: #98878f;
 }
-
 .panel-primary {
   margin: 5px;
 }
-
 .btn-info {
   /*background-color: #494e6b;*/
 }
