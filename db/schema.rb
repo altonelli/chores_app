@@ -13,6 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160516182023) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +65,7 @@ ActiveRecord::Schema.define(version: 20160516182023) do
     t.datetime "updated_at",      null: false
     t.integer  "unit_id"
     t.string   "password_digest"
+    t.string   "photo"
   end
 
   add_index "users", ["unit_id"], name: "index_users_on_unit_id", using: :btree

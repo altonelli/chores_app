@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: "application#index"
+  root  to: "application#index"
 
   get "/signup",        to: "users#new"
   get "/login",         to: "sessions#new"
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   # get "/users", to: "users#create", as: "users"
   post "/users", to: "users#create", as: "users"
+
 
   post "/unit/:unit_id/user/:user_id/state", to: "unit_users#create", as: "state"
   delete "/unit/:unit_id/user/:user_id/state", to: "unit_users#destroy"
