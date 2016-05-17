@@ -40,49 +40,48 @@
   margin: 10px;
   display: flex;
   text-align: center;
-  box-shadow: 10px 10px 5px black;
+  box-shadow: 8px 8px 4px black;
   margin:auto;
   margin-left: 15px;
 }
 
 
 /*Card Flip*/
-.cardsDiv .panel-heading.flipped {
+.cardsDiv.panel-title.flipped {
   -webkit-transform: rotatex(-180deg);
 }
-.cardsDiv .panel-heading {
-  width: 100%;
+.cardsDiv.panel-title {
+  max-width: 100%;
   height: 100%;
   -webkit-transform-style: preserve-3d;
   -webkit-transition: 0.5s;
 }
-.cardsDiv .panel-heading .face {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  -webkit-backface-visibility: hidden ;
-  z-index: 2;
+.cardsDiv.panel-title.face {
+    max-width: 100%;
+    height: 100%;
+    position: absolute;
+    -webkit-backface-visibility: hidden ;
+    z-index: 2;
     font-family: Georgia;
     font-size: 3em;
     text-align: center;
     line-height: 200px;
 }
-.cardsDiv .panel-heading .front {
-  position: absolute;
-  z-index: 1;
+.cardsDiv.panel-title.front {
+    position: absolute;
+    z-index: 1;
     background: black;
-    color: white;
+    color: floralwhite;
     cursor: pointer;
 }
-.cardsDiv .panel-heading .back {
+.cardsDiv.panel-title.back {
   -webkit-transform: rotatex(-180deg);
     background: blue;
-    background: white;
+    background: floralwhite;
     color: black;
     cursor: pointer;
 }
 /*end*/
-
 
 .panel-toggle {
     position: absolute;
@@ -102,6 +101,9 @@
   color: snow;
   font-weight: bold;
   font-family: monospace;
+}
+.panel.panel-default.bootcards-media {
+  margin-bottom: 0px;
 }
 .tilt.right {
     transform: rotate(3deg);
