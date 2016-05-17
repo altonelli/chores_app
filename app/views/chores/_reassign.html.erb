@@ -1,0 +1,25 @@
+<% @user_chores = UserChore.where(chore_id: chore.id) %>
+
+<%= form_for chore, url: reassign_path(chore,@user_chores) do |f| %>
+
+  <% if chore.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
+
+      <ul>
+      <% chore.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.collection_check_boxes :user_id, @unit.users.each, :id, :name do |b| %>
+    <div class="collection_check_box">
+      <%= b.check_box %>
+      <%= b.label %>
+    </div>
+    <% end %>
+  </div>
+<% end %>

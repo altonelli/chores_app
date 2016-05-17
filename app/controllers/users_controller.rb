@@ -46,11 +46,17 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    user_id = params[:id]
-    user = User.find_by_id(user_id)
-    user.update_attributes(user_params)
-    flash[:success] = "User Updated"
-    redirect_to user_path(user)
+    if params[:state] && params[:unit]
+      unit = Unit.find(params[:unit])
+      current_user.state = "pending"
+      unit.users << current_user
+    else
+      user_id = params[:id]
+      user = User.find_by_id(user_id)
+      user.update_attributes(user_params)
+      flash[:success] = "User Updated"
+      redirect_to user_path(user)
+    end
   end
 
   # DELETE /users/1

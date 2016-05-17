@@ -5,7 +5,8 @@ class ChoresController < ApplicationController
   # GET /chores
   # GET /chores.json
   def index
-    @chores = @unit.chores
+    @chores = @unit.chores.distinct
+    puts("CHORES: " + @chores.to_s)
     @chore = @chores.first
     @user_chore = UserChore.where(chore_id: @chore.id).first
   end
@@ -19,6 +20,7 @@ class ChoresController < ApplicationController
   # GET /chores/new
   def new
     @chore = Chore.new
+    @user_chore = UserChore.new
   end
 
   # GET /chores/1/edit
@@ -31,9 +33,8 @@ class ChoresController < ApplicationController
   def create
     @chore = Chore.new(chore_params)
     @chore.save
-    private_user = @unit.users.find_by(name: "Mom")
-    private_user.chores << @chore
-    UserChore.where(chore_id: @chore.id).first.update({completed: false})
+    params[:user_chore][:user_id].each { |num| if !num.blank? then User.find(num.to_i).chores << @chore end}
+    UserChore.where(chore_id: @chore.id).update_all({completed: false})
     redirect_to unit_chores_path(@unit)
   end
 
@@ -66,5 +67,9 @@ class ChoresController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def chore_params
       params.require(:chore).permit(:title, :details)
+    end
+
+    def user_chore_params
+      params.require(:user_chore).permit(:user_id)
     end
 end

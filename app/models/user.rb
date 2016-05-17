@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
 
   has_secure_password
-  belongs_to :unit
+  has_many :unit_users
+  has_many :units, through: :unit_users
   has_many :user_chores, dependent: :destroy
   has_many :chores, through: :user_chores
 
