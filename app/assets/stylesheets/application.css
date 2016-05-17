@@ -4,6 +4,7 @@
   *= require chores
   *= require users
   *= require index
+  *= require users_show
 
 */
 
@@ -17,7 +18,7 @@
   padding:1px;
   font-size: 40px;
   text-align: center;
-  text-shadow: 4px 4px 12px black;
+  text-shadow: 4px 4px 12px grey;
  }
 .dropdown-toggle {
   font-family: monospace;
@@ -104,7 +105,7 @@
   font-family: monospace;
 }
 .panel.panel-default.bootcards-media {
-  margin-bottom: 0px;
+  margin-bottom: 10px;
 }
 .tilt.right {
     transform: rotate(3deg);
@@ -141,7 +142,7 @@
 }
 
 .panel-body {
-  background-color: #485563;
+  background-color: grey;
   color: white;
 }
 #btn-cards {
@@ -174,12 +175,12 @@
 .navbar.navbar-inverse.navbar-bottom {
   margin-top: 20px;
   text-align: center;
-  font-size: 30px;
-  padding: 0px;
+  font-size: 15px;
+  padding: 10px;
   background-color: slategray;
   color: snow;
   font-family: monospace;
   width: 100%;
-  height: 200px;
-  box-shadow: 10px 10px 5px black;
+  height: 30px;
+  box-shadow: 10px 10px 5px grey;
 }
