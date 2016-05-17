@@ -37,12 +37,20 @@ unit_arr = []
   chore_arr = [kitchen,bathroom,living_room,ice_cream]
 
   4.times do |i|
-    user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, password: "a", phone: FFaker::PhoneNumber.short_phone_number})
+
+    user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, password: "a"})
     user.chores << chore_arr[i]
     i % 2 === 0 ?  bool = true : bool = false
       UserChore.where(user_id: user.id).first.update({completed: bool, due_date: Time.at(Time.now.to_i + 604800)})
     unit.users << user
+    UnitUser.where("unit_id = :unit_id and user_id = :user_id", {unit_id: unit.id.to_s, user_id: user.id.to_s}).first.update(state: "approved")
   end
+  blocked_user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, password: "a"})
+  unit.users << blocked_user
+  UnitUser.where("unit_id = :unit_id and user_id = :user_id", {unit_id: unit.id.to_s, user_id: blocked_user.id.to_s}).first.update(state: "pending")
+  pending_user = User.create({name: FFaker::Name.first_name, email: FFaker::Internet.email, phone: FFaker::PhoneNumber.short_phone_number, password: "a"})
+  unit.users << pending_user
+  UnitUser.where("unit_id = :unit_id and user_id = :user_id", {unit_id: unit.id.to_s, user_id: pending_user.id.to_s}).first.update(state: "pending")
 end
 
 

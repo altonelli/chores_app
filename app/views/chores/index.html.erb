@@ -15,7 +15,6 @@
         <%= chore.title %>
         <div class="btn-group pull-right">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <!-- <span class="sr-only">v</span> -->
             <span class="glyphicon glyphicon-menu-down"></span>
           </button>
             <ul class="dropdown-menu">
@@ -35,6 +34,7 @@
           <% end %>
         </p>
         <%= button_to "Completed", user_chores_path(chore, :completed => true), html_options={class: "btn btn-success", method: :patch} %>
+        <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Edit</button>
       </div>
     </div>
 
@@ -58,6 +58,29 @@
 
       </div>
     </div>
+
+
+    <div id="reassign_modal_<%=chore.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <%#= render partial: "reassign", locals: {chore: chore} %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
     <% end %>
     <% end %>
 

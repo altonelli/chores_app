@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
 
   include SessionsHelper
+  include UnitUsersHelper
 
   def index
     render "/layouts/index.html.erb"

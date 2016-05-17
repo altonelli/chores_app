@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20160516190348) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "unit_users", force: :cascade do |t|
+    t.string   "state"
+    t.integer  "user_id"
+    t.integer  "unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "unit_users", ["unit_id"], name: "index_unit_users_on_unit_id", using: :btree
+  add_index "unit_users", ["user_id"], name: "index_unit_users_on_user_id", using: :btree
+
   create_table "units", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
@@ -58,6 +69,8 @@ ActiveRecord::Schema.define(version: 20160516190348) do
 
   add_index "users", ["unit_id"], name: "index_users_on_unit_id", using: :btree
 
+  add_foreign_key "unit_users", "units"
+  add_foreign_key "unit_users", "users"
   add_foreign_key "user_chores", "chores"
   add_foreign_key "user_chores", "users"
   add_foreign_key "users", "units"
