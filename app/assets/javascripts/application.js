@@ -71,9 +71,9 @@ Turbolinks.enableProgressBar();
 
 // Card Flip
 $('.cardsDiv').click(function(){
-       $(this).find('.panel-heading').addClass('flipped').mouseleave(function(){
-           $(this).removeClass('flipped');
-       });
-       return false;
-   });
+    $(this).find('.panel-title').addClass('flipped').mouseleave(function(){
+        $(this).removeClass('flipped');
+    });
+    return false;
+});
 // End Card Flip
