@@ -17,6 +17,13 @@ class UsersController < ApplicationController
    render :show
   end
 
+  def profile
+    user_id = User.find_by_id(params[:id])
+    @user = User.find(user_id)
+    @units = Unit.where(user_id: user_id)
+    render :show
+  end
+
   # GET /users/new
   def new
     @user = User.new
