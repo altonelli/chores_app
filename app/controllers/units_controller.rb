@@ -10,7 +10,12 @@ class UnitsController < ApplicationController
   # GET /units/1
   # GET /units/1.json
   def show
-    render :show
+    if state(@unit, current_user) == "approved"
+      render :show
+    else
+      flash[:error] = "Oops! You need to join a unit in order to view it!"
+      redirect_to units_path
+    end
   end
 
   # GET /units/new
@@ -20,11 +25,18 @@ class UnitsController < ApplicationController
 
   # GET /units/1/edit
   def edit
+    if state(@unit, current_user) == "approved"
+      render :edit
+    else
+      flash[:error] = "Oops! You need to join a unit in order to view it!"
+      redirect_to units_path
+    end
   end
 
   # POST /units
   # POST /units.json
   def create
+    if current_user
     @unit = Unit.new(unit_params)
       name = @unit.name
       @unit.users << current_user
@@ -35,6 +47,9 @@ class UnitsController < ApplicationController
         flash[:notice] = "#{name} failed to update."
         redirect_to new_unit_path
       end
+    else
+      redirect_to root_path
+    end
   end
 
   # PATCH/PUT /units/1
@@ -57,13 +72,18 @@ class UnitsController < ApplicationController
   # DELETE /units/1
   # DELETE /units/1.json
   def destroy
-    name = @unit.name
-    if @unit.destroy
-      flash[:notice] = "#{name} was destroyed"
-      redirect_to units_path
+    if state(@unit, current_user) == "approved"
+      name = @unit.name
+      @unit = Unit.find
+      if @unit.destroy
+        flash[:notice] = "#{name} was destroyed"
+        redirect_to units_path
+      else
+        flash[:notice] = "#{name} persists"
+        redirect_to unit_path(@unit)
+      end
     else
-      flash[:notice] = "#{name} persists"
-      redirect_to unit_path(@unit)
+      flash[:notice] = "I'm sorry, you do not have permission to do that!"
     end
   end
 

@@ -6,6 +6,7 @@ class UnitUsersController < ApplicationController
     @user = User.find(params[:user_id])
     if params[:state]
       @unit.users << @user
+      # @user.unit_id = @unit.id
       change_state(@unit,@user,params[:state])
     end
     redirect_to units_path

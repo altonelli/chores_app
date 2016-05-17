@@ -1,4 +1,4 @@
-<%# link_to "Back", unit_path(@user.unit) %>
+ <%= link_to "Back", unit_path(unit_of_user(@user)) %>
 
 <p id="notice"><%= notice %></p>
 <div class="col-md-6" id="user-profile-info">
@@ -25,17 +25,18 @@
                 <strong>Phone:</strong>
                 <%= @user.phone %>
             </p>
-
+            <% if current_user == @user %>
             <p><center><%= link_to 'Edit', edit_user_path(@user) %>
                 |
                 <%= link_to 'Back', users_path %>
             </center></p>
+            <% end %>
         </div>
     </div>
 </div>
 
 <div class="col-md-6">
-    <% if current_user %>
+    <% if current_user == @user %>
 
     <h2>Your Chores</h2>
 

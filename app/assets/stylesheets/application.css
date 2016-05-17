@@ -142,6 +142,8 @@
 }
 #user-info{
   width: 300px;
+  margin-right: 60px;
+  float: left;
 }
 #user-chore-info {
   width: 230px;

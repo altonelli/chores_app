@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   post "/sessions",     to: "sessions#create", as: "sessions"
 
   # get "/users", to: "users#create", as: "users"
-  get "/users/:id/profile", to: "users#profile", as: "profile"
   post "/users", to: "users#create", as: "users"
 
   patch "/chore/:chore_id/reassign", to: "user_chores#reassign", as: "reassign", :collection => { :user_id => :put }
