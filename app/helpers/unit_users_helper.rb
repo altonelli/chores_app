@@ -22,4 +22,12 @@ module UnitUsersHelper
     end
   end
 
+  def unit_of_user(user)
+    user.units.each do |unit|
+      if state(unit, user) == "approved"
+        return unit
+      end
+    end
+  end
+
 end
