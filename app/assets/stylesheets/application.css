@@ -5,11 +5,10 @@
   *= require users
   *= require index
   *= require users_show
-
+  *= require jquery-ui
 */
 
 .btn {
-  /*background-color: transparent;*/
   margin-left: 5px;
   text-align: center;
   font-weight: bolder;
@@ -46,7 +45,6 @@
   margin:auto;
   margin-left: 45px;
 }
-
 
 /*Card Flip*/
 .cardsDiv.panel-title.flipped {
@@ -145,6 +143,15 @@
   background-color: grey;
   color: white;
 }
+#user-info{
+  width: 300px;
+  margin-right: 60px;
+  float: left;
+}
+#user-chore-info {
+  width: 230px;
+  height: 160px;
+}
 #btn-cards {
   text-align: center;
   color: snow;
@@ -160,15 +167,12 @@
   text-shadow: 8px 8px 4px gray;
 }
 
-
 .btn-primary {
   background-color: #98878f;
 }
-
 .panel-primary {
   margin: 5px;
 }
-
 .glyphicon {
   color: #efeff4;
 }

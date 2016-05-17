@@ -1,7 +1,7 @@
-<%= link_to "Back", unit_path(@user.unit) %>
+ <%= link_to "Back", unit_path(unit_of_user(@user)) %>
 
 <p id="notice"><%= notice %></p>
-<div class="col-md-8">
+<div class="col-md-6" id="user-profile-info">
     <div class="col-xs-2">
         <div class="panel-body" id="user-photo">
             <img src="images/800x800.png" alt="album image">
@@ -9,8 +9,8 @@
 
     </div>
 
-    <div class="col-md-6">
-        <div class="panel-body">
+    <div class="col-md-4">
+        <div class="panel-body" id="user-info">
             <p>
                 <strong>Name:</strong>
                 <%= @user.name %>
@@ -25,17 +25,23 @@
                 <strong>Phone:</strong>
                 <%= @user.phone %>
             </p>
+            <% if current_user == @user %>
+            <p><center><%= link_to 'Edit', edit_user_path(@user) %>
+                |
+                <%= link_to 'Back', users_path %>
+            </center></p>
+            <% end %>
         </div>
     </div>
 </div>
 
-<div class="col-md-4">
-    <% if @current_user %>
-    <div class="container">
+<div class="col-md-6">
+    <% if current_user == @user %>
+
     <h2>Your Chores</h2>
-  </div>
-    <div class="col-md-4">
-        <div class="panel-body">
+
+    <div class="col-md-6">
+        <div class="panel-body" id="user-chore-info">
             <ul>
                 <%@user.chores.each do |chore| %>
                 <h3>
@@ -51,10 +57,7 @@
 
             </ul>
 
-            <center><%= link_to 'Edit', edit_user_path(@user) %>
-                |
-                <%= link_to 'Back', users_path %>
-            </center>
+
 
         <% else %>
           <div class="container">

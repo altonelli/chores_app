@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Due Date: <%= UserChore.where(chore_id: @chores.first.id).first.due_date.strftime("%B %d, %Y") %></h1> <button type="button" name="button" data-toggle="modal" data-target="#modal_date">Edit Date</button>
 <hr>
 
@@ -33,8 +31,8 @@
           <%= link_to " #{user.name},", user_path(user) %>
           <% end %>
         </p>
-        <%= button_to "Completed", user_chores_path(chore, :completed => true), html_options={class: "btn btn-success", method: :patch} %>
-        <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Edit</button>
+        <%= button_to "Completed", user_chores_path(@unit,chore, :completed => true), html_options={class: "btn btn-success", method: :patch} %>
+        <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Reassign</button>
       </div>
     </div>
 
@@ -45,10 +43,9 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <h4 class="modal-title">Edit Chore</h4>
           </div>
           <div class="modal-body">
-            <%#= chore %>
             <%= render partial: "edit_form", locals: {chore: chore} %>
           </div>
           <div class="modal-footer">
@@ -67,10 +64,10 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <h4 class="modal-title">Reassign Chores</h4>
           </div>
           <div class="modal-body">
-            <%#= render partial: "reassign", locals: {chore: chore} %>
+            <%= render partial: "reassign", locals: {chore: chore} %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -95,12 +92,11 @@
         <%= chore.title %>
         <div class="btn-group pull-right">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <!-- <span class="sr-only">v</span> -->
             <span class="glyphicon glyphicon-menu-down"></span>
           </button>
             <ul class="dropdown-menu">
-              <li><%= link_to 'Edit', edit_chore_path(chore), html_options={class: "btn btn-primary"} %></li>
-              <li><%= link_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
+              <li> <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</button> </li>
+              <li><%= button_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
             </ul>
         </div>
       </div>
@@ -114,7 +110,49 @@
           <%= link_to " #{user.name},", user_path(user) %>
           <% end %>
         </p>
-        <%= button_to "Incomplete", user_chores_path(chore, :completed => false), html_options={class: "btn btn-danger", method: :patch} %>
+        <%= button_to "Incomplete", user_chores_path(@unit,chore, :completed => false), html_options={class: "btn btn-danger", method: :patch} %>
+        <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Reassign</button>
+      </div>
+    </div>
+
+    <div id="modal_<%=chore.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit Chore</h4>
+          </div>
+          <div class="modal-body">
+            <%= render partial: "edit_form", locals: {chore: chore} %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div id="reassign_modal_<%=chore.id%>" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Reassign Chores</h4>
+          </div>
+          <div class="modal-body">
+            <%= render partial: "reassign", locals: {chore: chore} %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
       </div>
     </div>
     <% end %>

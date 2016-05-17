@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @user = User.find_by_id(params[:id])
+    puts @user.unit_id
   #  @posts = Post.where(user_id: user_id)
    render :show
   end
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     user_id = params[:id]
-    @user = User.find_by_id(params[:user_id])
+    @user = User.find_by_id(user_id)
     render :edit
   end
 
