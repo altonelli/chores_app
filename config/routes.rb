@@ -16,7 +16,9 @@ Rails.application.routes.draw do
   delete "/unit/:unit_id/user/:user_id/state", to: "unit_users#destroy"
   patch "/unit/:unit_id/user/:user_id/state", to: "unit_users#update"
 
-  patch "/chores/:chore_id/user_chores", to: "user_chores#update", as: "user_chores"
+  patch "/units/:unit_id/chores/:chore_id/user_chores", to: "user_chores#update", as: "user_chores"
+  post "/units/:unit_id/chores/:chore_id/user_chores", to: "user_chores#update"
+
 
   resources :units do
     resources :users, shallow: true

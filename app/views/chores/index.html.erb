@@ -31,7 +31,7 @@
           <%= link_to " #{user.name},", user_path(user) %>
           <% end %>
         </p>
-        <%= button_to "Completed", user_chores_path(chore, :completed => true), html_options={class: "btn btn-success", method: :patch} %>
+        <%= button_to "Completed", user_chores_path(@unit,chore, :completed => true), html_options={class: "btn btn-success", method: :patch} %>
         <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Reassign</button>
       </div>
     </div>
@@ -110,7 +110,7 @@
           <%= link_to " #{user.name},", user_path(user) %>
           <% end %>
         </p>
-        <%= button_to "Incomplete", user_chores_path(chore, :completed => false), html_options={class: "btn btn-danger", method: :patch} %>
+        <%= button_to "Incomplete", user_chores_path(@unit,chore, :completed => false), html_options={class: "btn btn-danger", method: :patch} %>
         <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Reassign</button>
       </div>
     </div>
