@@ -46,7 +46,7 @@ class UserChoresController < ApplicationController
     else
       UserChore.where(chore_id: @chore.id).update_all(user_chore_params)
     end
-    flash[:notice] = "successfully updated."
+    flash[:notice] = "#{@chore.title}uccessfully updated."
     redirect_to unit_chores_path(@chore.users.first.units.first)
   end
 
@@ -62,18 +62,22 @@ class UserChoresController < ApplicationController
 
   def reassign
     @chore = Chore.find(params[:chore_id])
-    deadline = UserChore.where(chore_id: @chore.id).first.due_date
-    comp = UserChore.where(chore_id: @chore.id).first.completed
-    UserChore.where(chore_id: @chore.id).destroy_all
+    if params[:user_chore][:user_id][0].blank?
+      flash[:error] = "Chore must be assigned to a roommate."
+    else
+      deadline = UserChore.where(chore_id: @chore.id).first.due_date
+      comp = UserChore.where(chore_id: @chore.id).first.completed
+      UserChore.where(chore_id: @chore.id).destroy_all
 
-    params[:user_chore][:user_id].each do |num|
-      if !num.blank?
-        User.find(num.to_i).chores << @chore
+      params[:user_chore][:user_id].each do |num|
+        if !num.blank?
+          User.find(num.to_i).chores << @chore
+        end
       end
+
+      UserChore.where(chore_id: @chore.id).update_all({due_date: deadline, completed: comp})
+      flash[:notice] = "#{@chore.title} successfully reassigned."
     end
-
-    UserChore.where(chore_id: @chore.id).update_all({due_date: deadline, completed: comp})
-
     redirect_to unit_chores_path(@chore.users.first.units.first)
   end
 
