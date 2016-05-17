@@ -3,23 +3,47 @@
 
 <div class="row">
 
-  <div class="col-xs-6">
+  <div class="col-xs-12">
     <h3>Roommates</h3>
-    <ul class="list-group list-group-flush">
+    <div class="col-xs-12">
+      <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-sm"}%>
+      <hr>
+    </div>
+
+
+    <div class="container">
       <%@unit.users.each do |roommate| %>
         <% if state(@unit,roommate) === "approved" %>
-        <li class="list-group-item">
-          <%=link_to(roommate.name,user_path(roommate))%>
-        </li>
+
+        <!-- <span class="cardsView"> -->
+        <span class="cardsDiv">
+         <div class="panel panel-default bootcards-media" class="cards">
+      <div class="panel-heading">
+      <h3 class="panel-title">
+        <%=link_to(roommate.name,user_path(roommate))%>
+      </h3>
+      </div>
+      <div class="panel-body">
+          <div class="img-circle" class="face front">
+            <%= image_tag("couplesApartment.gif", :alt => "rss feed") %>
+      	  </div>
+	       </div>
+         <div class="panel-footer">
+           <%= link_to "CHORES", units_path%>
+         </div>
+      </div>
+    <!-- </span> -->
+  </div>
+</span>
+
+
         <% end %>
       <% end %>
 
-    </ul>
+    </div>
   </div>
 
-  <div class="col-xs-6">
-    <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-sm"}%>
-  </div>
+
 
     <div>
       <h3>Pending Roommates</h3>
@@ -47,7 +71,7 @@
 <%= link_to 'Delete This Unit', unit_path, method: :delete %>
 
 
-    <nav class="navbar navbar-inverse navbar-bottom" style="padding:0 0 120px 0">
+    <nav class="navbar navbar-inverse navbar-bottom" style="padding:50px 0 50px 0">
       <div class="container text-center">
         <p>
           <%= @unit.name %> | <%= @unit.address %>
