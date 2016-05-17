@@ -1,6 +1,6 @@
 <% @user_chore = UserChore.new %>
 
-<%= form_for @user_chore, url: reassign_path(chore,@user_chore) do |f| %>
+<%= form_for @user_chore, url: reassign_path(@unit,chore,@user_chore) do |f| %>
 
   <% if @user_chore.errors.any? %>
     <div id="error_explanation">
