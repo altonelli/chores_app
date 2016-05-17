@@ -62,7 +62,22 @@ class UserChoresController < ApplicationController
 
   def reassign
     @chore = Chore.find(params[:chore_id])
+    deadline = UserChore.where(chore_id: @chore.id).first.due_date
+    comp = UserChore.where(chore_id: @chore.id).first.completed
+    UserChore.where(chore_id: @chore.id).destroy_all
+
+    params[:user_chore][:user_id].each do |num|
+      if !num.blank?
+        User.find(num.to_i).chores << @chore
+      end
+    end
+
+    UserChore.where(chore_id: @chore.id).update_all({due_date: deadline, completed: comp})
+
+    redirect_to unit_chores_path(@chore.users.first.units.first)
   end
+
+  # ////////change redirect to for unit_ofuser function
 
   private
     # Use callbacks to share common setup or constraints between actions.

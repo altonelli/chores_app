@@ -48,7 +48,6 @@
             <h4 class="modal-title">Modal Header</h4>
           </div>
           <div class="modal-body">
-            <%#= chore %>
             <%= render partial: "edit_form", locals: {chore: chore} %>
           </div>
           <div class="modal-footer">
@@ -70,7 +69,7 @@
             <h4 class="modal-title">Modal Header</h4>
           </div>
           <div class="modal-body">
-            <%#= render partial: "reassign", locals: {chore: chore} %>
+            <%= render partial: "reassign", locals: {chore: chore} %>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

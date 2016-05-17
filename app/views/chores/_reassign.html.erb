@@ -1,25 +1,35 @@
-<% @user_chores = UserChore.where(chore_id: chore.id) %>
+<% @user_chore = UserChore.new %>
 
-<%= form_for chore, url: reassign_path(chore,@user_chores) do |f| %>
+<%= form_for @user_chore, url: reassign_path(chore,@user_chore) do |f| %>
 
-  <% if chore.errors.any? %>
+  <% if @user_chore.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
+      <h2><%= pluralize(@user_chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
 
       <ul>
-      <% chore.errors.full_messages.each do |message| %>
+      <% @user_chore.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+  <% user_ids = [] %>
+  <% chore.users.each { |user| user_ids << user.id} %>
+
   <div class="field">
-    <%= f.collection_check_boxes :user_id, @unit.users.each, :id, :name do |b| %>
+    <%= f.collection_check_boxes :user_id, @unit.users, :id, :name do |b| %>
     <div class="collection_check_box">
-      <%= b.check_box %>
+      <% if user_ids.include?(b.value) %>
+        <%= b.check_box options = {:checked => true} %>
+      <% else %>
+        <%= b.check_box options = {:checked => false} %>
+      <% end %>
       <%= b.label %>
     </div>
     <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>
