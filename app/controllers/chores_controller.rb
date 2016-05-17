@@ -5,7 +5,8 @@ class ChoresController < ApplicationController
   # GET /chores
   # GET /chores.json
   def index
-    @chores = @unit.chores
+    @chores = @unit.chores.distinct
+    puts("CHORES: " + @chores.to_s)
     @chore = @chores.first
     @user_chore = UserChore.where(chore_id: @chore.id).first
   end
