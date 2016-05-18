@@ -40,8 +40,8 @@
               <%= chore.title %>
             <% end %>
           </p>
-          <% if current_user == @user %>
-          <p><%= link_to 'Edit', edit_user_path(@user) %></p>
+          <% if roommate == current_user %>
+          <p><%= link_to 'Edit', edit_user_path(current_user) %></p>
           <% end %>
         </div>
       </div>
