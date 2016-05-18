@@ -103,7 +103,7 @@
   font-family: monospace;
 }
 .panel.panel-default.bootcards-media {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 .tilt.right {
     transform: rotate(3deg);
