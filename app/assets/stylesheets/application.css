@@ -6,7 +6,9 @@
   *= require splash
   *= require users_show
   *= require jquery-ui
+  *= require about
 */
+
 
 .btn {
   margin-left: 5px;
@@ -17,8 +19,14 @@
   padding:1px;
   font-size: 30px;
   text-align: center;
-  text-shadow: 4px 4px 12px grey;
+  text-shadow: 4px 4px 12px black;
  }
+.dropdown-toggle {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+
 .dropdown-toggle {
   font-family: monospace;
   font-size: 16px;
