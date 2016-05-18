@@ -75,9 +75,16 @@
     </div>
     <% end %>
 
+
+    <% if params[:controller] != "splash" %>
     <div class="container">
+    <% end %>
+
       <%= yield %>
+
+    <% if params[:controller] != "splash" %>
     </div>
+    <% end %>
 
 </body>
 </html>
