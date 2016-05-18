@@ -2,7 +2,7 @@ class UnitUsersController < ApplicationController
 
 
   def create
-    if current_user == @user
+    if current_user
       @unit = Unit.find(params[:unit_id])
       @user = User.find(params[:user_id])
       if params[:state]
