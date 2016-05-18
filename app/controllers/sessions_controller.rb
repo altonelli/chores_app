@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if @user.save
       login(@user)
       flash[:success] = "You are logged-in!"
-      redirect_to units_path
+      redirect_to unit_path(unit_of_user(@user))
     else
       flash[:error] = "Please enter a valid email and/or password to login"
       redirect_to login_path
