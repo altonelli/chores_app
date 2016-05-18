@@ -6,9 +6,15 @@ class ChoresController < ApplicationController
   # GET /chores.json
   def index
     @chores = @unit.chores.distinct
-    puts("CHORES: " + @chores.to_s)
     @chore = @chores.first
-    @user_chore = UserChore.where(chore_id: @chore.id).first
+    puts("CHORES: " + @chores.to_s)
+    if @chores.count > 0
+      @user_chore = UserChore.where(chore_id: @chore.id).first
+    else
+      @user_chore = UserChore.new
+      @chore = Chore.new
+    end
+    render :index
   end
 
   # GET /chores/1
@@ -33,12 +39,22 @@ class ChoresController < ApplicationController
   def create
     @chore = Chore.new(chore_params)
 
+    deadline = nil
+    if @unit.chores.count > 0
+      deadline = UserChore.where(chore_id: @unit.chore.first.id).first.due_date
+    end
+
     if params[:user_chore][:user_id][0].blank?
       flash[:error] = "Chore must be assigned to someone."
       redirect_to new_unit_chore_path(@unit)
     elsif @chore.save
       params[:user_chore][:user_id].each { |num| if !num.blank? then User.find(num.to_i).chores << @chore end}
-      UserChore.where(chore_id: @chore.id).update_all({completed: false})
+
+      if deadline.nil?
+        deadline = Time.at(Time.now.to_i + 604800)
+      end
+      
+      UserChore.where(chore_id: @chore.id).update_all({completed: false, due_date: deadline})
       flash[:notice] = "#{@chore.title} was successfully updated."
     else
       flash[:error] = "Woops! It seems you're forgetting something! Please enter a valid title and details before submitting a chore."

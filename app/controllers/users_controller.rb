@@ -14,8 +14,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by_id(params[:id])
     puts @user.unit_id
-  #  @posts = Post.where(user_id: user_id)
-   render :show
+    render :show
   end
 
   # GET /users/new

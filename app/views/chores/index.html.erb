@@ -1,4 +1,6 @@
-<h1>Due Date: <%= UserChore.where(chore_id: @chores.first.id).first.due_date.strftime("%B %d, %Y") %></h1> <button type="button" name="button" data-toggle="modal" data-target="#modal_date">Edit Date</button>
+<% if @chores.count > 0 %>
+<h1>Due Date: <%= UserChore.where(chore_id: @chores.first.id).first.due_date.strftime("%B %d, %Y") %></h1>
+<button type="button" name="button" data-toggle="modal" data-target="#modal_date">Edit Date</button>
 <hr>
 
 
@@ -163,7 +165,6 @@
 
 <hr>
 
-<%= link_to 'New Chore', new_unit_chore_path(@unit), html_option={class:"btn btn-success new-chore"} %>
 
 
 <div id="modal_date" class="modal fade" role="dialog">
@@ -185,3 +186,7 @@
 
   </div>
 </div>
+
+<% end %>
+
+<%= link_to 'New Chore', new_unit_chore_path(@unit), html_option={class:"btn btn-success new-chore"} %>
