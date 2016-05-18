@@ -8,7 +8,7 @@
   *= require jquery-ui
 */
 
-/*.btn {
+.btn {
   margin-left: 5px;
   text-align: center;
   font-weight: bolder;
@@ -24,6 +24,21 @@
   font-size: 16px;
 }
 
+.list-group-item {
+  background-color: rgba(100,100,100,.7);
+  color: black;
+}
+
+.panel-body {
+  background-color: grey;
+  color: white;
+}
+
+.panel-footer {
+  background-color: #2B3E50;
+  color: snow;
+}
+
 .btn-primary {
   background-color: #98878f;
 }
@@ -36,7 +51,7 @@
 }
 
 .list-group-item{
-  color: snow;
+  color: white;
 }
 
 .navbar-inverse {
