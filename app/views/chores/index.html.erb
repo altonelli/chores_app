@@ -9,7 +9,9 @@
     <h4>To Do</h4>
     <hr>
     <% @chores.each do |chore| %>
-    <% if !UserChore.where(chore_id: chore.id).first.completed %>
+    <% if !chore.complete? %>
+    <% if chore_of_unit?(chore, @unit) %>
+
     <div class="panel-primary">
       <div class="panel-heading">
         <%= chore.title %>
@@ -79,7 +81,7 @@
       </div>
     </div>
 
-
+    <% end %>
     <% end %>
     <% end %>
 
@@ -88,7 +90,8 @@
     <h4>Finished</h4>
     <hr>
     <% @chores.each do |chore| %>
-    <% if UserChore.where(chore_id: chore.id).first.completed %>
+    <% if chore.complete? %>
+    <% if chore_of_unit?(chore,@unit) %>
     <div class="panel-primary">
       <div class="panel-heading">
         <%= chore.title %>
@@ -157,6 +160,7 @@
 
       </div>
     </div>
+    <% end %>
     <% end %>
     <% end %>
   </div>

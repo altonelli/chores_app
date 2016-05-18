@@ -40,6 +40,12 @@ class UnitsController < ApplicationController
     @unit = Unit.new(unit_params)
       name = @unit.name
       @unit.users << current_user
+      current_user.units.each do |unit|
+        if state(unit,current_user) === "approved"
+          flash[:error] = "You are already a amember of unit #{unit.name}. You must deactivate to create a new unit."
+          redirect_to units_path
+        end
+      end
       if @unit.save
         change_state(@unit,current_user,"approved")
         flash[:notice] = "#{@unit.name} was saved."
