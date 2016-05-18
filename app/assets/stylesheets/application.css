@@ -71,13 +71,13 @@
     position: absolute;
     z-index: 1;
     background: black;
-    color: floralwhite;
+    color: floralsnow;
     cursor: pointer;
 }
 .cardsDiv.panel-title.back {
   -webkit-transform: rotatex(-180deg);
     background: blue;
-    background: floralwhite;
+    background: floralsnow;
     color: black;
     cursor: pointer;
 }*/
@@ -141,7 +141,7 @@
 
 .panel-body {
   background-color: grey;
-  color: white;
+  color: snow;
 }
 /*#user-info{
   width: 300px;
@@ -179,7 +179,7 @@
 }
 
 .list-group-item{
-  color: white;
+  color: snow;
 }
 
 .navbar-inverse {
