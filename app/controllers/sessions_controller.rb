@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
       flash[:success] = "You are logged-in!"
       redirect_to units_path
     else
+      flash[:error] = "Please enter a valid email and/or password to login"
       redirect_to login_path
     end
   end
