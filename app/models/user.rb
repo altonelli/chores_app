@@ -9,6 +9,14 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true, length: { minimum: 6 }
 
 
+  def slug
+   name.downcase.gsub(" ", "-")
+  end
+
+  def to_param
+   "#{id}-#{slug}"
+  end
+
   has_secure_password
   has_many :unit_users
   has_many :units, through: :unit_users

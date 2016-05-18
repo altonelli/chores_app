@@ -32,14 +32,22 @@ class ChoresController < ApplicationController
   # POST /chores.json
   def create
     @chore = Chore.new(chore_params)
-    if @chore.save
+
+    if params[:user_chore][:user_id][0].blank?
+      flash[:error] = "Chore must be assigned to someone."
+      redirect_to new_unit_chore_path(@unit)
+    elsif @chore.save
       params[:user_chore][:user_id].each { |num| if !num.blank? then User.find(num.to_i).chores << @chore end}
       UserChore.where(chore_id: @chore.id).update_all({completed: false})
-      redirect_to unit_chores_path(@unit)
+      flash[:notice] = "#{@chore.title} was successfully updated."
     else
       flash[:error] = "Woops! It seems you're forgetting something! Please enter a valid title and details before submitting a chore."
     end
+    redirect_to unit_chores_path(@unit)
   end
+
+
+  #############Need to also update date
 
   # PATCH/PUT /chores/1
   # PATCH/PUT /chores/1.json
