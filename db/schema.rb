@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516190348) do
+ActiveRecord::Schema.define(version: 20160517193023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,7 +42,10 @@ ActiveRecord::Schema.define(version: 20160516190348) do
     t.string   "landlord_email"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.string   "slug"
   end
+
+  add_index "units", ["slug"], name: "index_units_on_slug", using: :btree
 
   create_table "user_chores", force: :cascade do |t|
     t.datetime "due_date"
