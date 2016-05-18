@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root  to: "application#index"
+  root  to: "splash#index"
   get "/about",        to: "about#show"
 
   get "/signup",        to: "users#new"
