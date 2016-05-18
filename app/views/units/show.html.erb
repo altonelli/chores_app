@@ -16,30 +16,27 @@
         <% if state(@unit,roommate) === "approved" %>
 
         <!-- <span class="cardsView"> -->
-        <span class="cardsDiv">
-         <div class="panel panel-default bootcards-media" class="cards">
-      <div class="panel-heading">
-      <h3 class="panel-title">
-        <%=link_to(roommate.name,user_path(roommate))%>
-      </h3>
-      </div>
-      <div class="panel-body">
-          <div class="img-circle" class="face front">
-            <%= image_tag("couplesApartment.gif", :alt => "rss feed") %>
-      	  </div>
-	       </div>
-         <div class="panel-footer">
-           <%= link_to "CHORES", units_path%>
-         </div>
-      </div>
-    <!-- </span> -->
-  </div>
-</span>
-
-
+                <span class="cardsDiv">
+                 <div class="panel panel-default bootcards-media" class="cards">
+                  <div class="panel-heading">
+                  <h3 class="panel-title">
+                    <%=link_to(roommate.name,user_path(roommate))%>
+                  </h3>
+                  </div>
+                      <div class="panel-body">
+                      <div class="img-circle" class="face front">
+                        <%= image_tag("couplesApartment.gif", :alt => "rss feed") %>
+                  	  </div>
+              	       </div>
+                   <div class="panel-footer">
+                   <!-- <%= link_to "CHORES", units_path%> -->
+                   <%=link_to(user_chore.chore,chore_path(user_chore))%>
+                 </div>
+              </div>
+          </div>
+        </span>
         <% end %>
       <% end %>
-
     </div>
   </div>
 
