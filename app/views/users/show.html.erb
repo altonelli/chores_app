@@ -1,85 +1,77 @@
- <%= link_to "Back", unit_path(unit_of_user(@user)) %>
+<%= link_to "Back", unit_path(unit_of_user(@user)) %>
 
-<p id="notice"><%= notice %></p>
-<div class="col-md-6" id="user-profile-info">
-    <div class="col-xs-2">
-        <div class="panel-body" id="user-photo">
-            <img src="images/800x800.png" alt="album image">
-        </div>
+<div class="col-sm-6" id="user-profile-info">
 
+  <div class="panel-primary">
+    <div class="panel-heading">
+      <%= @user.name %>
     </div>
 
-    <div class="col-md-4">
-        <div class="panel-body" id="user-info">
-            <p>
-                <strong>Name:</strong>
-                <%= @user.name %>
-            </p>
+    <div class="panel-body">
+      <div class="col-xs-3">
+        <img id="user-photo" class="img-responsive" src= <%=@user.photo%> alt="album image">
+      </div>
+      <div class="col-xs-9" id="user-info">
+        <p>
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
 
-            <p>
-                <strong>Email:</strong>
-                <%= @user.email %>
-            </p>
-
-            <p>
-                <strong>Phone:</strong>
-                <%= @user.phone %>
-            </p>
-            <% if current_user == @user %>
-            <p><center><%= link_to 'Edit', edit_user_path(@user) %>
-                |
-                <%= link_to 'Back', users_path %>
-            </center></p>
-            <% end %>
-        </div>
+        <p>
+          <strong>Phone:</strong>
+          <%= @user.phone %>
+        </p>
+        <% if current_user == @user %>
+        <p><%= link_to 'Edit', edit_user_path(@user) %> | <%= link_to 'Back', users_path %></p>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>
 
-<div class="col-md-6">
-    <% if current_user == @user %>
+  <div class="col-sm-6">
+    <%# if current_user == @user %>
 
     <h2>Your Chores</h2>
 
-    <div class="col-md-6">
-        <div class="panel-body" id="user-chore-info">
-            <ul>
-                <%@user.chores.each do |chore| %>
-                <h3>
-                    <%=chore.title%>
-                </h3>
-                <p>
-                    <%=chore.details%>
-                </p>
-                <td>
-                    <em><%=UserChore.where(chore_id: chore.id).first.completed ? "completed" : "yet to be done" %></em>
-                </td>
-                <% end %>
+    <%@user.chores.each do |chore| %>
+    <div class="panel-primary">
+      <div class="panel-heading">
+          <%=chore.title%>
+      </div>
 
-            </ul>
+      <div class="panel-body" id="user-chore-info">
+          <p>
+            <%=chore.details%>
+          </p>
+          <td>
+            <em><%=UserChore.where(chore_id: chore.id).first.completed ? "Completed" : "Incomplete" %></em>
+          </td>
 
-
-
-        <% else %>
-          <div class="container">
-            <h2><%=@user.name %>'s Chores</h2>
-          </div>
-            <div class="panel-body">
-                <ul>
-                    <%@user.chores.each do |chore| %>
-                    <h3>
-                        <%=chore.title%>
-                    </h3>
-                    <p>
-                        <%=chore.details%>
-                    </p>
-                    <td>
-                        <em><%=UserChore.where(chore_id: chore.id).first.completed ? "completed" : "yet to be done" %></em>
-                    </td>
-                    <% end %>
-
-                </ul>
-            </div>
-            <% end %>
         </div>
-    </div>
-</div>
+      </div>
+
+        <% end %>
+
+        <!-- <%# else %>
+        <div class="container">
+          <h2><%#=@user.name %>'s Chores</h2>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <%#@user.chores.each do |chore| %>
+            <h3>
+              <%#=chore.title%>
+            </h3>
+            <p>
+              <%#=chore.details%>
+            </p>
+            <td>
+              <em><%#=UserChore.where(chore_id: chore.id).first.completed ? "completed" : "yet to be done" %></em>
+            </td>
+            <%# end %>
+
+          </ul>
+        </div>
+        <%# end %> -->
+      </div>

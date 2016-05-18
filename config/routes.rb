@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
   root  to: "application#index"
+  get "/about",        to: "about#show"
 
   get "/signup",        to: "users#new"
   get "/login",         to: "sessions#new"
   get "/logout",        to: "sessions#destroy"
   post "/sessions",     to: "sessions#create", as: "sessions"
 
-  # get "/users", to: "users#create", as: "users"
   post "/users", to: "users#create", as: "users"
 
   post "/unit/:unit_id/chore/:chore_id/reassign", to: "user_chores#reassign", as: "reassign", :collection => { :user_id => :put }
