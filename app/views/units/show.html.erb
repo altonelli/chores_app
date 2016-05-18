@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-
 <div class="row">
 
     <h3>Roommates</h3>
       <hr>
 
-
     <%@unit.users.each do |roommate| %>
     <% if state(@unit,roommate) === "approved" %>
     <div class="col-sm-6">
-
-
-
 
     <div class="panel-primary">
       <div class="panel-heading">
@@ -47,35 +42,9 @@
       </div>
     </div>
 
-
-
-
-
-
-    <!-- <div class="panel panel-primary">
-      <div class="col-xs-3">
-        <div class="img-circle img-responsive">
-          <%#= image_tag("couplesApartment.gif", :alt => "rss feed") %>
-        </div>
-      </div>
-      <div class="col-xs-9">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <%#=link_to(roommate.name,user_path(roommate))%>
-          </h3>
-        </div>
-        <div class="panel-body">
-        </div>
-        <div class="panel-footer">
-          <%#= link_to "CHORES", units_path%>
-        </div>
-      </div>
-  </div> -->
 </div>
   <% end %>
   <% end %>
-
-
 
 </div>
 
@@ -103,14 +72,11 @@
   </ul>
 </div>
 
-
 </div>
-
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
 <%= link_to 'Back', units_path %> |
 <%= link_to 'Delete This Unit', unit_path, method: :delete %>
-
 
 <nav class="navbar navbar-inverse">
   <div class="text-center">
