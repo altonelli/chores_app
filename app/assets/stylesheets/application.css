@@ -6,9 +6,11 @@
   *= require users_show
   *= require splash
   *= require jquery-ui
+  *= require about
 */
 
-/*.btn {
+
+.btn {
   margin-left: 5px;
   text-align: center;
   font-weight: bolder;
@@ -17,115 +19,18 @@
   padding:1px;
   font-size: 30px;
   text-align: center;
-  text-shadow: 4px 4px 12px grey;
+  text-shadow: 4px 4px 12px black;
  }
 .dropdown-toggle {
   font-family: monospace;
   font-size: 16px;
 }
-.cardsView {
-  margin-left: 60px;
-  margin-top: 720px;
-  text-align: center;
-  display: flex;
-  flex-wrap: nowrap | wrap | wrap-reverse;
-  justify-content: flex-end;
 
-}*/
-/*.cardsDiv {
-  -webkit-perspective: 800;
-  float: middle;
-  text-align: center;
-  flex-shrink: 1;
-  max-width: 550px;
-  margin: 10px;
-  display: flex;
-  text-align: center;
-  box-shadow: 8px 8px 4px black;
-  margin:auto;
-  margin-left: 45px;
-}*/
 
-/*Card Flip*/
-/*.cardsDiv.panel-title.flipped {
-  -webkit-transform: rotatex(-180deg);
-}
-.cardsDiv.panel-title {
-  max-width: 100%;
-  height: 100%;
-  -webkit-transform-style: preserve-3d;
-  -webkit-transition: 0.5s;
-}
-.cardsDiv.panel-title.face {
-    max-width: 100%;
-    height: 100%;
-    position: absolute;
-    -webkit-backface-visibility: hidden ;
-    z-index: 2;
-    font-family: Georgia;
-    font-size: 3em;
-    text-align: center;
-    line-height: 200px;
-}
-.cardsDiv.panel-title.front {
-    position: absolute;
-    z-index: 1;
-    background: black;
-    color: floralwhite;
-    cursor: pointer;
-}
-.cardsDiv.panel-title.back {
-  -webkit-transform: rotatex(-180deg);
-    background: blue;
-    background: floralwhite;
-    color: black;
-    cursor: pointer;
-}*/
-/*end*/
-
-/*.panel-toggle {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-top: -8px;
-}
-.panel-placeholder {
-    border: 1px dotted black;
-    margin: 0 1em 1em 0;
-    height: 500px;
-}
-.panel-heading {
-    position: relative;
-}
-.panel-title {
-  color: snow;
-  font-weight: bold;
+.dropdown-toggle {
   font-family: monospace;
+  font-size: 16px;
 }
-.panel.panel-default.bootcards-media {
-  margin-bottom: 0px;
-}
-.tilt.right {
-    transform: rotate(3deg);
-    -moz-transform: rotate(3deg);
-    -webkit-transform: rotate(3deg);
-}
-.tilt.left {
-    transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
-}*/
-
-/*.tilt.right {
-    transform: rotate(3deg);
-    -moz-transform: rotate(3deg);
-    -webkit-transform: rotate(3deg);
-}
-.tilt.left {
-    transform: rotate(-3deg);
-    -moz-transform: rotate(-3deg);
-    -webkit-transform: rotate(-3deg);
-}*/
 
 .list-group-item {
   background-color: rgba(100,100,100,.7);
@@ -141,6 +46,7 @@
   background-color: #2B3E50;
   color: snow;
 }
+<<<<<<< HEAD
 
 .form-control {
   border-bottom: 1px solid #2B3E50;
@@ -151,29 +57,6 @@
 label {
   color: #2B3E50
 }
-/*#user-info{
-  width: 300px;
-  margin-right: 60px;
-  float: left;
-}
-#user-chore-info {
-  width: 230px;
-  height: 160px;
-}
-#btn-cards {
-  text-align: center;
-  color: snow;
-  text-align: center;
-  text-shadow: 8px 8px 4px gray;
-}
-
-#btn-cards:hover {
-  border-radius: 40px;
-  background-color: tomato;
-  text-align: center;
-  color:snow;
-  text-shadow: 8px 8px 4px gray;
-}*/
 
 .modal-body {
   background-color: floralwhite;
@@ -220,20 +103,6 @@ a {
 a:hover {
   color: #2B3E50;
 }
-
-/*.navbar.navbar-inverse.navbar-bottom {
-  margin-bottom: 0px;
-  margin-top: 20px;
-  text-align: center;
-  font-size: 15px;
-  padding: 10px;
-  background-color: slategray;
-  color: snow;
-  font-family: monospace;
-  width: 100%;
-  height: 30px;
-  box-shadow: 10px 10px 5px grey;
-}*/
 
 nav.navbar.navbar-default {
   margin-bottom: 0px;
