@@ -13,7 +13,9 @@
     <% if state(@unit,roommate) === "approved" %>
     <div class="col-sm-6">
 
+
     <div class="app panel-primary">
+
       <div class="panel-heading">
         <%= roommate.name %>
       </div>
@@ -48,6 +50,7 @@
     </div>
 
 
+
     <div id="modal_user_<%=roommate.id%>_edit" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
@@ -67,6 +70,7 @@
 
       </div>
     </div>
+
 
 </div>
   <% end %>
