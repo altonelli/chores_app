@@ -191,6 +191,26 @@
   </div>
 </div>
 
+<div id="modal_new_chore" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'form', locals: {chore: @new_chore}%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <% end %>
 
-<%= link_to 'New Chore', new_unit_chore_path(@unit), html_option={class:"btn btn-success new-chore"} %>
+<button type="button" name="button" data-toggle="modal" data-target="#modal_new_chore" class="btn btn-success new-chore">New Chore</button>

@@ -1,14 +1,15 @@
 class ChoresController < ApplicationController
   before_action :set_unit, only: [:index, :create, :new]
   before_action :set_chore, only: [:show, :edit, :update, :destroy]
+  before_action :set_approved_users
 
   # GET /chores
   # GET /chores.json
   def index
-    # @chores = @unit.chores.distinct
+    @new_chore = Chore.new
     @chores = []
-    @unit.chores.distinct.each do |chore|
-      if chore_of_unit?(chore,@unit)
+    @unit.chores.each do |chore|
+      if chore_of_unit?(chore,@unit) && !@chores.include?(chore)
         @chores << chore
       end
     end
@@ -37,7 +38,13 @@ class ChoresController < ApplicationController
 
   # GET /chores/1/edit
   def edit
-    @unit = @chore.users.first.unit
+    @unit
+    @chore.users.first.units.each do |unit|
+      if chore_of_unit?(@chore,unit)
+        @unit = unit
+      end
+    end
+
   end
 
   # POST /chores
@@ -57,7 +64,7 @@ class ChoresController < ApplicationController
 
     if params[:user_chore][:user_id][0].blank?
       flash[:error] = "Chore must be assigned to someone."
-      redirect_to new_unit_chore_path(@unit)
+      return redirect_to new_unit_chore_path(@unit)
     elsif @chore.save
       params[:user_chore][:user_id].each { |num| if !num.blank? then User.find(num.to_i).chores << @chore end}
 
@@ -79,7 +86,12 @@ class ChoresController < ApplicationController
   # PATCH/PUT /chores/1
   # PATCH/PUT /chores/1.json
   def update
-    @unit = @chore.users.first.unit
+    @unit
+    @chore.users.first.units.each do |unit|
+      if chore_of_unit?(@chore,unit)
+        @unit = unit
+      end
+    end
     @chore.update(chore_params)
     redirect_to unit_chores_path(@unit)
   end
@@ -87,7 +99,12 @@ class ChoresController < ApplicationController
   # DELETE /chores/1
   # DELETE /chores/1.json
   def destroy
-    @unit = @chore.users.first.unit
+    @unit
+    @chore.users.first.units.each do |unit|
+      if chore_of_unit?(@chore,unit)
+        @unit = unit
+      end
+    end
     @chore.destroy
     redirect_to unit_chores_path(@unit)
   end
@@ -100,6 +117,15 @@ class ChoresController < ApplicationController
 
     def set_chore
       @chore = Chore.find(params[:id])
+    end
+
+    def set_approved_users
+      @approved_users = []
+      @unit.users.each do |user|
+        if state(@unit,user) === "approved"
+          @approved_users << user
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

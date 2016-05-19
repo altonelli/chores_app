@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if @user.save
     login (@user)
     flash[:success] = "Welcome to our app!!"
-    redirect_to new_unit_path
+    redirect_to units_path
     else
     render :new
     end
@@ -54,8 +54,8 @@ class UsersController < ApplicationController
       user_id = params[:id]
       user = User.find_by_id(user_id)
       user.update_attributes(user_params)
-      flash[:success] = "User Updated"
-      redirect_to user_path(user)
+      flash[:notice] = "User Updated"
+      redirect_to unit_of_user(user)
     end
   end
 

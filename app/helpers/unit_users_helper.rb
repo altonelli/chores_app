@@ -28,6 +28,7 @@ module UnitUsersHelper
         return unit
       end
     end
+    nil
   end
 
   def chore_of_unit?(chore,unit)

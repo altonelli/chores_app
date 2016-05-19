@@ -42,35 +42,32 @@
           </p>
           <% if roommate == current_user %>
           <p><%= link_to 'Edit', edit_user_path(current_user) %></p>
+          <p type="" name="" data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="">Edit Modal</p>
           <% end %>
         </div>
       </div>
     </div>
 
+    <div id="modal_user_<%=roommate.id%>_edit" class="modal fade" role="dialog">
+      <div class="modal-dialog">
 
-
-
-
-
-    <!-- <div class="panel panel-primary">
-      <div class="col-xs-3">
-        <div class="img-circle img-responsive">
-          <%#= image_tag("couplesApartment.gif", :alt => "rss feed") %>
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <%= render partial: 'users/form', locals: {user: roommate}%>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
+
       </div>
-      <div class="col-xs-9">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            <%#=link_to(roommate.name,user_path(roommate))%>
-          </h3>
-        </div>
-        <div class="panel-body">
-        </div>
-        <div class="panel-footer">
-          <%#= link_to "CHORES", units_path%>
-        </div>
-      </div>
-  </div> -->
+    </div>
+
 </div>
   <% end %>
   <% end %>
