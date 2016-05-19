@@ -1,22 +1,26 @@
-<%= form_for @user_chore, url: user_chores_path(@unit,@chore) do |f| %>
 
-  <% if @user_chore.errors.any? %>
+<%= form_for @date_user_chore, url: date_path(@unit) do |f| %>
+
+
+  <% if @date_user_chore.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
 
       <ul>
-      <% @user_chore.errors.full_messages.each do |message| %>
+      <% @date_user_chore.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+<fieldset>
   <div class="field">
     <%= f.label :due_date %><br>
-    <%= f.date_field :due_date %>
+    <%= f.date_field :due_date, class: "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+</fieldset>
 <% end %>

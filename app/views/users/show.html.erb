@@ -30,7 +30,6 @@
 </div>
 
   <div class="col-sm-6">
-    <%# if current_user == @user %>
 
     <h2>Your Chores</h2>
 
@@ -53,25 +52,4 @@
 
         <% end %>
 
-        <!-- <%# else %>
-        <div class="container">
-          <h2><%#=@user.name %>'s Chores</h2>
-        </div>
-        <div class="panel-body">
-          <ul>
-            <%#@user.chores.each do |chore| %>
-            <h3>
-              <%#=chore.title%>
-            </h3>
-            <p>
-              <%#=chore.details%>
-            </p>
-            <td>
-              <em><%#=UserChore.where(chore_id: chore.id).first.completed ? "completed" : "yet to be done" %></em>
-            </td>
-            <%# end %>
-
-          </ul>
-        </div>
-        <%# end %> -->
       </div>

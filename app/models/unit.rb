@@ -1,4 +1,6 @@
 class Unit < ActiveRecord::Base
+  validates :name, presence: true, uniqueness: true
+  validates :address, presence: true, uniqueness: true
 
   def slug
    name.downcase.gsub(" ", "-")

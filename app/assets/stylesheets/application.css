@@ -57,6 +57,14 @@
   color: snow;
 }
 
+.modal-body {
+  background-color: grey;
+}
+
+.modal {
+  color: white;
+}
+
 .btn-primary {
   background-color: #98878f;
 }

@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   patch "/unit/:unit_id/user/:user_id/state", to: "unit_users#update"
 
   patch "/units/:unit_id/chores/:chore_id/user_chores", to: "user_chores#update", as: "user_chores"
-  post "/units/:unit_id/chores/:chore_id/user_chores", to: "user_chores#update"
+  patch "/units/:unit_id/date", to: "user_chores#change_date", as: "date"
 
 
   resources :units do
