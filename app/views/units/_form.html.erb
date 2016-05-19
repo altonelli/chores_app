@@ -1,10 +1,10 @@
-<%= form_for(@unit), html: { class: "form-control" } do |f| %>
-  <% if @unit.errors.any? %>
+<%= form_for(unit) do |f| %>
+  <% if unit.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+      <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
 
       <ul>
-      <% @unit.errors.full_messages.each do |message| %>
+      <% unit.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -33,7 +33,7 @@
     <%= f.text_field :landlord_email, class: "form-control" %>
   </div>
   <div class="control-actions">
-    <%= f.submit %>
+    <%= f.submit class: "btn btn-default" %>
   </div>
 </fieldset>
 
