@@ -5,11 +5,17 @@ class ChoresController < ApplicationController
   # GET /chores
   # GET /chores.json
   def index
-    @chores = @unit.chores.distinct
+    # @chores = @unit.chores.distinct
+    @chores = []
+    @unit.chores.distinct.each do |chore|
+      if chore_of_unit?(chore,@unit)
+        @chores << chore
+      end
+    end
     @chore = @chores.first
-    puts("CHORES: " + @chores.to_s)
     if @chores.count > 0
       @user_chore = UserChore.where(chore_id: @chore.id).first
+      @date_user_chore = @user_chore
     else
       @user_chore = UserChore.new
       @chore = Chore.new
@@ -41,7 +47,12 @@ class ChoresController < ApplicationController
 
     deadline = nil
     if @unit.chores.count > 0
-      deadline = UserChore.where(chore_id: @unit.chore.first.id).first.due_date
+      @unit.chores.each do |chore|
+        if chore_of_unit?(chore,@unit)
+          deadline = UserChore.where(chore_id: chore.id).first.due_date
+          break
+        end
+      end
     end
 
     if params[:user_chore][:user_id][0].blank?
@@ -53,7 +64,7 @@ class ChoresController < ApplicationController
       if deadline.nil?
         deadline = Time.at(Time.now.to_i + 604800)
       end
-      
+
       UserChore.where(chore_id: @chore.id).update_all({completed: false, due_date: deadline})
       flash[:notice] = "#{@chore.title} was successfully updated."
     else

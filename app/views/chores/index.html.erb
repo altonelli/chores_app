@@ -1,5 +1,6 @@
+
 <% if @chores.count > 0 %>
-<h1>Due Date: <%= UserChore.where(chore_id: @chores.first.id).first.due_date.strftime("%B %d, %Y") %></h1>
+<h1>Due Date: <%= @user_chore.due_date.strftime("%B %d, %Y") %></h1>
 <button type="button" name="button" data-toggle="modal" data-target="#modal_date">Edit Date</button>
 <hr>
 
@@ -19,10 +20,10 @@
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-menu-down"></span>
           </button>
-            <ul class="dropdown-menu">
-              <li> <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</button> </li>
-              <li><%= button_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
-            </ul>
+          <ul class="dropdown-menu">
+            <li> <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</button> </li>
+            <li><%= button_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
+          </ul>
         </div>
       </div>
       <div class="panel-body">
@@ -99,10 +100,10 @@
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-menu-down"></span>
           </button>
-            <ul class="dropdown-menu">
-              <li> <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</button> </li>
-              <li><%= button_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
-            </ul>
+          <ul class="dropdown-menu">
+            <li> <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</button> </li>
+            <li><%= button_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
+          </ul>
         </div>
       </div>
       <div class="panel-body">
@@ -170,7 +171,6 @@
 <hr>
 
 
-
 <div id="modal_date" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
@@ -181,7 +181,7 @@
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
-        <%= render partial: 'edit_date' %>
+        <%= render partial: 'edit_date'%>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
