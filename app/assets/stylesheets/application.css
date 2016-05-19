@@ -39,10 +39,11 @@
 .row {
   display: flex;
   flex-wrap: nowrap | wrap | wrap-reverse;
+  flex-direction:row;
 }
 .panel.panel-primary.col-xs-2 {
   flex-shrink: 1;
-  margin-left: 290px;
+  margin-left: 180px;
 }
 .img-circle.img-responsive {
   text-align: center;
