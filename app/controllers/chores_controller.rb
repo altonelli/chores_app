@@ -4,7 +4,6 @@ class ChoresController < ApplicationController
   before_action :set_approved_users, only: [:index]
 
   # GET /chores
-  # GET /chores.json
   def index
     @new_chore = Chore.new
     @chores = []
@@ -24,11 +23,6 @@ class ChoresController < ApplicationController
     render :index
   end
 
-  # GET /chores/1
-  # GET /chores/1.json
-  def show
-
-  end
 
   # GET /chores/new
   def new

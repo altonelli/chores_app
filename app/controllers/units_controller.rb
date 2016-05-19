@@ -78,21 +78,21 @@ class UnitsController < ApplicationController
 
   # DELETE /units/1
   # DELETE /units/1.json
-  def destroy
-    if state(@unit, current_user) == "approved"
-      name = @unit.name
-      @unit = Unit.find
-      if @unit.destroy
-        flash[:notice] = "#{name} was destroyed"
-        redirect_to units_path
-      else
-        flash[:notice] = "#{name} persists"
-        redirect_to unit_path(@unit)
-      end
-    else
-      flash[:notice] = "I'm sorry, you do not have permission to do that!"
-    end
-  end
+  # def destroy
+  #   if state(@unit, current_user) == "approved"
+  #     name = @unit.name
+  #     @unit = Unit.find
+  #     if @unit.destroy
+  #       flash[:notice] = "#{name} was destroyed"
+  #       redirect_to units_path
+  #     else
+  #       flash[:notice] = "#{name} persists"
+  #       redirect_to unit_path(@unit)
+  #     end
+  #   else
+  #     flash[:notice] = "I'm sorry, you do not have permission to do that!"
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,18 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-
 <div class="row">
-
     <h3>Roommates</h3>
       <hr>
-
-
     <%@unit.users.each do |roommate| %>
     <% if state(@unit,roommate) === "approved" %>
     <div class="col-sm-6">
-
-
-
 
     <div class="panel-primary">
       <div class="panel-heading">
@@ -41,8 +33,8 @@
             <% end %>
           </p>
           <% if roommate == current_user %>
-          <p><%= link_to 'Edit', edit_user_path(current_user) %></p>
-          <p type="" name="" data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="">Edit Modal</p>
+            <p> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </p>
+            <p type="" name="" data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="">Edit Modal</p>
           <% end %>
         </div>
       </div>
