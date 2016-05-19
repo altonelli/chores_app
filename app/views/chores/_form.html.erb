@@ -2,10 +2,10 @@
 
   <% if @user_chore.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
+      <h2><%= pluralize(@user_chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
 
       <ul>
-      <% chore.errors.full_messages.each do |message| %>
+      <% @user_chore.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -32,6 +32,6 @@
     <% end %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Chore" %>
   </div>
 <% end %>

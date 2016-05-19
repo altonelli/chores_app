@@ -1,7 +1,7 @@
 class ChoresController < ApplicationController
   before_action :set_unit, only: [:index, :create, :new]
   before_action :set_chore, only: [:show, :edit, :update, :destroy]
-  before_action :set_approved_users
+  before_action :set_approved_users, only: [:index]
 
   # GET /chores
   # GET /chores.json
@@ -87,6 +87,7 @@ class ChoresController < ApplicationController
   # PATCH/PUT /chores/1.json
   def update
     @unit
+    puts("CHORE: #{@chore}")
     @chore.users.first.units.each do |unit|
       if chore_of_unit?(@chore,unit)
         @unit = unit
