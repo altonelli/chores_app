@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-
     <h3>Roommates</h3>
       <hr>
 
@@ -35,10 +34,32 @@
               <%= chore.title %>
             <% end %>
           </p>
-          <% if current_user == @user %>
-          <p><%= link_to 'Edit', edit_user_path(@user) %></p>
+          <% if roommate == current_user %>
+            <p> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </p>
+            <p type="" name="" data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="">Edit Modal</p>
           <% end %>
         </div>
+      </div>
+    </div>
+
+
+    <div id="modal_user_<%=roommate.id%>_edit" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <%= render partial: 'users/form', locals: {user: roommate}%>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -75,8 +96,7 @@
 </div>
 
 <%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %> |
-<%= link_to 'Delete This Unit', unit_path, method: :delete %>
+<%= link_to 'Back', units_path %>
 
 <nav class="navbar navbar-inverse">
   <div class="text-center">

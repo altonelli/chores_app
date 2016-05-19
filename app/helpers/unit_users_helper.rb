@@ -28,6 +28,16 @@ module UnitUsersHelper
         return unit
       end
     end
+    nil
+  end
+
+  def chore_of_unit?(chore,unit)
+    chore.users.each do |user|
+      if state(unit,user) != "approved"
+        return false
+      end
+    end
+    true
   end
 
 end

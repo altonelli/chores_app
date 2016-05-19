@@ -39,19 +39,34 @@ class UserChoresController < ApplicationController
 
   # PATCH/PUT /user_chores/1
   # PATCH/PUT /user_chores/1.json
+
+  def change_date
+    @unit = Unit.find(params[:unit_id])
+    if state(@unit,current_user) === "approved"
+      @unit.chores.each do |chore|
+        if chore_of_unit?(chore,@unit)
+          UserChore.where(chore_id: chore.id).update_all(user_chore_params)
+        end
+      end
+      flash[:notice] = "Chores for #{@unit.name} was successfully updated."
+      redirect_to unit_chores_path(@unit)
+    else
+      flash[:error] = "Must be a member of a unit to access."
+      redirect_to units_path
+    end
+  end
+
   def update
     @unit = Unit.find(params[:unit_id])
     if state(@unit,current_user) === "approved"
       @chore = Chore.find(params[:chore_id])
       if !params[:completed].nil?
         UserChore.where(chore_id: @chore.id).update_all(completed: params[:completed])
-      else
-        UserChore.where(chore_id: @chore.id).update_all(user_chore_params)
       end
       flash[:notice] = "#{@chore.title} successfully updated."
       redirect_to unit_chores_path(@unit)
     else
-      flash[:error] = "Unauthorized, must be roomate of the unit to access."
+      flash[:error] = "Unauthorized, must be roommate of the unit to access."
       redirect_to units_path
     end
   end
@@ -61,21 +76,30 @@ class UserChoresController < ApplicationController
     @unit = Unit.find(params[:unit_id])
     if state(@unit,current_user) === "approved"
       @chore = Chore.find(params[:chore_id])
-      if params[:user_chore][:user_id][0].blank?
-        flash[:error] = "Chore must be assigned to a roommate."
-      else
-        deadline = UserChore.where(chore_id: @chore.id).first.due_date
-        comp = UserChore.where(chore_id: @chore.id).first.completed
-        UserChore.where(chore_id: @chore.id).destroy_all
+      if chore_of_unit?(@chore,@unit)
 
-        params[:user_chore][:user_id].each do |num|
-          if !num.blank?
-            User.find(num.to_i).chores << @chore
+        if params[:user_chore][:user_id][0].blank?
+          flash[:error] = "Chore must be assigned to a roommate."
+        else
+          deadline = UserChore.where(chore_id: @chore.id).first.due_date
+          comp = UserChore.where(chore_id: @chore.id).first.completed
+          UserChore.where(chore_id: @chore.id).destroy_all
+
+          params[:user_chore][:user_id].each do |num|
+            if !num.blank?
+              user = User.find(num.to_i)
+              if state(@unit,user) === "approved"
+                user.chores << @chore
+              end
+            end
           end
+
+          UserChore.where(chore_id: @chore.id).update_all({due_date: deadline, completed: comp})
+          flash[:notice] = "#{@chore.title} successfully reassigned."
         end
 
-        UserChore.where(chore_id: @chore.id).update_all({due_date: deadline, completed: comp})
-        flash[:notice] = "#{@chore.title} successfully reassigned."
+      else
+        flash[:error] = "Chore not a part of this unit."
       end
       redirect_to unit_chores_path(@unit)
     else
