@@ -5493,7 +5493,8 @@ button.list-group-item-danger.active:focus {
 }
 .panel-footer {
   padding: 10px 15px;
-  background-color: #485563;
+  /*background-color: #485563;*/
+  background-color: #2B3E50;
   border-top: 1px solid transparent;
   border-bottom-right-radius: -1;
   border-bottom-left-radius: -1;

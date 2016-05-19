@@ -1,3 +1,4 @@
+
 <%= form_for @user_chore, url: unit_chores_path(@unit, @user_chore) do |f| %>
 
   <% if @user_chore.errors.any? %>
@@ -11,14 +12,16 @@
       </ul>
     </div>
   <% end %>
+  <fieldset>
+
   <%= fields_for chore do |ch| %>
   <div class="field">
     <%=ch.label :title %><br>
-    <%=ch.text_field :title %>
+    <%=ch.text_field :title, class: "form-control" %>
   </div>
   <div class="field">
     <%=ch.label :details %></br>
-    <%=ch.text_field  :details %>
+    <%=ch.text_field  :details, class: "form-control" %>
   </div>
   <% end %>
 
@@ -34,4 +37,6 @@
   <div class="actions">
     <%= f.submit "Create Chore" %>
   </div>
+  
+</fieldset>
 <% end %>

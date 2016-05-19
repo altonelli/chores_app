@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>CHÕRUS</title>
+    <title>CHŌRUS</title>
     <%= favicon_link_tag 'luma.ico' %>
 
     <!-- Latest compiled and minified CSS -->
@@ -30,14 +30,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to "ABOUT", root_path, class: "btn btn-warning" %>
+          <%= link_to "ABOUT", about_path, class: "btn btn-warning" %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li><%= link_to "CHÕRUS", root_path, class: "btn btn-danger" %></li>
+              <li><%= link_to "CHŌRUS", root_path, class: "btn btn-danger" %></li>
               <li><%= link_to "Log-Out", logout_path, class: "btn btn-warning" %></li>
               <% if unit_of_user(current_user) %>
               <li><%= link_to "My Unit", unit_path(unit_of_user(current_user)), class: "btn btn-primary" %></li>
@@ -78,9 +78,16 @@
     </div>
     <% end %>
 
+
+    <% if params[:controller] != "splash" %>
     <div class="container">
+    <% end %>
+
       <%= yield %>
+
+    <% if params[:controller] != "splash" %>
     </div>
+    <% end %>
 
 </body>
 </html>
