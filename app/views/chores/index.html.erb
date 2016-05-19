@@ -1,9 +1,14 @@
+<hr>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <button type="button" name="button" data-toggle="modal" data-target="#modal_new_chore" class="btn btn-success new-chore btn-block">New Chore</button>
+  </div>
+</div>
 <% if @chores.count > 0 %>
 <span class="date_header">
   <h1>Due Date: <%= @user_chore.due_date.strftime("%B %d, %Y") %></h1>
   <button type="button" name="button" data-toggle="modal" data-target="#modal_date" class="btn btn-warning">Edit Date</button>
 </span>
-<hr>
 
 
 <div class="row">
@@ -215,12 +220,5 @@
       </div>
     </div>
 
-  </div>
-</div>
-
-
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <button type="button" name="button" data-toggle="modal" data-target="#modal_new_chore" class="btn btn-success new-chore btn-block">New Chore</button>
   </div>
 </div>

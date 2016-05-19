@@ -10,33 +10,16 @@
 */
 
 
-/*.btn {
-  margin-left: 5px;
-  text-align: center;
-  font-weight: bolder;
-  font-family: monospace;
-  text-align: center;
-  padding:1px;
-  font-size: 30px;
-  text-align: center;
-  text-shadow: 4px 4px 12px black;
- }*/
-/*.dropdown-toggle {
-  font-family: monospace;
-  font-size: 16px;
-}
 
-
-.dropdown-toggle {
-  font-family: monospace;
-  font-size: 16px;
-}*/
 
 .list-group-item {
   background-color: #40617a;
   color: black;
 }
 
+.img-circle.img-responsive {
+  text-align: center;
+}
 .panel-body {
   background-color: grey;
   color: #596A7B;
@@ -46,7 +29,6 @@
   background-color: #2B3E50;
   color: snow;
 }
-
 
 .form-control {
   border-bottom: 1px solid #2B3E50;
