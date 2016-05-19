@@ -1,4 +1,4 @@
-<%= form_for @user_chore, url: user_chores_path(@unit,@chore) do |f| %>
+<%= form_for @user_chore, url: user_chores_path(@unit,@chore), html: { class: "form-control" } do |f| %>
 
   <% if @user_chore.errors.any? %>
     <div id="error_explanation">
@@ -12,11 +12,13 @@
     </div>
   <% end %>
 
+<fieldset>
   <div class="field">
     <%= f.label :due_date %><br>
-    <%= f.date_field :due_date %>
+    <%= f.date_field :due_date, class: "form-control" %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+</fieldset>
 <% end %>
