@@ -1,10 +1,10 @@
 
 
 h2 {
-  margin-top: 100px;
+  margin-top: 200px;
   font-family: monospace;
   font-weight: bolder;
-  font-size: 60px;
+  font-size: 85px;
 }
 
 /* Card Flip*/
@@ -12,7 +12,7 @@ h2 {
 .flip3D {
   margin-left: 20px;
   width:1100px;
-  height:100px;
+  height:200px;
   margin-top:40px;
   float:left;
   text-align: center;
@@ -25,7 +25,7 @@ h2 {
 	transform: perspective( 1100px ) rotateY( 0deg );
 	background:lightskyblue;
   width:1100px;
-  height:100px;
+  height:200px;
   border-radius: 12px;
 	backface-visibility: hidden;
 	transition: transform .5s linear 0s;
@@ -35,7 +35,7 @@ h2 {
 	transform: perspective( 1100px ) rotateY( 180deg );
 	background: tomato;
   width:1100px;
-  height:100px;
+  height:200px;
   border-radius: 7px;
 	backface-visibility: hidden;
 	transition: transform .5s linear 0s;
@@ -47,11 +47,11 @@ h2 {
 	transform: perspective( 1100px ) rotateY( 0deg );
 }
 .front {
-  font-size: 40px;
+  font-size: 60px;
   font-family: monospace;
 }
 .back {
-  font-size: 40px;
+  font-size: 60px;
   font-family: monospace;
 }
 /* End Card Flip*/
