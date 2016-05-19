@@ -1,35 +1,17 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listing Units</h1>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Address</th>
-          <th>Landlord name</th>
-          <th>Landlord phone</th>
-          <th>Landlord email</th>
-          <th colspan="6"></th>
-        </tr>
-      </thead>
+<%= link_to 'Create Unit', new_unit_path, class: "btn btn-danger btn-md"%>
+<ul class="list-group">
 
-      <tbody>
-        <% @units.each do |unit| %>
-          <tr>
-            <td><%= unit.name %></td>
-            <td><%= unit.address %></td>
-            <td><%= unit.landlord_name %></td>
-            <td><%= unit.landlord_phone %></td>
-            <td><%= unit.landlord_email %></td>
-            <td><%= link_to 'Show', unit %></td>
-            <td><%= link_to 'Edit', edit_unit_path(unit) %></td>
-            <td><%= link_to 'Destroy', unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+<% @units.each do |unit| %>
+  <li class="list-group-item"> <%= link_to unit.name, unit_path(unit) %>
+    <% if (state(unit,current_user) === nil || state(unit,current_user) === "blank") %>
+      <%= link_to "Join", state_path(unit, current_user, state: "pending"), html_options={method: :post, class: "pull-right"} %>
+    <% end %>
+    <% if state(unit,current_user) === "pending" %>
+      <%= link_to "Remove", state_path(unit, current_user, state: "removed"), html_options={method: :delete, class: "pull-right"} %>
+    <% end %>
+  </li>
 
+<% end %>
 
-    <br>
-
-<%= link_to 'New Unit', new_unit_path %>
+</ul>

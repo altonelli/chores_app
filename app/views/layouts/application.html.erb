@@ -1,40 +1,93 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chorus</title>
+    <title>CHŌRUS</title>
+    <%= favicon_link_tag 'luma.ico' %>
+
     <!-- Latest compiled and minified CSS -->
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
-  <!-- Latest compiled and minified JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet"/> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script   src="https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js"   integrity="sha256-55Jz3pBCF8z9jBO1qQ7cIf0L+neuPTD1u7Ytzrp2dqo="   crossorigin="anonymous"></script>
+    <!-- <link href="//cdnjs.cloudflare.com/ajax/libs/bootcards/1.1.1/css/bootcards-ios.min.css" rel="stylesheet"> -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" />
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
-    <%= favicon_link_tag "luma.ico" %>
+
   </head>
-  <body>
-    <div class ="mainIcons">
-      <nav class="navbar-form navbar-right">
-        <div class="container">
-          <% if current_user %>
-            <%= link_to "CHÕRUS", units_path %> | <%= link_to "Log-Out", logout_path %>
-          <% else %>
-            <%= link_to "Sign-Up", signup_path, class: "btn btn-info btn-sm"%>
-            <%= link_to "Log-In", login_path, class: "btn btn-success btn-sm"%>
-          <% end %>
+
+  <body style="padding-top: 0px">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <%= link_to "ABOUT", about_path, class: "btn btn-warning" %>
         </div>
-        <span class="appName">
-          <%= link_to "CHÕRUS", units_path, class: "btn btn-danger btn-md" %>
-        </span>
-      </nav>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li><%= link_to "CHŌRUS", root_path, class: "btn btn-danger" %></li>
+              <li><%= link_to "Log-Out", logout_path, class: "btn btn-warning" %></li>
+              <% if unit_of_user(current_user) %>
+              <li><%= link_to "My Unit", unit_path(unit_of_user(current_user)), class: "btn btn-primary" %></li>
+              <% end %>
+            <% else %>
+              <li><%= link_to "Sign-Up", signup_path, class: "btn btn-primary"%></li>
+              <li><%= link_to "Log-In", login_path, class: "btn btn-success"%></li>
+            <% end %>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MENU <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <% if current_user && unit_of_user(current_user)%>
+                <li><%= link_to "My Unit", unit_path(unit_of_user(current_user)) %></li>
+                <li>Chores</li>
+                <% else %>
+                <li><%= link_to "Log In", login_path, class: "btn btn-success" %></li>
+                <li><%= link_to "Sign Up", signup_path, class: "btn btn-primary"%></li>
+                <% end %>
+                <li role="separator" class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <% if notice %>
+    <div class="alert alert-info alert-dismissible" role="alert" id="notice">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Notice:</strong><%= notice %>
     </div>
+    <% end %>
+
+    <% if flash[:error] %>
+    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Error:</strong><%= flash[:error] %>
+    </div>
+    <% end %>
+
+
+    <% if params[:controller] != "splash" %>
     <div class="container">
+    <% end %>
+
       <%= yield %>
+
+    <% if params[:controller] != "splash" %>
     </div>
-  </body>
+    <% end %>
 
-  <footer id="footerInfo">
-    <p><small>&copy; CH&OtildeRUS. All Rights Reserved. <br>Designed by: Team Awesome Sauce</small></p>
-  </footer>
-
+</body>
 </html>

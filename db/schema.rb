@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513230559) do
+ActiveRecord::Schema.define(version: 20160516190348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20160513230559) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "unit_users", force: :cascade do |t|
+    t.string   "state"
+    t.integer  "user_id"
+    t.integer  "unit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "unit_users", ["unit_id"], name: "index_unit_users_on_unit_id", using: :btree
+  add_index "unit_users", ["user_id"], name: "index_unit_users_on_user_id", using: :btree
 
   create_table "units", force: :cascade do |t|
     t.string   "name"
@@ -53,10 +64,13 @@ ActiveRecord::Schema.define(version: 20160513230559) do
     t.datetime "updated_at",      null: false
     t.integer  "unit_id"
     t.string   "password_digest"
+    t.string   "photo"
   end
 
   add_index "users", ["unit_id"], name: "index_users_on_unit_id", using: :btree
 
+  add_foreign_key "unit_users", "units"
+  add_foreign_key "unit_users", "users"
   add_foreign_key "user_chores", "chores"
   add_foreign_key "user_chores", "users"
   add_foreign_key "users", "units"

@@ -1,17 +1,22 @@
-<%= form_for :user, url: "/sessions", method: "post" do |f| %>
+<%= form_for :user, url: "/sessions", html: { class: "form-control" },  method: "post" do |f| %>
 
-  <div class="field">
-    <%= f.label :Email %><br>
-    <%= f.text_field :email %>
-  </div>
+<div class="col-md-6">
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :Email %><br>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :Password %><br>
-    <%= f.password_field :password %>
-  </div>
+    <div class="control-group">
+      <%= f.label :Password %><br>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+  <br>
+    <div class="control-actions">
+      <%= f.submit "Sign In" , class: "btn btn-success btn-sm"%>
+    </div>
+  </fieldset>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Sign In" %>
-  </div>
 
 <% end %>

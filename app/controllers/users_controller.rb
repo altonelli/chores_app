@@ -1,21 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # GET /users
-  # GET /users.json
-  def index
-    @users = User.all
-    redirect_to unit_users_path
-    # render :index
-  end
-
-  # GET /users/1
-  # GET /users/1.json
-  def show
-    @user = User.find_by_id(params[:id])
-  #  @posts = Post.where(user_id: user_id)
-   render :show
-  end
 
   # GET /users/new
   def new
@@ -24,44 +9,61 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   def create
     @user = User.new(user_params)
     if @user.save
     login (@user)
     flash[:success] = "Welcome to our app!!"
-    redirect_to new_unit_path
+    redirect_to units_path
     else
     render :new
     end
   end
 
-  # GET /users/1/edit
-  def edit
-    user_id = params[:id]
-    @user = User.find_by_id[user_id]
-    render :edit
-  end
 
   # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
-    user_id = params[:id]
-    user = User.find_by_id(user_id)
-    user.update_attributes(user_params)
-    flash[:success] = "User Updated"
-    redirect_to user_path(user)
+    if params[:state] && params[:unit]
+      unit = Unit.find(params[:unit])
+      current_user.state = "pending"
+      unit.users << current_user
+    else
+      user_id = params[:id]
+      user = User.find_by_id(user_id)
+      user.update_attributes(user_params)
+      flash[:notice] = "User Updated"
+      redirect_to unit_of_user(user)
+    end
   end
 
   # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
     user_id = params[:id]
     @user = User.find_by_id(user_id)
-    @user=current_user
-    User.destroy(@user)
-    flash[:success] = "User Deleted!!"
-    redirect_to root_path
+    if @user === current_user
+      @unit
+      @user.units.each do |unit|
+        if state(unit,@user) === "approved"
+          @unit = unit
+        end
+      end
+      if @user.chores.count === 0
+        if @unit.users.count > 1
+          UnitUser.where("user_id = :user_id and state = :state", {user_id: @user.id.to_s, state: "approved"}).first.destroy
+          flash[:notice] = "#{@user.name} was removed from the unit."
+          redirect_to units_path
+        else
+          flash[:error] = "Unit must have at least one roommate remaining."
+          redirect_to unit_path(@unit)
+        end
+      else
+        flash[:error] = "Must have no chores to leave unit"
+        redirect_to unit_path(@unit)
+      end
+    else
+      flash[:error] = "Unauthorized."
+      redirect_to unit_path(unit_of_user(current_user))
+    end
   end
 
   private
