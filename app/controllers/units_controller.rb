@@ -24,14 +24,14 @@ class UnitsController < ApplicationController
   end
 
   # GET /units/1/edit
-  def edit
-    if state(@unit, current_user) == "approved"
-      render :edit
-    else
-      flash[:error] = "Oops! You need to join a unit in order to view it!"
-      redirect_to units_path
-    end
-  end
+  # def edit
+  #   if state(@unit, current_user) == "approved"
+  #     render :edit
+  #   else
+  #     flash[:error] = "Oops! You need to join a unit in order to view it!"
+  #     redirect_to units_path
+  #   end
+  # end
 
   # POST /units
   # POST /units.json

@@ -40,4 +40,13 @@ module UnitUsersHelper
     true
   end
 
+  def any_pending?(unit)
+    unit.users.each do |user|
+      if state(unit,user) === "pending"
+        return true
+      end
+    end
+    false
+  end
+
 end

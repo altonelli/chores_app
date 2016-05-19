@@ -1,10 +1,10 @@
 /*
-  *= require_self
   *= require bootswatch
+  *= require_self
   *= require chores
   *= require users
-  *= require splash
   *= require users_show
+  *= require splash
   *= require jquery-ui
   *= require about
 */
@@ -50,18 +50,32 @@
 }
 .panel-body {
   background-color: grey;
-  color: white;
+  color: #596A7B;
 }
 
 .panel-footer {
   background-color: #2B3E50;
   color: snow;
 }
+<<<<<<< HEAD
 
-.modal-body {
-  background-color: grey;
+.form-control {
+  border-bottom: 1px solid #2B3E50;
+  border-left: 1px solid #2B3E50;
+  border-top: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+label {
+  color: #2B3E50
 }
 
+.modal-body {
+  background-color: floralwhite;
+}
+
+.modal-footer {
+  background-color: floralwhite;
+}
 .modal {
   color: white;
 }
@@ -69,10 +83,12 @@
 .btn-primary {
   background-color: #98878f;
 }
+<<<<<<< HEAD
 .panel-primary {
   margin: 30px;
   background-color: grey;
 }
+
 .glyphicon {
   color: #efeff4;
 }
@@ -84,6 +100,24 @@
 .navbar-inverse {
   padding: 10px 0 10px 0;
   bottom: 0;
+  background-color: #f0ad4e;
+}
+
+.text-btn {
+  color: #ea8520;
+}
+
+.text-btn:hover {
+  color: #2B3E50;
+  text-decoration: underline;
+}
+
+a {
+  color: #ea8520;
+}
+
+a:hover {
+  color: #2B3E50;
 }
 
 nav.navbar.navbar-default {
