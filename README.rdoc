@@ -1,6 +1,6 @@
 == README
 
- 
+
 Project Name: Chōrus
 Team Members: Ayush Jha, Nathan Lee, Andrea Ceballos, Arthur Tonelli
 

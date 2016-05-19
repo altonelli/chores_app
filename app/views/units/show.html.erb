@@ -13,36 +13,9 @@
     <% if state(@unit,roommate) === "approved" %>
     <div class="col-sm-6">
 
-<<<<<<< HEAD
 
-                <span class="cardsDiv">
-                 <div class="panel panel-default bootcards-media" class="cards">
-                  <div class="panel-heading">
-                  <h3 class="panel-title">
-                    <%=link_to(roommate.name,user_path(roommate))%>
-                  </h3>
-                  </div>
-                      <div class="panel-body">
-                      <div class="img-circle" class="face front">
-                        <%= image_tag("couplesApartment.gif", :alt => "rss feed") %>
-                  	  </div>
-              	       </div>
-                   <div class="panel-footer">
-                   <!-- <%= link_to "CHORES", units_path%> -->
-                   <%=link_to(user_chore.chore,chore_path(user_chore))%>
-                 </div>
-              </div>
-          </div>
-        </span>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-
-    <div class="panel-primary">
-=======
     <div class="app panel-primary">
->>>>>>> 6e3cacc5ca5d85ca01e8ac543b4aaa045422bba2
+
       <div class="panel-heading">
         <%= roommate.name %>
       </div>
@@ -77,8 +50,7 @@
     </div>
 
 
-<<<<<<< HEAD
-=======
+
     <div id="modal_user_<%=roommate.id%>_edit" class="modal fade" role="dialog">
       <div class="modal-dialog">
 
@@ -99,7 +71,7 @@
       </div>
     </div>
 
->>>>>>> 6e3cacc5ca5d85ca01e8ac543b4aaa045422bba2
+
 </div>
   <% end %>
   <% end %>

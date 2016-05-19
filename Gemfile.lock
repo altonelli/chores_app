@@ -189,11 +189,8 @@ DEPENDENCIES
   pg (~> 0.15)
   rails (= 4.2.6)
   rails-erd
-<<<<<<< HEAD
-  rspec-rails
-=======
   rails_12factor
->>>>>>> 6e3cacc5ca5d85ca01e8ac543b4aaa045422bba2
+  rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 3.0.0)
