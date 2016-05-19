@@ -4,7 +4,7 @@ h2 {
   margin-top: 200px;
   font-family: monospace;
   font-weight: bolder;
-  font-size: 85px;
+  font-size: 75px;
 }
 
 /* Card Flip*/
@@ -47,11 +47,11 @@ h2 {
 	transform: perspective( 1100px ) rotateY( 0deg );
 }
 .front {
-  font-size: 60px;
+  font-size: 40px;
   font-family: monospace;
 }
 .back {
-  font-size: 60px;
+  font-size: 40px;
   font-family: monospace;
 }
 /* End Card Flip*/
