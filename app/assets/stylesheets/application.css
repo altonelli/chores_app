@@ -10,7 +10,7 @@
 */
 
 
-.btn {
+/*.btn {
   margin-left: 5px;
   text-align: center;
   font-weight: bolder;
@@ -20,8 +20,8 @@
   font-size: 30px;
   text-align: center;
   text-shadow: 4px 4px 12px black;
- }
-.dropdown-toggle {
+ }*/
+/*.dropdown-toggle {
   font-family: monospace;
   font-size: 16px;
 }
@@ -30,7 +30,7 @@
 .dropdown-toggle {
   font-family: monospace;
   font-size: 16px;
-}
+}*/
 
 .list-group-item {
   background-color: rgba(100,100,100,.7);
@@ -46,7 +46,7 @@
   background-color: #2B3E50;
   color: snow;
 }
-<<<<<<< HEAD
+
 
 .form-control {
   border-bottom: 1px solid #2B3E50;
