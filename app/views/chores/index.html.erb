@@ -7,7 +7,7 @@
 
 
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <h4>To Do</h4>
     <hr>
 
@@ -15,7 +15,7 @@
     <% if !chore.complete? %>
     <% if chore_of_unit?(chore, @unit) %>
 
-    <div class="panel-primary">
+    <div class="app panel-primary">
       <div class="panel-heading">
         <%= chore.title %>
         <div class="btn-group pull-right">
@@ -91,13 +91,13 @@
     <% end %>
 
   </div>
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <h4>Finished</h4>
     <hr>
     <% @chores.each do |chore| %>
     <% if chore.complete? %>
     <% if chore_of_unit?(chore,@unit) %>
-    <div class="panel-primary">
+    <div class="app panel-primary">
       <div class="panel-heading">
         <%= chore.title %>
         <div class="btn-group pull-right">
@@ -219,5 +219,8 @@
 </div>
 
 
-
-<button type="button" name="button" data-toggle="modal" data-target="#modal_new_chore" class="btn btn-success new-chore">New Chore</button>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <button type="button" name="button" data-toggle="modal" data-target="#modal_new_chore" class="btn btn-success new-chore btn-block">New Chore</button>
+  </div>
+</div>

@@ -1,6 +1,6 @@
 <% @user_chore = UserChore.new %>
 
-<%= form_for @user_chore, url: reassign_path(@unit,chore,@user_chore), html: { class: "form-control" } do |f| %>
+<%= form_for @user_chore, url: reassign_path(@unit,chore,@user_chore) do |f| %>
 
   <% if @user_chore.errors.any? %>
     <div id="error_explanation">
@@ -14,7 +14,7 @@
     </div>
   <% end %>
 
-  <span>Roommates Responsible:</span>
+  <label>Roommates Responsible:</label>
   <% user_ids = [] %>
   <% chore.users.each { |user| user_ids << user.id} %>
 
