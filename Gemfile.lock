@@ -109,6 +109,11 @@ GEM
       ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.5)
+    rails_stdout_logging (0.0.5)
     railties (4.2.6)
       actionpack (= 4.2.6)
       activesupport (= 4.2.6)
@@ -184,7 +189,11 @@ DEPENDENCIES
   pg (~> 0.15)
   rails (= 4.2.6)
   rails-erd
+<<<<<<< HEAD
   rspec-rails
+=======
+  rails_12factor
+>>>>>>> 6e3cacc5ca5d85ca01e8ac543b4aaa045422bba2
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   shoulda-matchers (~> 3.0.0)

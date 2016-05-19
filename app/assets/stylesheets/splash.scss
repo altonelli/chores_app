@@ -12,16 +12,50 @@ body {
 
 .panel-primary {
   padding: 0px;
-  box-shadow: 10px 10px 5px black;
+  box-shadow: 2px 2px 10px grey;
 }
 
 #view {
-  margin-top: -250px;
+  background: white;
   background-image: url("/images/sfApartment.jpeg");
-  background-size:cover;
-  height: 750px;
+  background-size: cover;
+  margin: -175px 0px 0px 0px;
+  height: 900px;
+}
+
+
+.gradient {
+  height: 100%;
+  width: 100%;
+  // opacity: .5;
+}
+
+header {
+  margin-top: 400px;
+  text-align: center;
+  color: snow;
+  font-family: monospace;
+  font-size: 75px;
+  vertical-align: middle;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #2B3E50;
+  opacity: 1;
 }
 
 #content {
-  background-color: white;
+  margin-top: 400px;
+  background-color: transparent;
+}
+
+img {
+  border-radius: 50%;
+  border: 2px solid #2b3e50;
+}
+
+.panel-footer {
+  padding: 5px;
+}
+
+hr {
+  margin: 10px;
 }

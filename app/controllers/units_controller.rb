@@ -24,14 +24,14 @@ class UnitsController < ApplicationController
   end
 
   # GET /units/1/edit
-  def edit
-    if state(@unit, current_user) == "approved"
-      render :edit
-    else
-      flash[:error] = "Oops! You need to join a unit in order to view it!"
-      redirect_to units_path
-    end
-  end
+  # def edit
+  #   if state(@unit, current_user) == "approved"
+  #     render :edit
+  #   else
+  #     flash[:error] = "Oops! You need to join a unit in order to view it!"
+  #     redirect_to units_path
+  #   end
+  # end
 
   # POST /units
   # POST /units.json
@@ -40,7 +40,14 @@ class UnitsController < ApplicationController
     @unit = Unit.new(unit_params)
       name = @unit.name
       @unit.users << current_user
+      current_user.units.each do |unit|
+        if state(unit,current_user) === "approved"
+          flash[:error] = "You are already a amember of unit #{unit.name}. You must deactivate to create a new unit."
+          redirect_to units_path
+        end
+      end
       if @unit.save
+        change_state(@unit,current_user,"approved")
         flash[:notice] = "#{@unit.name} was saved."
         redirect_to unit_path(@unit)
       else
@@ -71,21 +78,21 @@ class UnitsController < ApplicationController
 
   # DELETE /units/1
   # DELETE /units/1.json
-  def destroy
-    if state(@unit, current_user) == "approved"
-      name = @unit.name
-      @unit = Unit.find
-      if @unit.destroy
-        flash[:notice] = "#{name} was destroyed"
-        redirect_to units_path
-      else
-        flash[:notice] = "#{name} persists"
-        redirect_to unit_path(@unit)
-      end
-    else
-      flash[:notice] = "I'm sorry, you do not have permission to do that!"
-    end
-  end
+  # def destroy
+  #   if state(@unit, current_user) == "approved"
+  #     name = @unit.name
+  #     @unit = Unit.find
+  #     if @unit.destroy
+  #       flash[:notice] = "#{name} was destroyed"
+  #       redirect_to units_path
+  #     else
+  #       flash[:notice] = "#{name} persists"
+  #       redirect_to unit_path(@unit)
+  #     end
+  #   else
+  #     flash[:notice] = "I'm sorry, you do not have permission to do that!"
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

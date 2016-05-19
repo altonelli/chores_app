@@ -1,21 +1,28 @@
 class ChoresController < ApplicationController
   before_action :set_unit, only: [:index, :create, :new]
   before_action :set_chore, only: [:show, :edit, :update, :destroy]
+  before_action :set_approved_users, only: [:index]
 
   # GET /chores
-  # GET /chores.json
   def index
-    @chores = @unit.chores.distinct
-    puts("CHORES: " + @chores.to_s)
+    @new_chore = Chore.new
+    @chores = []
+    @unit.chores.each do |chore|
+      if chore_of_unit?(chore,@unit) && !@chores.include?(chore)
+        @chores << chore
+      end
+    end
     @chore = @chores.first
-    @user_chore = UserChore.where(chore_id: @chore.id).first
+    if @chores.count > 0
+      @user_chore = UserChore.where(chore_id: @chore.id).first
+      @date_user_chore = @user_chore
+    else
+      @user_chore = UserChore.new
+      @chore = Chore.new
+    end
+    render :index
   end
 
-  # GET /chores/1
-  # GET /chores/1.json
-  def show
-
-  end
 
   # GET /chores/new
   def new
@@ -25,29 +32,61 @@ class ChoresController < ApplicationController
 
   # GET /chores/1/edit
   def edit
-    @unit = @chore.users.first.unit
+    @unit
+    @chore.users.first.units.each do |unit|
+      if chore_of_unit?(@chore,unit)
+        @unit = unit
+      end
+    end
+
   end
 
   # POST /chores
   # POST /chores.json
   def create
     @chore = Chore.new(chore_params)
+
+    deadline = nil
+    if @unit.chores.count > 0
+      @unit.chores.each do |chore|
+        if chore_of_unit?(chore,@unit)
+          deadline = UserChore.where(chore_id: chore.id).first.due_date
+          break
+        end
+      end
+    end
+
     if params[:user_chore][:user_id][0].blank?
       flash[:error] = "Chore must be assigned to someone."
-      redirect_to new_unit_chore_path(@unit)
-    else
-      @chore.save
+      return redirect_to new_unit_chore_path(@unit)
+    elsif @chore.save
       params[:user_chore][:user_id].each { |num| if !num.blank? then User.find(num.to_i).chores << @chore end}
-      UserChore.where(chore_id: @chore.id).update_all({completed: false})
+
+      if deadline.nil?
+        deadline = Time.at(Time.now.to_i + 604800)
+      end
+
+      UserChore.where(chore_id: @chore.id).update_all({completed: false, due_date: deadline})
       flash[:notice] = "#{@chore.title} was successfully updated."
-      redirect_to unit_chores_path(@unit)
+    else
+      flash[:error] = "Woops! It seems you're forgetting something! Please enter a valid title and details before submitting a chore."
     end
+    redirect_to unit_chores_path(@unit)
   end
+
+
+  #############Need to also update date
 
   # PATCH/PUT /chores/1
   # PATCH/PUT /chores/1.json
   def update
-    @unit = @chore.users.first.unit
+    @unit
+    puts("CHORE: #{@chore}")
+    @chore.users.first.units.each do |unit|
+      if chore_of_unit?(@chore,unit)
+        @unit = unit
+      end
+    end
     @chore.update(chore_params)
     redirect_to unit_chores_path(@unit)
   end
@@ -55,7 +94,12 @@ class ChoresController < ApplicationController
   # DELETE /chores/1
   # DELETE /chores/1.json
   def destroy
-    @unit = @chore.users.first.unit
+    @unit
+    @chore.users.first.units.each do |unit|
+      if chore_of_unit?(@chore,unit)
+        @unit = unit
+      end
+    end
     @chore.destroy
     redirect_to unit_chores_path(@unit)
   end
@@ -68,6 +112,15 @@ class ChoresController < ApplicationController
 
     def set_chore
       @chore = Chore.find(params[:id])
+    end
+
+    def set_approved_users
+      @approved_users = []
+      @unit.users.each do |user|
+        if state(@unit,user) === "approved"
+          @approved_users << user
+        end
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

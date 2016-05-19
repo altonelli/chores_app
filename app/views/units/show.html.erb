@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-
+  <div class="col-sm-6 col-sm-offset-3">
+    <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-block"}%>
+  </div>
+</div>
+<div class="row">
     <h3>Roommates</h3>
       <hr>
 
@@ -9,6 +13,7 @@
     <% if state(@unit,roommate) === "approved" %>
     <div class="col-sm-6">
 
+<<<<<<< HEAD
 
                 <span class="cardsDiv">
                  <div class="panel panel-default bootcards-media" class="cards">
@@ -35,6 +40,9 @@
   </div>
 
     <div class="panel-primary">
+=======
+    <div class="app panel-primary">
+>>>>>>> 6e3cacc5ca5d85ca01e8ac543b4aaa045422bba2
       <div class="panel-heading">
         <%= roommate.name %>
       </div>
@@ -57,25 +65,49 @@
           <p>
             <strong>Chores:</strong>
             <% roommate.chores.each do |chore| %>
-              <%= chore.title %>
+              <%= "#{chore.title}, " %>
             <% end %>
           </p>
-          <% if current_user == @user %>
-          <p><%= link_to 'Edit', edit_user_path(@user) %></p>
+          <% if roommate == current_user %>
+            <p><span> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </span> |
+            <span data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="text-btn">Edit</span></p>
           <% end %>
         </div>
       </div>
     </div>
 
 
+<<<<<<< HEAD
+=======
+    <div id="modal_user_<%=roommate.id%>_edit" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Modal Header</h4>
+          </div>
+          <div class="modal-body">
+            <%= render partial: 'users/form', locals: {user: roommate}%>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+>>>>>>> 6e3cacc5ca5d85ca01e8ac543b4aaa045422bba2
 </div>
   <% end %>
   <% end %>
 
 </div>
 
+<% if any_pending?(@unit) %>
 <div class="row">
-  <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-block"}%>
 <div id="pending" class="col-sm-6">
   <hr>
   <h3>Pending Roommates</h3>
@@ -100,9 +132,30 @@
 
 </div>
 
-<%= link_to 'Edit', edit_unit_path(@unit) %> |
-<%= link_to 'Back', units_path %> |
-<%= link_to 'Delete This Unit', unit_path, method: :delete %>
+<% end %>
+
+<span data-toggle="modal" data-target="#modal_unit_edit" class="text-btn">Edit Unit</span> |
+<%= link_to 'All Units', units_path %>
+
+<div id="modal_unit_edit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'form', locals: {unit: @unit}%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <nav class="navbar navbar-inverse">
   <div class="text-center">

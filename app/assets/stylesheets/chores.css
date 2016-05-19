@@ -6,3 +6,15 @@
 ul.dropdown-menu {
   padding: 0px;
 }
+
+a.btn {
+  color: white;
+}
+
+a.btn:hover {
+  color: white;
+}
+
+.app.panel-primary {
+  margin: 5px;
+}

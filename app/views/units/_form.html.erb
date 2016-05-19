@@ -1,37 +1,40 @@
-<%= form_for(@unit) do |f| %>
-  <% if @unit.errors.any? %>
+<%= form_for(unit) do |f| %>
+  <% if unit.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
+      <h2><%= pluralize(unit.errors.count, "error") %> prohibited this unit from being saved:</h2>
 
       <ul>
-      <% @unit.errors.full_messages.each do |message| %>
+      <% unit.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+<fieldset>
+  <div class="control-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.text_field :address, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= f.label :landlord_name %><br>
-    <%= f.text_field :landlord_name %>
+    <%= f.text_field :landlord_name, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= f.label :landlord_phone %><br>
-    <%= f.text_field :landlord_phone %>
+    <%= f.text_field :landlord_phone, class: "form-control" %>
   </div>
-  <div class="field">
+  <div class="control-group">
     <%= f.label :landlord_email %><br>
-    <%= f.text_field :landlord_email %>
+    <%= f.text_field :landlord_email, class: "form-control" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-actions">
+    <%= f.submit class: "btn btn-default" %>
   </div>
+</fieldset>
+
 <% end %>

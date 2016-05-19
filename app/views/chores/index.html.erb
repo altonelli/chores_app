@@ -1,24 +1,36 @@
-<h1>Due Date: <%= UserChore.where(chore_id: @chores.first.id).first.due_date.strftime("%B %d, %Y") %></h1> <button type="button" name="button" data-toggle="modal" data-target="#modal_date">Edit Date</button>
 <hr>
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <button type="button" name="button" data-toggle="modal" data-target="#modal_new_chore" class="btn btn-success new-chore btn-block">New Chore</button>
+  </div>
+</div>
+<% if @chores.count > 0 %>
+<span class="date_header">
+  <h1>Due Date: <%= @user_chore.due_date.strftime("%B %d, %Y") %></h1>
+  <button type="button" name="button" data-toggle="modal" data-target="#modal_date" class="btn btn-warning">Edit Date</button>
+</span>
 
 
 <div class="row">
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <h4>To Do</h4>
     <hr>
+
     <% @chores.each do |chore| %>
-    <% if !UserChore.where(chore_id: chore.id).first.completed %>
-    <div class="panel-primary">
+    <% if !chore.complete? %>
+    <% if chore_of_unit?(chore, @unit) %>
+
+    <div class="app panel-primary">
       <div class="panel-heading">
         <%= chore.title %>
         <div class="btn-group pull-right">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-menu-down"></span>
           </button>
-            <ul class="dropdown-menu">
-              <li> <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</button> </li>
-              <li><%= button_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
-            </ul>
+          <ul class="dropdown-menu">
+            <li> <a class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</a> </li>
+            <li><%= link_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
+          </ul>
         </div>
       </div>
       <div class="panel-body">
@@ -28,11 +40,13 @@
         <p>
           Responsible:
           <% chore.users.each do |user| %>
-          <%= link_to " #{user.name},", user_path(user) %>
+          <%= " #{user.name}," %>
           <% end %>
         </p>
-        <%= button_to "Completed", user_chores_path(@unit,chore, :completed => true), html_options={class: "btn btn-success", method: :patch} %>
-        <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Reassign</button>
+        <div class="btn-group">
+          <%= link_to "Completed", user_chores_path(@unit,chore, :completed => true), html_options={class: "btn btn-success", method: :patch} %>
+          <button class="btn btn-warning" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Reassign</button>
+        </div>
       </div>
     </div>
 
@@ -77,27 +91,28 @@
       </div>
     </div>
 
-
+    <% end %>
     <% end %>
     <% end %>
 
   </div>
-  <div class="col-xs-6">
+  <div class="col-sm-6">
     <h4>Finished</h4>
     <hr>
     <% @chores.each do |chore| %>
-    <% if UserChore.where(chore_id: chore.id).first.completed %>
-    <div class="panel-primary">
+    <% if chore.complete? %>
+    <% if chore_of_unit?(chore,@unit) %>
+    <div class="app panel-primary">
       <div class="panel-heading">
         <%= chore.title %>
         <div class="btn-group pull-right">
           <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-menu-down"></span>
           </button>
-            <ul class="dropdown-menu">
-              <li> <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</button> </li>
-              <li><%= button_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
-            </ul>
+          <ul class="dropdown-menu">
+            <li> <a class="btn btn-warning" type="button" name="button"  data-toggle="modal" data-target="#modal_<%=chore.id%>">Edit</a> </li>
+            <li><%= link_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
+          </ul>
         </div>
       </div>
       <div class="panel-body">
@@ -107,11 +122,13 @@
         <p>
           Responsible:
           <% chore.users.each do |user| %>
-          <%= link_to " #{user.name},", user_path(user) %>
+          <%= " #{user.name},"%>
           <% end %>
         </p>
-        <%= button_to "Incomplete", user_chores_path(@unit,chore, :completed => false), html_options={class: "btn btn-danger", method: :patch} %>
-        <button class="btn btn-primary" type="button" name="button"  data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Reassign</button>
+        <div class="btn-group" role="group">
+            <%= link_to "Incomplete", user_chores_path(@unit,chore, :completed => false), html_options={class: "btn btn-danger", method: :patch} %>
+          <button class="btn btn-warning" type="button" data-toggle="modal" data-target="#reassign_modal_<%=chore.id%>">Reassign</button>
+        </div>
       </div>
     </div>
 
@@ -155,6 +172,7 @@
 
       </div>
     </div>
+    <% end %>
     <% end %>
     <% end %>
   </div>
@@ -162,8 +180,6 @@
 </div>
 
 <hr>
-
-<%= link_to 'New Chore', new_unit_chore_path(@unit), html_option={class:"btn btn-success new-chore"} %>
 
 
 <div id="modal_date" class="modal fade" role="dialog">
@@ -173,10 +189,31 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Edit Date</h4>
       </div>
       <div class="modal-body">
-        <%= render partial: 'edit_date' %>
+        <%= render partial: 'edit_date'%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<% end %>
+<div id="modal_new_chore" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Chore</h4>
+      </div>
+      <div class="modal-body">
+        <%= render partial: 'form', locals: {chore: @new_chore}%>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
