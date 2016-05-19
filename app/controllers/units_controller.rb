@@ -43,19 +43,19 @@ class UnitsController < ApplicationController
       current_user.units.each do |unit|
         if state(unit,current_user) === "approved"
           flash[:error] = "You are already a amember of unit #{unit.name}. You must deactivate to create a new unit."
-          redirect_to units_path
+          return redirect_to units_path
         end
       end
       if @unit.save
         change_state(@unit,current_user,"approved")
         flash[:notice] = "#{@unit.name} was saved."
-        redirect_to unit_path(@unit)
+        return redirect_to unit_path(@unit)
       else
         flash[:notice] = "#{name} failed to update."
-        redirect_to new_unit_path
+        return redirect_to new_unit_path
       end
     else
-      redirect_to root_path
+      return redirect_to root_path
     end
   end
 
@@ -65,14 +65,14 @@ class UnitsController < ApplicationController
     if state(@unit,current_user) === "approved"
       if @unit.update(unit_params)
         flash[:notice] = "#{@unit.name} was successfully updated"
-        redirect_to unit_path(@unit)
+        return redirect_to unit_path(@unit)
       else
         flash[:error] = "#{@unit.name} failed to update"
-        redirect_to edit_unit_path(@unit)
+        return redirect_to edit_unit_path(@unit)
       end
     else
       flash[:error] = "Unauthorized"
-      redirect_to units_path
+      return redirect_to units_path
     end
   end
 
