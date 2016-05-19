@@ -14,3 +14,7 @@ a.btn {
 a.btn:hover {
   color: white;
 }
+
+.panel-primary {
+  margin: 5px;
+}
