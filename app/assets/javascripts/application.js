@@ -8,3 +8,19 @@
 
 console.log ("JS is loaded & running!!");
 Turbolinks.enableProgressBar();
+
+$(document).ready(function(){
+
+  $('.modal-btn').click(function(e){
+    $('.main').attr('aria-hidden','true');
+
+  });
+
+  $('.close').click(function(e){
+    $('.main').attr('aria-hidden','false');
+
+  });
+
+
+
+});
