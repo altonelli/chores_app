@@ -20,6 +20,7 @@
   </head>
 
   <body style="padding-top: 0px">
+    <a href="#main" class="skip-link main">main content</a>
     <nav class="navbar navbar-default main">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -56,20 +57,20 @@
       </div><!-- /.container-fluid -->
     </nav>
     <% if notice %>
-    <div class="alert alert-info alert-dismissible" role="alert" id="notice">
+    <div class="alert alert-info alert-dismissible main" role="alert" id="notice">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Notice:</strong><%= notice %>
     </div>
     <% end %>
 
     <% if flash[:error] %>
-    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <div class="alert alert-danger alert-dismissible main" role="alert" id="error">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Error:</strong><%= flash[:error] %>
     </div>
     <% end %>
 
-
+    <main id="main" class="main" tabindex="-1">
     <% if params[:controller] != "splash" %>
     <div class="container">
     <% end %>
@@ -79,6 +80,7 @@
     <% if params[:controller] != "splash" %>
     </div>
     <% end %>
+  </main>
 
 </body>
 </html>

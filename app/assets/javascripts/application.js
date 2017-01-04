@@ -16,7 +16,7 @@ $(document).ready(function(){
 
   });
 
-  $('.close').click(function(e){
+  $('.modal-close').click(function(e){
     $('.main').attr('aria-hidden','false');
 
   });
