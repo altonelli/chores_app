@@ -1,19 +1,27 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+Project Name: Chōrus
+Team Members: Ayush Jha, Nathan Lee, Andrea Ceballos, Arthur Tonelli
 
-* Ruby version
+KISS -  Keeping it simple's strenuous. That's why we did it for you. We've packed a V8 under the hood of this lightweight chore tracking app, so your apt goes from zero to spiffy in n occupants. :P
+A user will create an account and a unit in one fell swoop. In the introductory version we've begun with an open floor plan, allowing everyone in a unit to add and adjust chores.
+Subsequent users will sign up and have the option to create a unit or choose from the existing selection. Their request to join a unit will be pending until any of its current members approve it in the unit show page. They will then appear in the lightning view where all occupants can see a card for each person in the house with the status of their respective tasks.
 
-* System dependencies
+Design - We encountered major decisions around the shape of login and authorization. Whether a master user would create members in an account and distribute access, or people sign in and then address accounts had large implications on the organization of the backend. With a platform lending itself to auth across the board, we determined that which surrounds an admin to be less crucial in the initial UX.
 
-* Configuration
+Technologies:
 
-* Database creation
-
-* Database initialization
+Ruby on Rails
+PostgreSQL
+JQuery
+Turbolinks
+Sass
+Bootswatch
+Bootstrap
+Friendly_URL
+RSpec
+Heroku
 
 * How to run the test suite
 
