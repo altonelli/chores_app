@@ -49,6 +49,7 @@
               <li><%= link_to "Units", units_path, class: "btn btn-info" %></li>
               <% end %>
             <% else %>
+              <li><%= button_to "Demo Log-In", sessions_path(:user => {email: "john.doe@demo.com", password:"1234"}), class: "btn btn-warning"%></li>
               <li><%= link_to "Sign-Up", signup_path, class: "btn btn-primary"%></li>
               <li><%= link_to "Log-In", login_path, class: "btn btn-success"%></li>
             <% end %>
