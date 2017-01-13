@@ -1,28 +1,28 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" role="status" aria-live="assertive"><%= notice %></p>
 
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <%=link_to "Chores", unit_chores_path(@unit), html_options = {class: "btn btn-warning btn-block"}%>
+<div class="row main">
+  <div id="chores-link" class="col-sm-6 col-sm-offset-3">
+    <%=link_to "Chores", unit_chores_path(@unit), html_options = {role:"link",class: "btn btn-warning btn-block"}%>
   </div>
 </div>
 <div class="row">
-    <h3>Roommates</h3>
-      <hr>
+    <h3 aria-level="2" class="main">Roommates</h3>
+      <hr aria-hidden="true">
 
     <%@unit.users.each do |roommate| %>
     <% if state(@unit,roommate) === "approved" %>
     <div class="col-sm-6">
 
 
-    <div class="app panel-primary">
+    <div class="app panel-primary main" role="group" aria-label="<%= roommate.name %> details">
 
-      <div class="panel-heading">
+      <div role="heading" aria-level="3" class="panel-heading">
         <%= roommate.name %>
       </div>
 
       <div class="panel-body">
         <div class="col-xs-3">
-          <img id="user-photo" class="img-responsive img-circle" src= <%=roommate.photo%> >
+          <img id="user-photo" class="img-responsive img-circle" alt="profile picture for <%=roommate.name%>" src= <%=roommate.photo%> >
         </div>
         <div class="col-xs-9" id="user-info">
           <p>
@@ -42,8 +42,8 @@
             <% end %>
           </p>
           <% if roommate == current_user %>
-            <p><span> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </span> |
-            <span data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="text-btn">Edit</span></p>
+            <p><span role="button"> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </span> |
+            <span data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="text-btn modal-btn" role="button">Edit User</span></p>
           <% end %>
         </div>
       </div>
@@ -57,14 +57,14 @@
         <!-- Modal content-->
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Modal Header</h4>
+            <button type="button" class="close modal-close" aria-label="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Edit <%=roommate.name%>'s Profile</h4>
           </div>
           <div class="modal-body">
             <%= render partial: 'users/form', locals: {user: roommate}%>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default modal-close" data-dismiss="modal">Close</button>
           </div>
         </div>
 
@@ -79,20 +79,23 @@
 </div>
 
 <% if any_pending?(@unit) %>
-<div class="row">
+<div class="row main">
 <div id="pending" class="col-sm-6">
-  <hr>
-  <h3>Pending Roommates</h3>
-  <hr>
+  <hr aria-hidden="true">
+  <h3 aria-level="2">Pending Roommates</h3>
+  <hr aria-hidden="true">
 
-  <ul class="list-group">
+  <div id="pendingListDesc" class="hidden">
+    Approve or deny pending roommates to your unit.
+  </div>
+  <ul class="list-group" aria-describedby="pendingListDesc">
     <% @unit.users.each do |roommate| %>
     <% if state(@unit,roommate) === "pending" %>
-    <li class="list-group-item">
+    <li class="list-group-item pending-list-item">
       <%= roommate.name %>
       <span class="pull-right">
-        <%= link_to "Approve", state_path(@unit, roommate, state: "approved"), html_options={method: :patch} %>
-        | <%= link_to "Decline", state_path(@unit, roommate, state: "blocked"), html_options={method: :patch} %>
+        <div role="button" class="pending-btn"><%= link_to "Approve", state_path(@unit, roommate, state: "approved"), html_options={method: :patch} %></div>
+        | <div role="button" class="pending-btn"><%= link_to "Decline", state_path(@unit, roommate, state: "blocked"), html_options={method: :patch} %></div>
       </span>
     </li>
 
@@ -106,8 +109,10 @@
 
 <% end %>
 
-<span data-toggle="modal" data-target="#modal_unit_edit" class="text-btn">Edit Unit</span> |
-<%= link_to 'All Units', units_path %>
+<div class="main">
+  <span data-toggle="modal" data-target="#modal_unit_edit" class="text-btn modal-btn" role="button">Edit Unit</span> |
+  <%= link_to 'All Units', units_path %>
+</div>
 
 <div id="modal_unit_edit" class="modal fade" role="dialog">
   <div class="modal-dialog">
@@ -115,21 +120,21 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <button type="button" class="close modal-close" aria-label="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Modal Header</h4>
       </div>
       <div class="modal-body">
         <%= render partial: 'form', locals: {unit: @unit}%>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default modal-close" data-dismiss="modal">Close</button>
       </div>
     </div>
 
   </div>
 </div>
 
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse main">
   <div class="text-center">
     <p>
       <%= @unit.name %> | <%= @unit.address %>

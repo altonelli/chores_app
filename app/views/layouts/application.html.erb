@@ -3,6 +3,11 @@
   <head>
     <title>CHŌRUS</title>
     <%= favicon_link_tag 'luma.ico' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A happy house is a clean house. Keep track of all the chores in your house in one place.">
+    <meta name="author" content="Arthur Tonelli">
+    <meta name="keywords" content="HTML,Accessibility,CSS,Ruby,Rails">
+
 
     <!-- Latest compiled and minified CSS -->
     <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet"/> -->
@@ -20,7 +25,8 @@
   </head>
 
   <body style="padding-top: 0px">
-    <nav class="navbar navbar-default">
+    <a href="#main" class="skip-link main">main content</a>
+    <nav class="navbar navbar-default main">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -48,6 +54,7 @@
               <li><%= link_to "Units", units_path, class: "btn btn-info" %></li>
               <% end %>
             <% else %>
+              <li><%= button_to "Demo Log-In", sessions_path(:user => {email: "john.doe@demo.com", password:"1234"}), class: "btn btn-warning"%></li>
               <li><%= link_to "Sign-Up", signup_path, class: "btn btn-primary"%></li>
               <li><%= link_to "Log-In", login_path, class: "btn btn-success"%></li>
             <% end %>
@@ -56,20 +63,20 @@
       </div><!-- /.container-fluid -->
     </nav>
     <% if notice %>
-    <div class="alert alert-info alert-dismissible" role="alert" id="notice">
+    <div class="alert alert-info alert-dismissible main" role="alert" id="notice">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Notice:</strong><%= notice %>
     </div>
     <% end %>
 
     <% if flash[:error] %>
-    <div class="alert alert-danger alert-dismissible" role="alert" id="error">
+    <div class="alert alert-danger alert-dismissible main" role="alert" id="error">
       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <strong>Error:</strong><%= flash[:error] %>
     </div>
     <% end %>
 
-
+    <main id="main" class="" tabindex="-1">
     <% if params[:controller] != "splash" %>
     <div class="container">
     <% end %>
@@ -79,6 +86,7 @@
     <% if params[:controller] != "splash" %>
     </div>
     <% end %>
+  </main>
 
 </body>
 </html>

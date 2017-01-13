@@ -17,6 +17,30 @@
   color: black;
 }
 
+.pending-btn {
+  display:inline;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: #C2571A;
+  border: 1px solid white;
+  z-index: 1000;
+  color:white;
+  padding:5px;
+}
+
+.new-chore.btn{
+  margin-top: 20px;
+}
+
+.skip-link:focus {
+  top: 0;
+  color:white;
+}
+
 .img-circle.img-responsive {
   text-align: center;
 }
