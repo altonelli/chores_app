@@ -14,7 +14,7 @@
     <div class="col-sm-6">
 
 
-    <div class="app panel-primary main">
+    <div class="app panel-primary main" role="group" aria-label="<%= roommate.name %> details">
 
       <div role="heading" aria-level="3" class="panel-heading">
         <%= roommate.name %>
@@ -85,7 +85,10 @@
   <h3 aria-level="2">Pending Roommates</h3>
   <hr aria-hidden="true">
 
-  <ul class="list-group">
+  <div id="pendingListDesc" class="hidden">
+    Approve or deny pending roommates to your unit.
+  </div>
+  <ul class="list-group" aria-describedby="pendingListDesc">
     <% @unit.users.each do |roommate| %>
     <% if state(@unit,roommate) === "pending" %>
     <li class="list-group-item pending-list-item">
