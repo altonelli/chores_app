@@ -20,7 +20,7 @@
     <% if !chore.complete? %>
     <% if chore_of_unit?(chore, @unit) %>
 
-    <div class="app panel-primary main" role="group" aria-label="<%= chore.title %> group">
+    <div class="app panel-primary main" role="article" aria-label="<%= chore.title %> details">
 
       <div class="panel-heading">
         <span role="heading" aria-level="3"><%= chore.title %></span>
@@ -104,7 +104,7 @@
     <% @chores.each do |chore| %>
     <% if chore.complete? %>
     <% if chore_of_unit?(chore,@unit) %>
-    <div class="app panel-primary main" role="group" aria-label="<%= chore.title %> group">
+    <div class="app panel-primary main" role="article" aria-label="<%= chore.title %> details">
       <div class="panel-heading">
         <span role="heading" aria-level="3"><%= chore.title %></span>
 
@@ -130,7 +130,7 @@
           <% end %>
         </p>
         <div class="btn-group" role="group">
-            <%= link_to "Incomplete", user_chores_path(@unit,chore, :completed => false), html_options={class: "btn btn-danger", method: :patch} %>
+            <%= link_to "Incomplete", user_chores_path(@unit,chore, :completed => false), html_options={class: "btn btn-danger", method: :patch, role: "button"} %>
           <button class="btn btn-warning modal-btn" type="button" data-toggle="modal" data-target="#modal_reassign_<%=chore.id%>">Reassign</button>
         </div>
       </div>
