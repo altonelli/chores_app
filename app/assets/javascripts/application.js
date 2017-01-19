@@ -16,6 +16,7 @@ $(document).ready(function(){
     $('.main').attr('aria-hidden','true');
     var modalTarget = $(this).attr('data-target');
     $(e.target).closest('.app').siblings(modalTarget).attr('aria-hidden','false');
+    $(e.target).closest('.modal-header').focus();
   });
 
   $('.modal-close').click(function(e){
