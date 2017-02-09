@@ -34,15 +34,15 @@ Issues can be made and are tracked on Github [here](https://github.com/altonelli
 To contribute to the project, fork and clone the repository.
 To clone from the command line:
 
-'''
+```
 git clone https://github.com/altonelli/chorus.git
-'''
+```
 
 This app uses several gems so once it is cloned, install the bundle
 
-'''
+```
 bundle install
-'''
+```
 
 ## Entity Relationship Diagram
 
@@ -63,6 +63,10 @@ bundle install
 
 ## Tests
 
-Describe and show how to run the tests with code examples.
+Tests were made using rspec and can be run from the main app directory.
+
+```
+$ rake spec
+```
 
 
