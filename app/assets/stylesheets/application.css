@@ -1,8 +1,9 @@
 /*
   *= require bootswatch
-  *= require_self
   *= require chores
   *= require users
+  *= require units
+  *= require_self
   *= require users_show
   *= require splash
   *= require jquery-ui
@@ -10,7 +11,9 @@
 */
 
 
-
+.body {
+  background-color: #FFF8D5
+}
 
 .list-group-item {
   background-color: #40617a;
@@ -112,4 +115,103 @@ a:hover {
 
 nav.navbar.navbar-default {
   margin-bottom: 0px;
+  background-color: #264A59;
+}
+
+.btn {
+  color: white;
+  font-weight: bold;
+}
+
+a.btn.modal-btn,
+a.btn {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: inherit;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a.btn-primary,
+ .navbar-default .navbar-nav > li > a.btn-danger {
+  color: white;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a.btn-primary {
+  background-color: #00617c;
+  font-weight: bold;
+}
+
+.navbar-default .navbar-nav > li > a.btn-primary {
+  background-color: #00617c;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: #00617c;
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a.btn-primary:hover,
+.navbar-default .navbar-nav > li > a.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #1B3457;
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a.btn-success,
+.btn-success {
+  background-color: #038945;
+}
+
+.navbar-default .navbar-nav > li > a.btn-success:hover,
+.navbar-default .navbar-nav > li > a.btn-success:focus,
+.btn-success:hover,
+.btn-success:focus {
+  background-color: #0D5C30;
+}
+
+a.btn.btn-warning.modal-btn,
+.navbar-default .navbar-nav > li > a.btn-warning,
+.btn-warning {
+  background-color: #EDCC56;
+  color: #0e4152;
+  font-weight: bold;
+}
+
+a.btn.btn-warning.modal-btn:hover,
+a.btn.btn-warning.modal-btn:focus,
+.navbar-default .navbar-nav > li > a.btn-warning:hover,
+.navbar-default .navbar-nav > li > a.btn-warning:focus,
+.btn-warning:hover,
+.btn-warning:focus {
+  background-color: #C2A941;
+  color: #0e4152;
+}
+
+a.btn.btn-danger.modal-btn,
+.navbar-default .navbar-nav > li > a.btn-danger,
+.btn-danger {
+  background-color: #ac2400;
+  color: white;
+  font-weight: bold;
+}
+
+a.btn.btn-danger:hover,
+a.btn.btn-danger:focus,
+.navbar-default .navbar-nav > li > a.btn-danger:hover,
+.navbar-default .navbar-nav > li > a.btn-danger:focus,
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: #831818;
+  color: white;
+}
+
+button.close.modal-close {
+  color: #f2f6fb;
+  opacity: 1.0;
 }

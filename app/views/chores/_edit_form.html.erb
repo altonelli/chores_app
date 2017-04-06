@@ -15,11 +15,11 @@
 <fieldset>
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title, class: "form-control" %>
+    <%= f.text_field :title, class: "form-control", id: "chore_edit_title_#{chore.title}" %>
   </div>
   <div class="field">
     <%= f.label :details %><br>
-    <%= f.text_field :details, class: "form-control" %>
+    <%= f.text_field :details, class: "form-control", id: "chore_edit_details_#{chore.title}" %>
   </div>
   <div class="actions">
     <%= f.submit "Update Chore", class: "btn btn-default" %>

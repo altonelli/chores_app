@@ -9,22 +9,22 @@
     <h3 aria-level="2" class="main">Roommates</h3>
       <hr aria-hidden="true">
 
-    <%@unit.users.each do |roommate| %>
+    <% @unit.users.each do |roommate| %>
     <% if state(@unit,roommate) === "approved" %>
     <div class="col-sm-6">
 
 
     <div class="app panel-primary main" role="article" aria-label="<%= roommate.name %> details">
 
-      <div role="heading" aria-level="3" class="panel-heading">
+      <h3 role="heading" aria-level="3" class="panel-heading">
         <%= roommate.name %>
-      </div>
+      </h3>
 
       <div class="panel-body">
         <div class="col-xs-3">
-          <img id="user-photo" class="img-responsive img-circle" alt="profile picture for <%=roommate.name%>" src= <%=roommate.photo%> >
+          <img id="user-photo-<%= roommate.id %>" class="img-responsive img-circle" alt="profile picture for <%=roommate.name%>" src= <%=roommate.photo%> >
         </div>
-        <div class="col-xs-9" id="user-info">
+        <div class="col-xs-9" id="user-info-<%= roommate.id %>">
           <p>
             <strong>Email:</strong>
             <%= roommate.email %>
@@ -42,8 +42,10 @@
             <% end %>
           </p>
           <% if roommate == current_user %>
-            <p><span role="button"> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </span> |
-            <span data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="text-btn modal-btn" role="button">Edit User</span></p>
+          <div class="row">
+            <button role="button" class="btn btn-danger text-btn col-xs-6"> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </button>
+            <button data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="text-btn modal-btn btn btn-warning col-xs-6" role="button">Edit User</button>
+          </div>
           <% end %>
         </div>
       </div>
@@ -80,7 +82,7 @@
 
 <% if any_pending?(@unit) %>
 <div class="row main">
-<div id="pending" class="col-sm-6">
+<div id="pending-user" class="col-sm-6">
   <hr aria-hidden="true">
   <h3 aria-level="2">Pending Roommates</h3>
   <hr aria-hidden="true">
@@ -92,11 +94,13 @@
     <% @unit.users.each do |roommate| %>
     <% if state(@unit,roommate) === "pending" %>
     <li class="list-group-item pending-list-item">
-      <%= roommate.name %>
-      <span class="pull-right">
-        <div role="button" class="pending-btn"><%= link_to "Approve", state_path(@unit, roommate, state: "approved"), html_options={method: :patch} %></div>
-        | <div role="button" class="pending-btn"><%= link_to "Decline", state_path(@unit, roommate, state: "blocked"), html_options={method: :patch} %></div>
-      </span>
+      <div class="row">
+        <span class="pending-user-name col-xs-4"><%= roommate.name %></span>
+        <span class="col-xs-8">
+          <button role="button" class="btn text-btn btn-success col-xs-6"><%= link_to "Approve", state_path(@unit, roommate, state: "approved"), html_options={method: :patch} %></button>
+          <button role="button" class="btn text-btn btn-danger col-xs-6"><%= link_to "Decline", state_path(@unit, roommate, state: "blocked"), html_options={method: :patch} %></button>
+        </span>
+      </div>
     </li>
 
     <% end %>
@@ -110,8 +114,8 @@
 <% end %>
 
 <div class="main">
-  <span data-toggle="modal" data-target="#modal_unit_edit" class="text-btn modal-btn" role="button">Edit Unit</span> |
-  <%= link_to 'All Units', units_path %>
+  <button data-toggle="modal" data-target="#modal_unit_edit" class="text-btn modal-btn btn btn-warning" role="button">Edit Unit</button>
+  <span class="btn text-btn btn-primary"><%= link_to 'All Units', units_path %></span>
 </div>
 
 <div id="modal_unit_edit" class="modal fade" role="dialog">
@@ -134,7 +138,7 @@
   </div>
 </div>
 
-<nav class="navbar navbar-inverse main">
+<footer class="navbar navbar-inverse main">
   <div class="text-center">
     <p>
       <%= @unit.name %> | <%= @unit.address %>
@@ -147,4 +151,4 @@
       <%= @unit.landlord_email %>
     </p>
   </div>
-</nav>
+</footer>

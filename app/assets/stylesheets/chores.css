@@ -7,14 +7,23 @@ ul.dropdown-menu {
   padding: 0px;
 }
 
-a.btn {
+/*a.btn {
   color: white;
 }
 
 a.btn:hover {
   color: white;
-}
+}*/
 
 .app.panel-primary {
   margin: 5px;
 }
+
+h3.chore-title {
+  box-sizing: border-box;
+  color: white;
+  font-size: 15px;
+  display: inline;
+}
+
+

@@ -36,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-            <%= link_to "CHŌRUS", root_path, class: "btn btn-danger" %>
+            <%= link_to "CHŌRUS", root_path, class: "btn btn-primary" %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -46,9 +46,9 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
-              <li><%= link_to "Log-Out", logout_path, class: "btn btn-warning" %></li>
+              <li><%= link_to "Log-Out", logout_path, class: "btn btn-danger" %></li>
               <% if unit_of_user(current_user) %>
-              <li><%= link_to "My Unit", unit_path(unit_of_user(current_user)), class: "btn btn-info" %></li>
+              <li><%= link_to "My Unit", unit_path(unit_of_user(current_user)), class: "btn btn-warning" %></li>
               <li><%= link_to "My Chores", unit_chores_path(unit_of_user(current_user)), class: "btn btn-primary" %></li>
               <% else %>
               <li><%= link_to "Units", units_path, class: "btn btn-info" %></li>

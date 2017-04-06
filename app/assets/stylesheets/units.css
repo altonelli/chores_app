@@ -5,3 +5,80 @@
 .app.panel-primary {
   margin: 5px;
 }
+
+button.text-btn.btn-warning,
+a.btn.btn-warning {
+  background-color: #EDCC56;
+  color: #0e4152;
+  font-weight: bold;
+}
+
+button.text-btn.btn-warning:hover,
+button.text-btn.btn-warning:focus,
+a.btn.btn-warning:hover,
+a.btn.btn-warning:focus {
+  background-color: #C2A941;
+}
+
+button.text-btn.btn-danger > a,
+button.text-btn.btn-danger,
+a.btn.btn-danger {
+  background-color: #ac2400;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+button.text-btn.btn-danger > a:hover,
+button.text-btn.btn-danger > a:focus,
+button.text-btn.btn-danger:hover,
+button.text-btn.btn-danger:focus,
+a.btn.btn-danger:hover,
+a.btn.btn-danger:focus {
+  background-color: #831818;
+}
+
+button.text-btn.btn-success > a,
+button.text-btn.btn-success,
+a.btn.btn-success {
+  background-color: #038945;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+button.text-btn.btn-success > a:hover,
+button.text-btn.btn-success > a:focus,
+button.text-btn.btn-success:hover,
+button.text-btn.btn-success:focus,
+a.btn.btn-success:hover,
+a.btn.btn-success:focus {
+  background-color: #0D5C30;
+}
+
+.text-btn.btn-primary > a,
+button.text-btn.btn-primary,
+a.btn.btn-primary {
+  background-color: #00617c;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+text-btn.btn-primary > a:hover,
+text-btn.btn-primary > a:focus,
+a.btn.btn-primary:hover,
+a.btn.btn-primary:focus {
+  background-color: #1B3457;
+}
+
+h3.panel-heading {
+  margin-bottom: 0;
+  color: white;
+  font-size: 15px;
+}
+
+.pending-user-name {
+  margin-top: 10px;
+}
+.pending-list-item {
+  padding: 0 0 0 10px;
+  border-color: floralwhite;
+}
