@@ -3,17 +3,13 @@
   background-color: transparent;
 }
 
+.btn.dropdown-toggle:focus {
+  outline: 5px auto -webkit-focus-ring-color;
+}
+
 ul.dropdown-menu {
   padding: 0px;
 }
-
-/*a.btn {
-  color: white;
-}
-
-a.btn:hover {
-  color: white;
-}*/
 
 .app.panel-primary {
   margin: 5px;
@@ -25,5 +21,6 @@ h3.chore-title {
   font-size: 15px;
   display: inline;
 }
+
 
 

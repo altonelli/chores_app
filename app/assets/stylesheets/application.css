@@ -142,12 +142,12 @@ a.btn {
 
 .navbar-default .navbar-nav > li > a.btn-primary {
   background-color: #00617c;
-  font-weight: bold;
+  border-color: white;
 }
 
-.navbar-default .navbar-nav > li > a.btn-primary {
-  background-color: #00617c;
-  font-weight: bold;
+.brand {
+  height: 42px;
+  border-color: white;
 }
 
 .btn-primary {
@@ -211,7 +211,24 @@ a.btn.btn-danger:focus,
   color: white;
 }
 
-button.close.modal-close {
+button.close {
   color: #f2f6fb;
   opacity: 1.0;
+}
+
+ul.dropdown-menu {
+  /*height: 40px;*/
+  width: 40px;
+  /*margin-left: 80px;*/
+}
+
+ul.dropdown-menu > li {
+  height: 40px;
+  margin-left: 0px;
+}
+
+ul.dropdown-menu > li > a.btn {
+  height: 100%;
+  width: 100%;
+  padding-top: 10px;
 }

@@ -43,8 +43,8 @@
           </p>
           <% if roommate == current_user %>
           <div class="row">
-            <button role="button" class="btn btn-danger text-btn col-xs-6"> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </button>
-            <button data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="text-btn modal-btn btn btn-warning col-xs-6" role="button">Edit User</button>
+            <button role="button" class="btn btn-danger text-btn col-xs-6 col-lg-4"> <%= link_to "Leave Unit", user_path(roommate), method: :delete%> </button>
+            <button data-toggle="modal" data-target="#modal_user_<%=roommate.id%>_edit" class="text-btn modal-btn btn btn-warning col-xs-6 col-lg-4" role="button">Edit User</button>
           </div>
           <% end %>
         </div>
@@ -95,8 +95,8 @@
     <% if state(@unit,roommate) === "pending" %>
     <li class="list-group-item pending-list-item">
       <div class="row">
-        <span class="pending-user-name col-xs-4"><%= roommate.name %></span>
-        <span class="col-xs-8">
+        <span class="pending-user-name col-xs-4 col-lg-6"><%= roommate.name %></span>
+        <span class="col-xs-8 col-lg-6">
           <button role="button" class="btn text-btn btn-success col-xs-6"><%= link_to "Approve", state_path(@unit, roommate, state: "approved"), html_options={method: :patch} %></button>
           <button role="button" class="btn text-btn btn-danger col-xs-6"><%= link_to "Decline", state_path(@unit, roommate, state: "blocked"), html_options={method: :patch} %></button>
         </span>

@@ -1,4 +1,3 @@
-<!-- <hr aria-hidden="true"> -->
 <div class="row main">
   <div class="col-sm-6 col-sm-offset-3">
     <button tabindex="0" type="button" name="button" data-toggle="modal" data-target="#modal_new_chore" class="btn btn-success new-chore btn-block modal-btn">New Chore</button>
@@ -20,16 +19,16 @@
     <% if !chore.complete? %>
     <% if chore_of_unit?(chore, @unit) %>
 
-    <article class="app panel-primary main" role="article" aria-label="<%= chore.title %> details">
+    <article class="app panel-primary main" role="article" aria-label="chore">
 
       <div class="panel-heading">
         <h3 role="heading" aria-level="3" class="chore-title"><%= chore.title %></h3>
         <div class="btn-group pull-right">
-          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="options">
+          <button tabindex="0" type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="options">
             <span class="glyphicon glyphicon-menu-down"></span>
           </button>
           <ul class="dropdown-menu">
-            <li> <a class="btn btn-warning modal-btn" type="button" name="button"  data-toggle="modal" data-target="#modal_edit_<%=chore.id%>">Edit</a> </li>
+            <li> <a tabindex="0" class="btn btn-warning modal-btn" type="button" name="button"  data-toggle="modal" data-target="#modal_edit_<%=chore.id%>">Edit</a> </li>
             <li><%= link_to 'Destroy', chore, html_options={class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
           </ul>
         </div>
@@ -106,7 +105,7 @@
   <% @chores.each do |chore| %>
   <% if chore.complete? %>
   <% if chore_of_unit?(chore,@unit) %>
-  <article class="app panel-primary main" role="article" aria-label="<%= chore.title %> details">
+  <article class="app panel-primary main" role="article" aria-label="chore">
     <div class="panel-heading">
       <h3 id="chore_header_<%= chore.id %>" role="heading" class="chore-title"><%= chore.title %></h3>
       <div id="chore_dropdown_group_<%= chore.id %>" class="btn-group pull-right">
@@ -114,8 +113,8 @@
           <span class="glyphicon glyphicon-menu-down"></span>
         </button>
         <ul role="menu" class="dropdown-menu">
-          <li> <a class="btn btn-warning modal-btn" type="button" name="button" role="menuitem" data-toggle="modal" data-target="#modal_edit_<%=chore.id%>">Edit</a> </li>
-          <li><%= link_to 'Destroy', chore, html_options={role:"menuitem",class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
+          <li> <a tabindex="0" class="btn btn-warning modal-btn" type="button" name="button" role="menuitem" data-toggle="modal" data-target="#modal_edit_<%=chore.id%>">Edit</a> </li>
+          <li><%= link_to 'Destroy', chore, html_options={role:"menuitem",tabindex:"0",class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' }} %></li>
         </ul>
       </div>
     </div>
